@@ -1,0 +1,109 @@
+.link-title-path {
+	color: #0055aa;
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+.product-price > span {
+	margin-right: 15px;
+}
+.hidden {
+	display: none;
+}
+.saleprice {
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 20px;
+	text-decoration-line: line-through;
+}
+.rawprice {
+	font-weight: 700;
+	font-size: 28px;
+	text-align: center;
+	text-transform: capitalize;
+	color: #ff0056;
+	padding-left: 20px;
+	margin-right: 5px !important;
+}
+.salepercent {
+	font-weight: 700;
+	font-size: 15px;
+	text-align: center;
+	text-transform: capitalize;
+	color: #ffffff;
+	background: #ff0056;
+	padding: 3px 12px;
+	border: 1px solid;
+	margin-left: 15px;
+}
+.product-img {
+	width: 100%;
+	max-width: 350px;
+}
+.product-img > img {
+	width: 100%;
+	max-width: 350px;
+}
+.comment-section {
+	background: #d9d9d9;
+	border-radius: 15px;
+}
+.avt-comment {
+	max-width: 70px;
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	background: #fff;
+}
+.date-comment {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 15px;
+}
+.comment-input {
+	border-radius: 5px;
+	border: 3px solid #04aa6d;
+	padding: 12px 15px;
+}
+.comment-input:focus {
+	border-color: transparent;
+	outline-color: transparent;
+}
+.submit-input {
+	background: #ff0056;
+	color: #fff;
+	padding: 8px 15px;
+	border-radius: 5px;
+	margin-top: 12px;
+	border-color: transparent;
+}
+.submit-input:hover {
+	background: #04aa6d;
+}
+
+.row.pages {
+	margin: 20px 0 30px 0;
+}
+.page-link-btn.btn {
+	padding: 5px 15px;
+	font-weight: 700;
+	font-size: 18px;
+	text-align: center;
+	text-transform: capitalize;
+	color: #ff0056;
+}
+.page-item.active > .page-link-btn.btn {
+	color: #fff;
+	background: #00a600;
+}
+.page-link-btn.btn:hover {
+	background: #00a600;
+	color: #fff;
+}
+
+.product-view {
+	color: #ff0056;
+}
+.product-view > i {
+	color: #000;
+}
+.product-name-header {
+	color: #5ab45a;
+}
