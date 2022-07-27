@@ -5,22 +5,12 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-     <script src="https://kit.fontawesome.com/ca716ab036.js" crossorigin="anonymous"></script>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+     <title>Trang Chủ</title>
      <link rel="stylesheet" href="../lib/css/Home.css">
      <link rel="stylesheet" href="../lib/css/Shared.css">
 </head>
 
 <body>
-
-     <!-- menu -->
-     <?php require_once "../others/menu.php" ?>
-
-
 
      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -40,7 +30,7 @@
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-               <span class="visually-hidden">Next</span>a
+               <span class="visually-hidden">Next</span>
           </button>
      </div>
      <main>
@@ -137,8 +127,8 @@
                                    <div class="col-md-4" id="type_2"><button type="button">Nữ</button></div>
                                    <div class="col-md-4" id="type_3"><button type="button">Trẻ Em</button></div>
                               </div>
-                              <div class="row" id="trending_product">
-                                   <div class="trending_product_1">
+                              <div class="row d-flex" id="trending_product">
+                                   <div class="trending_product_1 col">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -147,7 +137,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_2">
+                                   <div class="trending_product_2 col">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -156,7 +146,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_3">
+                                   <div class="trending_product_3 col">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -165,7 +155,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_4">
+                                   <div class="trending_product_4 col">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -174,7 +164,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_5">
+                                   <div class="trending_product_5 col">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -501,12 +491,6 @@
           </div>
      </main>
 
-
-     <!-- footer -->
-     <?php require_once "../others/footer.php" ?>
-
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -7,22 +7,12 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>product page</title>
 
-     <?php
-     require_once "../faviconlink/faviconlink.php";
-     require_once "../../lib/boostrapAndFonticon/BSandFontIcon.php";
-     ?>
-
-     <link rel="stylesheet" href="../../lib/css/all.css">
      <link rel="stylesheet" href="../../lib/css/product.css">
 
 </head>
 
 <body>
-     <div class="">
-          <!-- menu -->
-          <?php require_once "../others/menu.php" ?>
-     </div>
-
+     
 
      <div class="row dir-infor padding-page">
           <a href="./">
@@ -1055,8 +1045,7 @@
      </div>
 
 
-     <!-- footer -->
-     <?php require_once "../others/footer.php" ?>
+     
 
      <script src="../../lib/js/filterproduct.js"></script>
 </body>

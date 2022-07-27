@@ -1,5 +1,4 @@
 header{
-    font-family: 'Roboto', sans-serif;
     margin-top: 10px;
 }
 #Logo{
@@ -14,6 +13,7 @@ header{
 }
 #Logo a i{
     margin-right: 10px;
+    font-size: 35px;
 }
 .jumbotron{
     background-color: white;
