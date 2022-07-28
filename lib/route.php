@@ -30,6 +30,7 @@ function run()
 
      //parameter 
      $params = [];
+     $tuan = [];
 
      foreach ($routes as $path => $callback) {
           $params = [];
@@ -57,6 +58,8 @@ function run()
                               }
                               if (preg_match('/^{\w+}$/', $p)) {
                                    $params[] = $pathUri[$k];
+                                   global $tuan;
+                                   $tuan[] = $params[0];
                               }
                          }
                     }
@@ -69,7 +72,8 @@ function run()
           return $fileNotFound();
      }
      if (is_callable($action)) {
-          return call_user_func_array($action, $params);
+          // return call_user_func_array($action, $params);
+          return call_user_func_array($action, $tuan);
      }
 
 

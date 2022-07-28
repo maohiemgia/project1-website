@@ -6,8 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Trang Chủ</title>
-     <link rel="stylesheet" href="../lib/css/Home.css">
-     <link rel="stylesheet" href="../lib/css/Shared.css">
+ 
 </head>
 
 <body>
@@ -127,8 +126,8 @@
                                    <div class="col-md-4" id="type_2"><button type="button">Nữ</button></div>
                                    <div class="col-md-4" id="type_3"><button type="button">Trẻ Em</button></div>
                               </div>
-                              <div class="row d-flex" id="trending_product">
-                                   <div class="trending_product_1 col">
+                              <div class="row" id="trending_product">
+                                   <div class="trending_product_1">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -137,7 +136,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_2 col">
+                                   <div class="trending_product_2">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -146,7 +145,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_3 col">
+                                   <div class="trending_product_3">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -155,7 +154,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_4 col">
+                                   <div class="trending_product_4">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
@@ -164,7 +163,7 @@
                                              <p>Đã bán 97sp/12 giờ qua</p>
                                         </div>
                                    </div>
-                                   <div class="trending_product_5 col">
+                                   <div class="trending_product_5">
                                         <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
                                         <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                                         <p class="price">1.990.000</p>
