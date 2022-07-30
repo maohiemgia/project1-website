@@ -90,9 +90,28 @@ function wishlistpage()
 
 function shoppingcart()
 {
-    view('shoppingcart.shoppingCart');
+     $productArr = fetch_all_product();
+     view('shoppingcart.shoppingCart', ['product' => $productArr]);
 }
-function cartadd()
+
+function checkshoppingcart()
 {
-    view('shoppingcart.cart_add');
+     view('shoppingcart.checkShoppingCart');
+}
+
+// function cartadd()
+// {
+//      view('shoppingcart.cart_add');
+// }
+
+function cartadd($id)
+{
+     $product = fetch_single_product($id);
+     if (!$product) {
+          echo "<script>
+          window.location.href = '/product';
+          </script>";
+          die;
+     }
+     view('product.productdetail', ['product' => $product]);
 }

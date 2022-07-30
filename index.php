@@ -52,16 +52,19 @@ route("/forgotpassword", function () {
      renderByUserRole('forgotpasswordpage');
 });
 
-route("/forgotpassword", function () {
-     renderByUserRole('forgotpasswordpage');
-});
-
 route("/shopping-cart", function () {
      renderByUserRole('shoppingcart');
+});
+route("/check-shopping-cart", function () {
+     renderByUserRole('checkshoppingcart');
 });
 
 route("/cart-add", function () {
      renderByUserRole('cartadd');
+});
+
+route("/cart-add/{id}", function ($id) {
+     renderByUserRole('cartadd', $id);
 });
 
 route("/wishlist", function () {
