@@ -5,6 +5,11 @@ $dbname = 'du_an_1';
 $user = 'root';
 $password = '';
 
+// $host = 'sql109.byethost12.com';
+// $dbname = 'b12_32077860_guccivn';
+// $user = 'b12_32077860';
+// $password = 'Anhbn123';
+
 function connection()
 {
      global $host, $dbname, $user, $password;

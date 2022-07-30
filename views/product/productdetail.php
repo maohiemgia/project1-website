@@ -1,8 +1,38 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $_SESSION['addToCartId'] =  $product['id'];
-}
+// $_SESSION['productDetail'] = $product;
+
+$_SESSION['productId'] =  $product['id'];
+
+// session_destroy();
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+//      $add_status = 0;
+
+//      // lấy sản phẩm cần thêm
+//      $productId = $_SESSION['addToCartId'];
+
+//      $session_name = "product_cart_infor";
+
+//      $index = 0;
+//      foreach ($_SESSION[$session_name] as $shopping_cart_product) {
+//           if ($shopping_cart_product['product_id'] == $productId) {
+//                $quantity_temp = $shopping_cart_product['quantity'] + 1;
+//                $session_object = array(
+//                     'product_id' => $productId,
+//                     'quantity' => $quantity_temp
+//                );
+//                array_splice($_SESSION[$session_name], $index, 1);
+//                array_push($_SESSION[$session_name], $session_object);
+
+//                $add_status = 1;
+
+//                break;
+//           }
+//           $index++;
+//      }
+// }
 
 ?>
 
@@ -61,8 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                          <?= $product['mo_ta_sp']; ?>
                     </p>
                     <div class="product-user-function">
-                         <form action="/cart-add" method="POST">
-                              <a href="/addtowishlist" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</a>
+                         <form action="/check-shopping-cart" method="POST">
+                              <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</button>
                               <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>
                          </form>
                     </div>
