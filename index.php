@@ -67,6 +67,9 @@ route("/cart-add", function () {
 route("/wishlist", function () {
      renderByUserRole('wishlistpage');
 });
+route("/news", function () {
+     renderByUserRole('newspage');
+});
 
 
 // route("/admin/product", function () {

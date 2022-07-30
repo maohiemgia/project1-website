@@ -40,7 +40,7 @@
                 </div>
                 <div class="box-bot-dangnhap">
                     <div class="quenmk">
-                        <a href="../login/quenmk.php">
+                        <a href="/forgotpassword">
                             <p class="quenmatkhau">Quên mật khẩu</p>
                         </a>
                     </div>

@@ -96,3 +96,4 @@ function cartadd()
 {
     view('shoppingcart.cart_add');
 }
+
