@@ -1,9 +1,14 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'du an 1';
+$dbname = 'du_an_1';
 $user = 'root';
 $password = '';
+
+// $host = 'sql109.byethost12.com';
+// $dbname = 'b12_32077860_guccivn';
+// $user = 'b12_32077860';
+// $password = 'Anhbn123';
 
 function connection()
 {
@@ -11,7 +16,7 @@ function connection()
 
      try {
           $connect = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $user, $password);
-          echo "ket noi thanh cong";
+          // echo "ket noi thanh cong";
           return $connect;
      } catch (PDOException $e) {
           echo "Query to DB bug:<br>" . $e->getMessage();

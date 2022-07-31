@@ -2,14 +2,16 @@
 require_once "lib/render.php";
 require_once "models/product.php";
 
-function renderByUserRole(callable $functionname)
+function renderByUserRole(callable $functionname, $parameter = 0)
 // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
 {
      if (!isset($_SESSION['logintoken'])) {
           headerview();
-
-          $functionname();
-
+          if ($parameter != 0) {
+               $functionname($parameter);
+          } else {
+               $functionname();
+          }
           footerview();
      } else {
           $functionname();
@@ -28,18 +30,6 @@ function footerview()
      view('others.footer');
 }
 
-function product_index()
-{
-     $product = fetch_all_product();
-     view('product.product', ['product' => $product]);
-}
-
-function product_show($id)
-{
-     $product = fetch_single_product($id);
-     view('product.show', ['product' => $product]);
-}
-
 function homepage()
 {
      view('home.index');
@@ -50,11 +40,13 @@ function loginpage()
      view('login.dangnhap');
 }
 
-function registerpage() {
+function registerpage()
+{
      view('login.dangky');
 }
 
-function forgotpasswordpage() {
+function forgotpasswordpage()
+{
      view('login.quenmk');
 }
 
@@ -65,7 +57,25 @@ function contactpage()
 
 function productpage()
 {
-     view('product.product');
+     // $productArr = fetch_all_product();
+     $sql = "SELECT * FROM `hinh_anh_sp` hasp
+     RIGHT JOIN san_pham sp on sp.id = hasp.id_san_pham
+     WHERE hasp.do_uu_tien_ha_sp = 1";
+     $productArr = querySQL($sql, 1);
+     $productSale = fetch_khuyenmai_sp();
+     view('product.product', ['product' => $productArr, 'sale' => $productSale]);
+}
+
+function productdetailpage($id)
+{
+     $product = fetch_single_product($id);
+     if (!$product) {
+          echo "<script>
+          window.location.href = '/product';
+          </script>";
+          die;
+     }
+     view('product.productdetail', ['product' => $product]);
 }
 
 function newspage()
@@ -75,8 +85,33 @@ function newspage()
 
 function wishlistpage()
 {
+     view('wishlist.wishlist');
 }
 
-function shoppingcart() {
-     
+function shoppingcart()
+{
+     $productArr = fetch_all_product();
+     view('shoppingcart.shoppingCart', ['product' => $productArr]);
+}
+
+function checkshoppingcart()
+{
+     view('shoppingcart.checkShoppingCart');
+}
+
+// function cartadd()
+// {
+//      view('shoppingcart.cart_add');
+// }
+
+function cartadd($id)
+{
+     $product = fetch_single_product($id);
+     if (!$product) {
+          echo "<script>
+          window.location.href = '/product';
+          </script>";
+          die;
+     }
+     view('product.productdetail', ['product' => $product]);
 }

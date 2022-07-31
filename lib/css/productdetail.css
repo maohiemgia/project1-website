@@ -107,3 +107,25 @@
 .product-name-header {
 	color: #5ab45a;
 }
+.add-to-wishlist-btn {
+	font-weight: 700;
+	background: #ff0056;
+	color: #fff;
+	border-color: transparent;
+}
+.add-to-wishlist-btn:hover {
+	color: #ff0056;
+	background: #fff;
+	border: 1px solid #000;
+}
+.add-to-cart-btn {
+	font-weight: 700;
+	background: #00a600;
+	color: #fff;
+	border-color: transparent;
+}
+.add-to-cart-btn:hover {
+	color: #00a600;
+	background: #fff;
+	border: 1px solid #000;
+}

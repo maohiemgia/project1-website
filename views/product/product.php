@@ -12,7 +12,7 @@
 </head>
 
 <body>
-     
+
 
      <div class="row dir-infor padding-page">
           <a href="./">
@@ -566,446 +566,126 @@
                </div>
                <div class="row productshow-row">
                     <div class="row mx-0 mt-3 product-display-section">
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
+                         <?php foreach ($product as $p) : ?>
+                              <div class="col-6 col-sm-3 product-display">
+                                   <div class="row mx-0 product-img-section">
+                                        <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
+                                             <img src="<?= $p['url_ha_sp'] ?>" alt="fef">
+                                             <span>
+                                                  <?php foreach ($sale as $s) : ?>
+                                                       <?php if ($s['id_san_pham'] == $p['id_san_pham']) : ?>
+                                                            <?= $s['khuyen_mai']; ?>%
+                                                            <?php break; ?>
+                                                       <?php else : ?>
+                                                            <?= 0 ?>%
+                                                            <?php break; ?>
+                                                       <?php endif; ?>
+                                                  <?php endforeach; ?>
+                                                  <br>
+                                                  giảm
+                                             </span>
+                                        </a>
+                                   </div>
+                                   <div class="row mx-0 product-infor my-2">
+                                        <a href="/product/<?= $p['id_san_pham'] ?>" class="text-decoration-none">
+                                             <p class="product-name">
+                                                  <?= $p['ten_sp'] ?>
+                                             </p>
+                                        </a>
+                                        <p class="product-price">
+                                             <span class="product-price-display">
+                                                  <?= number_format($p['gia_sp']) ?>
+                                             </span>
+                                             <span>
+                                                  VNĐ
+                                             </span>
                                         </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
+                                   </div>
                               </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="row mx-0 mt-3 product-display-section">
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="row mx-0 mt-3 product-display-section">
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="row mx-0 mt-3 product-display-section">
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="col-6 col-sm-3 product-display">
-                              <div class="row mx-0 product-img-section">
-                                   <a href="../product/productdetail.php" class="px-0">
-                                        <img src="../../lib/image/product/1.avif" alt="fef">
-                                        <span>
-                                             50%
-                                             <br>
-                                             giảm
-                                        </span>
-                                   </a>
-                              </div>
-                              <div class="row mx-0 product-infor my-2">
-                                   <a href="../product/productdetail.php" class="text-decoration-none">
-                                        <p class="product-name">
-                                             Avita p50553
-                                        </p>
-                                   </a>
-                                   <p class="product-price">
-                                        <span class="product-price-display">
-                                             25.000.000
-                                        </span>
-                                        <span>
-                                             VNĐ
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
+                         <?php endforeach; ?>
 
+                         <!-- <div class="col-6 col-sm-3 product-display">
+                              <div class="row mx-0 product-img-section">
+                                   <a href="../product/productdetail.php" class="px-0">
+                                        <img src="../../lib/image/product/1.avif" alt="fef">
+                                        <span>
+                                             50%
+                                             <br>
+                                             giảm
+                                        </span>
+                                   </a>
+                              </div>
+                              <div class="row mx-0 product-infor my-2">
+                                   <a href="../product/productdetail.php" class="text-decoration-none">
+                                        <p class="product-name">
+                                             Avita p50553
+                                        </p>
+                                   </a>
+                                   <p class="product-price">
+                                        <span class="product-price-display">
+                                             25.000.000
+                                        </span>
+                                        <span>
+                                             VNĐ
+                                        </span>
+                                   </p>
+                              </div>
+                         </div>
+                         <div class="col-6 col-sm-3 product-display">
+                              <div class="row mx-0 product-img-section">
+                                   <a href="../product/productdetail.php" class="px-0">
+                                        <img src="../../lib/image/product/1.avif" alt="fef">
+                                        <span>
+                                             50%
+                                             <br>
+                                             giảm
+                                        </span>
+                                   </a>
+                              </div>
+                              <div class="row mx-0 product-infor my-2">
+                                   <a href="../product/productdetail.php" class="text-decoration-none">
+                                        <p class="product-name">
+                                             Avita p50553
+                                        </p>
+                                   </a>
+                                   <p class="product-price">
+                                        <span class="product-price-display">
+                                             25.000.000
+                                        </span>
+                                        <span>
+                                             VNĐ
+                                        </span>
+                                   </p>
+                              </div>
+                         </div>
+                         <div class="col-6 col-sm-3 product-display">
+                              <div class="row mx-0 product-img-section">
+                                   <a href="../product/productdetail.php" class="px-0">
+                                        <img src="../../lib/image/product/1.avif" alt="fef">
+                                        <span>
+                                             50%
+                                             <br>
+                                             giảm
+                                        </span>
+                                   </a>
+                              </div>
+                              <div class="row mx-0 product-infor my-2">
+                                   <a href="../product/productdetail.php" class="text-decoration-none">
+                                        <p class="product-name">
+                                             Avita p50553
+                                        </p>
+                                   </a>
+                                   <p class="product-price">
+                                        <span class="product-price-display">
+                                             25.000.000
+                                        </span>
+                                        <span>
+                                             VNĐ
+                                        </span>
+                                   </p>
+                              </div>
+                         </div> -->
+                    </div>
 
                     <!-- display page number -->
                     <div class="row mx-0 pages">
@@ -1045,7 +725,7 @@
      </div>
 
 
-     
+
 
      <script src="../../lib/js/filterproduct.js"></script>
 </body>

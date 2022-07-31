@@ -1,3 +1,41 @@
+<?php
+
+// $_SESSION['productDetail'] = $product;
+
+$_SESSION['productId'] =  $product['id'];
+
+// session_destroy();
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+//      $add_status = 0;
+
+//      // lấy sản phẩm cần thêm
+//      $productId = $_SESSION['addToCartId'];
+
+//      $session_name = "product_cart_infor";
+
+//      $index = 0;
+//      foreach ($_SESSION[$session_name] as $shopping_cart_product) {
+//           if ($shopping_cart_product['product_id'] == $productId) {
+//                $quantity_temp = $shopping_cart_product['quantity'] + 1;
+//                $session_object = array(
+//                     'product_id' => $productId,
+//                     'quantity' => $quantity_temp
+//                );
+//                array_splice($_SESSION[$session_name], $index, 1);
+//                array_push($_SESSION[$session_name], $session_object);
+
+//                $add_status = 1;
+
+//                break;
+//           }
+//           $index++;
+//      }
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,23 +45,16 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Product Details</title>
      <link rel="stylesheet" href="../../lib/css/productdetail.css">
-     <?php
-     require_once "../faviconlink/faviconlink.php";
-     require_once "../../lib/boostrapAndFonticon/BSandFontIcon.php";
-     ?>
 </head>
 
 <body>
-     <!-- menu -->
-     <?php require_once "../others/menu.php" ?>
-
      <main>
           <p class="ms-sm-5 ms-4 mb-sm-5 link-title-path">
                Trang chủ
                <i class="fa-solid fa-chevron-right"></i>
                Sản phẩm
                <i class="fa-solid fa-chevron-right"></i>
-               Avita p50553
+               <?= $product['ten_sp']; ?>
           </p>
           <div class="row mx-0">
                <div class="col-12 col-sm-4 product-img text-center">
@@ -31,25 +62,25 @@
                </div>
                <div class="col col-sm-8 my-3 text-center text-sm-start">
                     <p class="product-name-header fw-bolder fs-3 text-capitalize">
-                         Avita p50553
+                         <?= $product['ten_sp']; ?>
                     </p>
                     <p class="product-view">
-                         55323
+                         <?= $product['luot_xem_sp']; ?>
                          <i class="fa-solid fa-eye"></i>
                     </p>
                     <p class="product-price d-flex align-items-center">
-                         <!-- <i class="fa-solid fa-coins money-icon"></i> -->
+                         <i class="fa-solid fa-coins money-icon"></i>
                          <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
-                              25.000.000
+                              <?= number_format($product['gia_sp']) ?>
                          </span>
                          <span class="aftersalesale rawprice">
-                              20.000.000
+                              <?= number_format($product['gia_sp']) ?>
                          </span>
 
                          <sup>VNĐ</sup>
 
                          <span class="salepercent">
-                              20% giảm
+                              0% giảm
                          </span>
                     </p>
                     <p class="product-des mt-5">
@@ -57,8 +88,14 @@
                               Mô tả sản phẩm:
                          </span>
                          <br>
-                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                         <?= $product['mo_ta_sp']; ?>
                     </p>
+                    <div class="product-user-function">
+                         <form action="/check-shopping-cart" method="POST">
+                              <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</button>
+                              <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>
+                         </form>
+                    </div>
                </div>
           </div>
           <div class="row mx-0 ms-sm-3 mt-sm-5 mx-3 mx-sm-4">
@@ -188,10 +225,8 @@
                     </div>
                </div>
           </div>
-     </main>
+     </main> -->
 
-       <!-- footer -->
-       <?php require_once "../others/footer.php" ?>
 
 
 </body>

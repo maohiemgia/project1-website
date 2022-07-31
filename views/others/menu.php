@@ -1,3 +1,13 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+     session_start();
+}
+
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+// session_destroy();  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,20 +84,20 @@
                                                        <li class="nav-item">
                                                             <a class="nav-link active" aria-current="page" href="/">TRANG CHỦ</a>
                                                        </li>
-                                                       <li class="nav-item dropdown">
+                                                       <li class="nav-item">
                                                             <a class="nav-link" href="/product" role="button">
                                                                  SẢN PHẨM
                                                             </a>
                                                        </li>
-                                                       <li class="nav-item">
+                                                       <!-- <li class="nav-item">
                                                             <a class="nav-link" href="/news">TIN TỨC</a>
-                                                       </li>
+                                                       </li> -->
                                                        <li class="nav-item">
                                                             <a class="nav-link" href="/contact">LIÊN HỆ</a>
                                                        </li>
-                                                       <li class="nav-item">
+                                                       <!-- <li class="nav-item">
                                                             <a class="nav-link" href="/voucher">ƯU ĐÃI</a>
-                                                       </li>
+                                                       </li> -->
                                                   </ul>
                                              </div>
                                         </div>
