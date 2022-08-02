@@ -1,17 +1,17 @@
-<?php
-// extract($data['top_ban_chay']);
-echo "<pre>";
-print_r($data);
-echo "</pre>";
-echo "<br>";
-foreach ($data['top_ban_chay'] as $value) {
-     // echo "<pre>";
-     // print_r($value);
-     // echo "</pre>";
-     extract($value);
-     echo $id_san_pham;
-}
-?>
+<!-- <?php
+// // extract($data['top_ban_chay']);
+// // echo "<pre>";
+// // print_r($data);
+// // echo "</pre>";
+// // echo "<br>";
+// foreach ($data['top_ban_chay'] as $value) {
+//      // echo "<pre>";
+//      // print_r($value);
+//      // echo "</pre>";
+//      extract($value);
+//      // echo $id_san_pham;
+// }
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,15 +93,17 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="top_selling">
                     <div class="row" id="title">
-                        <h2>#Top Bán Chạy</h2>
+                        <a href=""><h2>#Top Bán Chạy</h2></a>
                     </div>
                     <div class="row" id="product">
+                         
                         <!-- <div class="col-md-3 col-sm-6 col-12">
                                    <div class="image">
-                                        <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
-                                        <div></div>
+                                        <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                        <div></div></a>
                                    </div>
-                                   <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                              
+                                   <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                    <p>1.990.000</p>
                               </div> -->
                         <?php
@@ -110,17 +112,17 @@ foreach ($data['top_ban_chay'] as $value) {
                                    echo '   
                                    <div class="col-md-3 col-sm-6 col-12">
                                    <div class="image">
-                                   <img src="'.$url_ha_sp.'" alt="" class="img-fluid">
+                                   <a href=""><img src="'.$url_ha_sp.'" alt="" class="img-fluid"></a>
                                    <div></div>
                                    </div>
-                                   <h6>'.$ten_sp.'</h6>
+                                   <a href=""><h6>'.$ten_sp.'</h6></a>
                                    <p>'.$gia_sp.'</p>
                                    </div>';
                               }
                               ?>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary">See more...</button>
+                        <a href=""><button type="button" class="btn btn-outline-secondary" >See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -128,7 +130,7 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="trending">
                     <div class="row" id="title">
-                        <h2>#Xu Hướng</h2>
+                        <a href=""><h2>#Xu Hướng</h2></a>
                     </div>
                     <div>
                         <div class="row" id="type">
@@ -138,9 +140,9 @@ foreach ($data['top_ban_chay'] as $value) {
                         </div>
                         <div class="row" id="trending_product">
                             <div class="trending_product_1">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
+                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -148,9 +150,9 @@ foreach ($data['top_ban_chay'] as $value) {
                                 </div>
                             </div>
                             <div class="trending_product_2">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
+                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -158,9 +160,9 @@ foreach ($data['top_ban_chay'] as $value) {
                                 </div>
                             </div>
                             <div class="trending_product_3">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
+                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -168,9 +170,9 @@ foreach ($data['top_ban_chay'] as $value) {
                                 </div>
                             </div>
                             <div class="trending_product_4">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
+                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -178,9 +180,9 @@ foreach ($data['top_ban_chay'] as $value) {
                                 </div>
                             </div>
                             <div class="trending_product_5">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
+                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -242,44 +244,44 @@ foreach ($data['top_ban_chay'] as $value) {
             <div class="col-md-8 col-12">
                 <div class="row" id="for_men">
                     <div class="row" id="title">
-                        <h2>#For Men's</h2>
+                        <a href=""><h2>#For Men's</h2></a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary">See more...</button>
+                        <a href=""><button type="button" class="btn btn-outline-secondary" >See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -287,44 +289,44 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="for_women">
                     <div class="row" id="title">
-                        <h2>#For Women's</h2>
+                        <a href=""><h2>#For Women's</h2></a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary">See more...</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="location.href='pay.html'">See more...</button>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -332,44 +334,44 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="for_kid">
                     <div class="row" id="title">
-                        <h2>#For Kid's</h2>
+                        <a href=""><h2>#For Kid's</h2></a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid">
+                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
+                                    alt="" class="img-fluid"></a>
                             </div>
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
                             <p>1.990.000</p>
                         </div>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary">See more...</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="location.href='pay.html'">See more...</button>
                     </div>
                 </div>
                 <div class="row" id="mini_banner">
@@ -381,7 +383,7 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="news">
                     <div class="row" id="title">
-                        <h2>#Tin tức Thời Trang</h2>
+                        <a href="/news"><h2>#Tin tức Thời Trang</h2></a>
                     </div>
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-12">
@@ -483,7 +485,7 @@ foreach ($data['top_ban_chay'] as $value) {
                 </div>
                 <div class="row" id="Insta">
                     <div class="row" id="title">
-                        <h2>#GuccInstagram</h2>
+                        <a href=""><h2>#GuccInstagram</h2></a>
                     </div>
                     <div class="row" id="insta_detail">
                         <div>

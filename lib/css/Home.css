@@ -30,11 +30,14 @@ body {
 
 #title {
 	text-align: center;
-	color: #01567f;
+	
 	margin-bottom: 30px;
 	margin-top: 40px;
 }
-
+#title a{
+	text-decoration: none;
+	color: #01567f;
+}
 #product {
 	text-align: center;
 	margin-top: 30px;
@@ -43,6 +46,11 @@ body {
 #product h6 {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+#product a{
+	
+	text-decoration: none;
+	color: #000000;
 }
 
 #product p {
