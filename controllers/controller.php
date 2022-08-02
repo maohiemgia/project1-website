@@ -32,7 +32,8 @@ function footerview()
 
 function homepage()
 {
-     view('home.index');
+     $top = top_ban_chay();
+     view('home.index',['top_ban_chay'=>  $top]);
 }
 
 function loginpage()
