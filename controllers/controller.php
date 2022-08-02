@@ -33,7 +33,7 @@ function footerview()
 function homepage()
 {
      $top = top_ban_chay();
-     view('home.index',['top_ban_chay'=>  $top]);
+     view('home.index', ['top_ban_chay' =>  $top]);
 }
 
 function loginpage()
@@ -70,6 +70,9 @@ function productpage()
 function productdetailpage($id)
 {
      $product = fetch_single_product($id, 1);
+
+     $_SESSION['productId'] =  $id;
+
      if (!$product) {
           echo "<script>
           window.location.href = '/product';
@@ -146,4 +149,3 @@ function cartdel($id)
      }
      view('shoppingcart.checkShoppingCart');
 }
-
