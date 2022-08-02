@@ -30,7 +30,7 @@
         <div class="formdangki">
             <form action="" class="form-dangki">
                 <h3>ĐĂNG KÝ</h3>
-                <p class="dacotk-dnduoih3">Đã có tài khoản đăng nhập <a href="dangnhap.php"> TẠI ĐÂY</a></p>
+                <p class="dacotk-dnduoih3">Đã có tài khoản đăng nhập <a href="/login"> TẠI ĐÂY</a></p>
                 <br>
                 <input type="text" class="input-top" placeholder="Họ">
                 <br>

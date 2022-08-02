@@ -28,10 +28,11 @@
             <form action="" class="form-dangki">
                 <h3>QUÊN MẬT KHẨU</h3>
                 <input type="text" class="input-bot" placeholder="Email">
-                <div class="dangnhap">
-                    <a href="index.html">
+                <div class="dangnhap" style="text-align: center;">
+                    <a href="#">
                         <button class="btn-sub">LẤY LẠI MẬT KHẨU</button>
                     </a>
+                    <a href="/login">Back</a>
                 </div>
                 <div class="dangnhapqua">
                     <p>Hoặc đăng nhập bằng</p>
