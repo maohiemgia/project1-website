@@ -1,17 +1,17 @@
 <!-- <?php
-// // extract($data['top_ban_chay']);
-// // echo "<pre>";
-// // print_r($data);
-// // echo "</pre>";
-// // echo "<br>";
-// foreach ($data['top_ban_chay'] as $value) {
-//      // echo "<pre>";
-//      // print_r($value);
-//      // echo "</pre>";
-//      extract($value);
-//      // echo $id_san_pham;
-// }
-?> -->
+        // // extract($data['top_ban_chay']);
+        // // echo "<pre>";
+        // // print_r($data);
+        // // echo "</pre>";
+        // // echo "<br>";
+        // foreach ($data['top_ban_chay'] as $value) {
+        //      // echo "<pre>";
+        //      // print_r($value);
+        //      // echo "</pre>";
+        //      extract($value);
+        //      // echo $id_san_pham;
+        // }
+        ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,16 +28,13 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../lib/image/img/HeroBigStandard_towards-the-sun-2022-12-new_001_Default.png"
-                    class="d-block w-100 img-fluid" alt="...">
+                <img src="../../lib/image/img/HeroBigStandard_towards-the-sun-2022-12-new_001_Default.png" class="d-block w-100 img-fluid" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../lib/image/img/HeroRegularStandard_Gucci-LOVE-PARADE-2022-012_001_Default.png"
-                    class="d-block w-100 img-fluid" alt="...">
+                <img src="../../lib/image/img/HeroRegularStandard_Gucci-LOVE-PARADE-2022-012_001_Default.png" class="d-block w-100 img-fluid" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../lib/image/img/HeroRegularStandard_Kids-Ceremony-LP-24_001_Default.png"
-                    class="d-block w-100 img-fluid" alt="...">
+                <img src="../../lib/image/img/HeroRegularStandard_Kids-Ceremony-LP-24_001_Default.png" class="d-block w-100 img-fluid" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -93,36 +90,29 @@
                 </div>
                 <div class="row" id="top_selling">
                     <div class="row" id="title">
-                        <a href=""><h2>#Top Bán Chạy</h2></a>
+                        <a href="">
+                            <h2>#Top Bán Chạy</h2>
+                        </a>
                     </div>
                     <div class="row" id="product">
-                         
-                        <!-- <div class="col-md-3 col-sm-6 col-12">
-                                   <div class="image">
-                                        <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
-                                        <div></div></a>
-                                   </div>
-                              
-                                   <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
-                                   <p>1.990.000</p>
-                              </div> -->
                         <?php
-                              foreach ($data['top_ban_chay'] as $value) {
-                                   extract($value);
-                                   echo '   
+                        foreach ($data['top_ban_chay'] as $value) {
+                            extract($value);
+                            echo '   
                                    <div class="col-md-3 col-sm-6 col-12">
-                                   <div class="image">
-                                   <a href=""><img src="'.$url_ha_sp.'" alt="" class="img-fluid"></a>
-                                   <div></div>
+                                   <div class="product_img">
+                                   <img src="' . $url_ha_sp . '" alt="" class="img-fluid">
+                                   <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
                                    </div>
-                                   <a href=""><h6>'.$ten_sp.'</h6></a>
-                                   <p>'.$gia_sp.'</p>
+                                   <a href=""><h6>' . $ten_sp . '</h6></a>
+                                   <p>' . $gia_sp . '</p>
                                    </div>';
-                              }
-                              ?>
+                        }
+                        ?>
                     </div>
                     <div class="button">
-                        <a href=""><button type="button" class="btn btn-outline-secondary" >See more...</button></a>
+                        <a href=""><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -130,7 +120,9 @@
                 </div>
                 <div class="row" id="trending">
                     <div class="row" id="title">
-                        <a href=""><h2>#Xu Hướng</h2></a>
+                        <a href="">
+                            <h2>#Xu Hướng</h2>
+                        </a>
                     </div>
                     <div>
                         <div class="row" id="type">
@@ -140,9 +132,14 @@
                         </div>
                         <div class="row" id="trending_product">
                             <div class="trending_product_1">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
-                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
+                                <a href="">
+                                    <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                </a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -150,9 +147,14 @@
                                 </div>
                             </div>
                             <div class="trending_product_2">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
-                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
+                                <a href="">
+                                    <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                </a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -160,9 +162,14 @@
                                 </div>
                             </div>
                             <div class="trending_product_3">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
-                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
+                                <a href="">
+                                    <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                </a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -170,9 +177,14 @@
                                 </div>
                             </div>
                             <div class="trending_product_4">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
-                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
+                                <a href="">
+                                    <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                </a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -180,9 +192,14 @@
                                 </div>
                             </div>
                             <div class="trending_product_5">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
-                                <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
+                                <a href="">
+                                    <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                                </a>
                                 <p class="price">1.990.000</p>
                                 <div class="sell_number">
                                     <img src="../../lib/image/img/icon-fire.png" alt="" class="img-fluid">
@@ -195,8 +212,7 @@
                 <div class="row" id="link_between_page">
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-12">
-                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_1.webp" alt="sample33"
-                                    class="img-fluid" />
+                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_1.webp" alt="sample33" class="img-fluid" />
                                 <figcaption>
                                     <h2><span>#MEN'S</span></h2>
                                 </figcaption>
@@ -204,8 +220,7 @@
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
-                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_2.webp" alt="sample33"
-                                    class="img-fluid" />
+                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_2.webp" alt="sample33" class="img-fluid" />
                                 <figcaption>
                                     <h2><span>#GIRL'S</span></h2>
                                 </figcaption>
@@ -213,8 +228,7 @@
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
-                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_3.webp" alt="sample33"
-                                    class="img-fluid" />
+                            <figure class="snip1083 red"><img src="../../lib/image/img/img_banner_3.webp" alt="sample33" class="img-fluid" />
                                 <figcaption>
                                     <h2><span>#KID'S</span></h2>
                                 </figcaption>
@@ -222,9 +236,7 @@
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
-                            <figure class="snip1083 red"><img
-                                    src="../../lib/image/img/tui-deo-gucci-hang-hieu-600x450.jpg" alt="sample33"
-                                    class="img-fluid" />
+                            <figure class="snip1083 red"><img src="../../lib/image/img/tui-deo-gucci-hang-hieu-600x450.jpg" alt="sample33" class="img-fluid" />
                                 <figcaption>
                                     <h2><span>#BAGS</span></h2>
                                 </figcaption>
@@ -244,44 +256,66 @@
             <div class="col-md-8 col-12">
                 <div class="row" id="for_men">
                     <div class="row" id="title">
-                        <a href=""><h2>#For Men's</h2></a>
+                        <a href="">
+                            <h2>#For Men's</h2>
+                        </a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                     </div>
                     <div class="button">
-                        <a href=""><button type="button" class="btn btn-outline-secondary" >See more...</button></a>
+                        <a href=""><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -289,39 +323,61 @@
                 </div>
                 <div class="row" id="for_women">
                     <div class="row" id="title">
-                        <a href=""><h2>#For Women's</h2></a>
+                        <a href="">
+                            <h2>#For Women's</h2>
+                        </a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                     </div>
@@ -334,39 +390,61 @@
                 </div>
                 <div class="row" id="for_kid">
                     <div class="row" id="title">
-                        <a href=""><h2>#For Kid's</h2></a>
+                        <a href="">
+                            <h2>#For Kid's</h2>
+                        </a>
                     </div>
                     <div class="row" id="product">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="image">
-                                <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg"
-                                    alt="" class="img-fluid"></a>
+                                <div class="product_img">
+                                    <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <a href="#"></a>
+                                </div>
                             </div>
-                            <a href=""><h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6></a>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
                             <p>1.990.000</p>
                         </div>
                     </div>
@@ -383,13 +461,14 @@
                 </div>
                 <div class="row" id="news">
                     <div class="row" id="title">
-                        <a href="/news"><h2>#Tin tức Thời Trang</h2></a>
+                        <a href="/news">
+                            <h2>#Tin tức Thời Trang</h2>
+                        </a>
                     </div>
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-12">
                             <div>
-                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt=""
-                                    class="img-fluid">
+                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt="" class="img-fluid">
                                 <div class="news_content">
                                     <h3 class="news_headlines"><a href="">4 Kiểu Trang Phục Đang Hot Nhất Hack
                                             Mọi Độ
@@ -411,8 +490,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div>
-                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt=""
-                                    class="img-fluid">
+                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt="" class="img-fluid">
                                 <div class="news_content">
                                     <h3 class="news_headlines"><a href="">4 Kiểu Trang Phục Đang Hot Nhất Hack
                                             Mọi Độ
@@ -434,8 +512,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div>
-                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt=""
-                                    class="img-fluid">
+                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt="" class="img-fluid">
                                 <div class="news_content">
                                     <h3 class="news_headlines"><a href="">4 Kiểu Trang Phục Đang Hot Nhất Hack
                                             Mọi Độ
@@ -457,8 +534,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div>
-                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt=""
-                                    class="img-fluid">
+                                <img src="../../lib/image/img/4-kieu-trang-phuc-demin-hot-nhat.webp" alt="" class="img-fluid">
                                 <div class="news_content">
                                     <h3 class="news_headlines"><a href="">4 Kiểu Trang Phục Đang Hot Nhất Hack
                                             Mọi Độ
@@ -485,7 +561,9 @@
                 </div>
                 <div class="row" id="Insta">
                     <div class="row" id="title">
-                        <a href=""><h2>#GuccInstagram</h2></a>
+                        <a href="">
+                            <h2>#GuccInstagram</h2>
+                        </a>
                     </div>
                     <div class="row" id="insta_detail">
                         <div>
@@ -529,7 +607,7 @@
         </div>
     </main>
 
-    
+
 </body>
 
 </html>
