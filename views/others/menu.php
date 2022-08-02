@@ -2,6 +2,11 @@
 if (session_status() === PHP_SESSION_NONE) {
      session_start();
 }
+
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+// session_destroy();  
 ?>
 <!DOCTYPE html>
 <html lang="en">
