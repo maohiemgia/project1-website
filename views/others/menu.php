@@ -47,10 +47,10 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 
      <header>
-          <div class="row">
+          <div class="row mx-0">
                <div class="col-md-2"></div>
                <div class="col-md-8 col-12">
-                    <div class="row">
+                    <div class="row mx-0">
                          <div class="col-md-2 col-12" id="Logo">
                               <a class="navbar-brand" href="/"><i class="fa-solid fa-tags"></i>GUCCIVN</a>
                          </div>

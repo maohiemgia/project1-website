@@ -37,11 +37,18 @@
 }
 .product-img {
 	width: 100%;
-	max-width: 350px;
+	max-width: 500px;
 }
 .product-img > img {
 	width: 100%;
 	max-width: 350px;
+}
+
+.product-img > .row > .col {
+	padding: 5px;
+}
+.product-img > .row > .col > img {
+	max-width: 100px;
 }
 .comment-section {
 	background: #d9d9d9;
@@ -128,4 +135,9 @@
 	color: #00a600;
 	background: #fff;
 	border: 1px solid #000;
+}
+.product-detail {
+	width: 70%;
+	/* margin: 0; */
+	flex-wrap: wrap;
 }

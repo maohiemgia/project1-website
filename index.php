@@ -59,17 +59,21 @@ route("/check-shopping-cart", function () {
      renderByUserRole('checkshoppingcart');
 });
 
-route("/cart-add", function () {
-     renderByUserRole('cartadd');
-});
-
 route("/cart-add/{id}", function ($id) {
      renderByUserRole('cartadd', $id);
 });
 
-route("/wishlist", function () {
-     renderByUserRole('wishlistpage');
+route("/cart-minus/{id}", function ($id) {
+     renderByUserRole('cartminus', $id);
 });
+
+route("/cart-del/{id}", function ($id) {
+     renderByUserRole('cartdel', $id);
+});
+
+// route("/wishlist", function () {
+//      renderByUserRole('wishlistpage');
+// });
 
 
 // route("/admin/product", function () {
