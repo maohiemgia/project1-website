@@ -88,7 +88,10 @@ function wishlistpage()
 {
      view('wishlist.wishlist');
 }
-
+function voucherpage()
+{
+     view('voucher.voucher');
+}
 function shoppingcart()
 {
      $productArr = fetch_all_product();

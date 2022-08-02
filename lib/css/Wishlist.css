@@ -30,7 +30,10 @@
     margin-top: 30px;
     margin-bottom: 40px;
   }
-  
+  #wishlist_product a{
+    text-decoration: none;
+    color: black;
+  }
   #wishlist_product h6 {
     margin-top: 20px;
     margin-bottom: 20px;

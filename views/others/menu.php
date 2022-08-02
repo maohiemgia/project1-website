@@ -95,9 +95,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                                        <li class="nav-item">
                                                             <a class="nav-link" href="/contact">LIÊN HỆ</a>
                                                        </li>
-                                                       <!-- <li class="nav-item">
+                                                       <li class="nav-item">
                                                             <a class="nav-link" href="/voucher">ƯU ĐÃI</a>
-                                                       </li> -->
+                                                       </li>
                                                   </ul>
                                              </div>
                                         </div>
