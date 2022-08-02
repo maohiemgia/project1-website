@@ -99,8 +99,6 @@ function checkshoppingcart()
      view('shoppingcart.checkShoppingCart');
 }
 
-<<<<<<< HEAD
-=======
 // function cartadd()
 // {
 //      view('shoppingcart.cart_add');
@@ -116,5 +114,4 @@ function cartadd($id)
           die;
      }
      view('product.productdetail', ['product' => $product]);
-}
->>>>>>> e40b86c212138399cd8ed9ab2dd447027837d0b9
+} 
