@@ -47,10 +47,10 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 
      <header>
-          <div class="row">
+          <div class="row mx-0">
                <div class="col-md-2"></div>
                <div class="col-md-8 col-12">
-                    <div class="row">
+                    <div class="row mx-0">
                          <div class="col-md-2 col-12" id="Logo">
                               <a class="navbar-brand" href="/"><i class="fa-solid fa-tags"></i>GUCCIVN</a>
                          </div>
@@ -77,7 +77,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                    <nav class="navbar navbar-expand-lg">
                                         <div class="container-fluid">
                                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                                  <span class="navbar-toggler-icon" ></span>
+                                                  <i class="fa-solid fa-bars"></i>
                                              </button>
                                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -106,19 +106,19 @@ if (session_status() === PHP_SESSION_NONE) {
                          </div>
                          <div class="col-md-3 col-12">
                               <div class="row" id="feature">
-                                   <div class="col-md-4">
+                                   <div class="col-4">
                                         <a href="/wishlist">
                                              <img src="../../lib/image/img/Heart 1.png" alt="" class="img-fluid">
                                              <p>YÊU THÍCH</p>
                                         </a>
                                    </div>
-                                   <div class="col-md-4">
+                                   <div class="col-4">
                                         <a href="/login">
                                              <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
                                              <p>TÀI KHOẢN</p>
                                         </a>
                                    </div>
-                                   <div class="col-md-4">
+                                   <div class="col-4">
                                         <a href="/shopping-cart">
                                              <img src="../../lib/image/img/Bag 2.png" alt="" class="img-fluid">
                                              <p>GIỎ HÀNG</p>

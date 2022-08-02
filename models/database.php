@@ -25,7 +25,7 @@ function connection()
 }
 
 
-function querySQL($sql, $fetchdata = 0, $fetchid = -1)
+function querySQL($sql, $fetchdata = 0, $fetchid = -1, $fetchAll = 0)
 {
      $connect = connection();
      $stmt = $connect->prepare($sql);
@@ -36,6 +36,10 @@ function querySQL($sql, $fetchdata = 0, $fetchid = -1)
           }
           if ($fetchdata == 1) {
                if ($fetchid > -1) {
+                    if ($fetchAll == 1) {
+                         $stmt->execute([$fetchid]);
+                         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    }
                     $stmt->execute([$fetchid]);
                     return $stmt->fetch(PDO::FETCH_ASSOC);
                }

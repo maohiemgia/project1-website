@@ -68,14 +68,14 @@ function productpage()
 
 function productdetailpage($id)
 {
-     $product = fetch_single_product($id);
+     $product = fetch_single_product($id, 1);
      if (!$product) {
           echo "<script>
           window.location.href = '/product';
           </script>";
           die;
      }
-     view('product.productdetail', ['product' => $product]);
+     view('product.productdetail', ['productArr' => $product, 'product' => $product[0]]);
 }
 
 function newspage()
@@ -96,22 +96,53 @@ function shoppingcart()
 
 function checkshoppingcart()
 {
+     $_SESSION['itemCartStatus'] = 'themvaogio';
+
      view('shoppingcart.checkShoppingCart');
 }
 
-// function cartadd()
-// {
-//      view('shoppingcart.cart_add');
-// }
-
 function cartadd($id)
 {
+     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['itemCartStatus'] = 'tang';
+
      $product = fetch_single_product($id);
      if (!$product) {
           echo "<script>
-          window.location.href = '/product';
+          window.location.href = '/shopping-cart';
           </script>";
           die;
      }
-     view('product.productdetail', ['product' => $product]);
-} 
+     view('shoppingcart.checkShoppingCart');
+}
+
+function cartminus($id)
+{
+     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['itemCartStatus'] = 'giam';
+
+     $product = fetch_single_product($id);
+     if (!$product) {
+          echo "<script>
+          window.location.href = '/shopping-cart';
+          </script>";
+          die;
+     }
+     view('shoppingcart.checkShoppingCart');
+}
+
+function cartdel($id)
+{
+     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['itemCartStatus'] = 'xoa';
+
+     $product = fetch_single_product($id);
+     if (!$product) {
+          echo "<script>
+          window.location.href = '/shopping-cart';
+          </script>";
+          die;
+     }
+     view('shoppingcart.checkShoppingCart');
+}
+

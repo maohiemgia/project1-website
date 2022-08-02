@@ -1,0 +1,51 @@
+#path a{
+    text-decoration: none;
+    color: black;
+}
+#path {
+    background-color: #EDEAEA;
+}
+#path p{
+    font-size: 15px;
+    margin-bottom: auto;
+}
+#path div{
+    margin: 10px 0px;
+}
+#management ul li{
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+.account_link{
+    text-decoration: none;
+    color: black;
+}
+.active{
+    color: #01567F;
+}
+#management h5{
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+#order_detail h5{
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+.table_order thead tr th{
+    background: #01567F;
+    color: white;
+    font-size: 14px;
+    padding: 5px 40px;
+    text-align: center;
+}
+.table_order thead tr th:not(:last-child){
+    border-right: 1px solid white;
+}
+.table_order tbody tr{
+    border: 1px solid grey;
+    
+}
+.table_order tbody tr td{
+    text-align: center;
+    padding: 15px;
+}

@@ -1,6 +1,6 @@
 <body>
      <footer>
-          <div class="row">
+          <div class="row mx-0">
                <div class="col-md-2"></div>
                <div class="col-md-8 col-12">
                     <div class="row">
