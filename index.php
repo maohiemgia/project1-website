@@ -74,9 +74,9 @@ route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);
 });
 
-// route("/wishlist", function () {
-//      renderByUserRole('wishlistpage');
-// });
+route("/wishlist", function () {
+     renderByUserRole('wishlistpage');
+});
 
 
 // route("/admin/product", function () {

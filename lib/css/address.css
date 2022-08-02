@@ -1,0 +1,34 @@
+#path a{
+    text-decoration: none;
+    color: black;
+}
+#path {
+    background-color: #EDEAEA;
+}
+#path p{
+    font-size: 15px;
+    margin-bottom: auto;
+}
+#path div{
+    margin: 10px 0px;
+}
+#management ul li{
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+.account_link{
+    text-decoration: none;
+    color: black;
+}
+.active{
+    color: #01567F;
+}
+#management h5{
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+#address h5{
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+#address{ overflow: hidden;}
