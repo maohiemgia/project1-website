@@ -47,10 +47,10 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 
      <header>
-          <div class="row">
+          <div class="row mx-0">
                <div class="col-md-2"></div>
                <div class="col-md-8 col-12">
-                    <div class="row">
+                    <div class="row mx-0">
                          <div class="col-md-2 col-12" id="Logo">
                               <a class="navbar-brand" href="/"><i class="fa-solid fa-tags"></i>GUCCIVN</a>
                          </div>
@@ -77,7 +77,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                    <nav class="navbar navbar-expand-lg">
                                         <div class="container-fluid">
                                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                                  <span class="navbar-toggler-icon"></span>
+                                                  <span class="navbar-toggler-icon" ></span>
                                              </button>
                                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -89,9 +89,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                                                  SẢN PHẨM
                                                             </a>
                                                        </li>
-                                                       <!-- <li class="nav-item">
+                                                       <li class="nav-item">
                                                             <a class="nav-link" href="/news">TIN TỨC</a>
-                                                       </li> -->
+                                                       </li>
                                                        <li class="nav-item">
                                                             <a class="nav-link" href="/contact">LIÊN HỆ</a>
                                                        </li>

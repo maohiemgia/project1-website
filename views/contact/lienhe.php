@@ -25,47 +25,54 @@
             </div>
         </div>
 
-        <div class="container box-lienhe">
-            <div class="block-left">
-                <h5>NƠI GIẢI ĐÁP MỌI THẮC MẮC CỦA BẠN?</h5>
-                <p>Với sứ mệnh "Khách hàng là ưu tiên số 1" chúng tôi luôn mạng lại giá trị tốt nhất </p>
-                <span class="span-lh-left">Địa chỉ: </span><span class="span-lh-right-1"> 70 Lữ Gia, Phường 15, Quận 11, Thành phố Hồ Chí Minh </span>
-                <br>
-                <span class="span-lh-left">Hotline: </span><span class="span-lh-right-2"> 1900 6750</span>
-                <br>
-                <span class="span-lh-left">Email: </span><span class="span-lh-right-2"> support@sapo.vn</span>
-
-                <div class="">
-                    <h5>LIÊN HỆ VỚI CHÚNG TÔI</h5>
-                    <form action="" class="form-dangki">
-                        <div class="chia2inputlh">
-                            <div class="box-iplh-left">
-                                <input type="text" class="" placeholder="Họ và tên">
-                            </div>
-                            <div class="box-iplh-right">
-                                <input type="text" class="" placeholder="Email">
-                            </div>
-                        </div>
-                        <input type="text" class="input-top " placeholder="Điện thoại">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="container box-lienhe row">
+                    <div class="block-left col-md-6">
+                        <h5>NƠI GIẢI ĐÁP MỌI THẮC MẮC CỦA BẠN?</h5>
+                        <p>Với sứ mệnh "Khách hàng là ưu tiên số 1" chúng tôi luôn mạng lại giá trị tốt nhất </p>
+                        <span class="span-lh-left">Địa chỉ: </span><span class="span-lh-right-1"> Tòa nhà FPT Polytechnic, P. Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội, Việt Nam </span>
                         <br>
-                        <textarea name="" id="" cols="30" rows="10" class="input-bot input-bot-nd" placeholder="Nội dung"></textarea>
+                        <span class="span-lh-left">Hotline: </span><span class="span-lh-right-2"> 1900 0000</span>
                         <br>
-                        <div class="dangnhap">
-                            <a href="index.html">
-                                <button class="btn-sub">GỬI THÔNG TIN</button>
-                            </a>
+                        <span class="span-lh-left">Email: </span><span class="span-lh-right-2"> LTN@gmail.com</span>
+
+                        <div class="">
+                            <h5>LIÊN HỆ VỚI CHÚNG TÔI</h5>
+                            <form action="" class="form-dangki">
+                                <div class="chia2inputlh">
+                                    <div class="box-iplh-left">
+                                        <input type="text" class="" placeholder="Họ và tên">
+                                    </div>
+                                    <div class="box-iplh-right">
+                                        <input type="text" class="" placeholder="Email">
+                                    </div>
+                                </div>
+                                <input type="text" class="input-top " placeholder="Điện thoại">
+                                <br>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                </div>
+                                <br>
+                                <div class="dangnhap">
+                                    <a href="index.html">
+                                        <button class="btn-sub">GỬI THÔNG TIN</button>
+                                    </a>
+                                </div>
+
+                            </form>
                         </div>
 
-                    </form>
+
+
+                    </div>
+                    <div class="block-right col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8435202422856!2d105.74374082589414!3d21.038946256071796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1659162135401!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-
-
-
             </div>
-            <div class="block-right">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14898.421546499249!2d105.74299255!3d21.00844965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1658553279355!5m2!1svi!2s" width="600" height="680" style="border:0;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <div class="col-md-2"></div>
         </div>
 
 

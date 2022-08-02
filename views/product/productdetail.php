@@ -4,6 +4,8 @@
 
 $_SESSION['productId'] =  $product['id'];
 
+
+
 // session_destroy();
 
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,6 +36,10 @@ $_SESSION['productId'] =  $product['id'];
 //      }
 // }
 
+echo "<pre>";
+// print_r($product);
+echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
@@ -48,19 +54,37 @@ $_SESSION['productId'] =  $product['id'];
 </head>
 
 <body>
+
+     <!--Hiển thị thông báo-->
+     <?php if (isset($_SESSION['message']) && $_SESSION['message'][1] == 1) : ?>
+          <!-- <div class="text-center fs-2 fw-bold text-danger"> -->
+          <script>
+               window.alert(" <?= $_SESSION['message'][0] ?> ");
+          </script>
+          <!-- </div> -->
+          <?php $_SESSION['message'][1] = 0; ?>
+     <?php endif ?>
+
      <main>
-          <p class="ms-sm-5 ms-4 mb-sm-5 link-title-path">
+          <p class="ms-sm-5 mx-2 mb-sm-5 link-title-path">
                Trang chủ
                <i class="fa-solid fa-chevron-right"></i>
                Sản phẩm
                <i class="fa-solid fa-chevron-right"></i>
                <?= $product['ten_sp']; ?>
           </p>
-          <div class="row mx-0">
-               <div class="col-12 col-sm-4 product-img text-center">
-                    <img src="../../lib/image/product/1.avif" alt="img">
+          <div class="row mx-0 justify-content-center">
+               <div class="col-12 col-sm-4 product-img text-center d-flex flex-sm-row flex-column">
+                    <img src="<?= $product['url_ha_sp'] ?>" alt="img">
+                    <div class="row mx-0">
+                         <?php foreach ($productArr as $p) : ?>
+                              <div class="col">
+                                   <img src="<?= $p['url_ha_sp'] ?>" alt="img">
+                              </div>
+                         <?php endforeach; ?>
+                    </div>
                </div>
-               <div class="col col-sm-8 my-3 text-center text-sm-start">
+               <div class="col col-sm-8 text-center text-sm-start product-detail ms-sm-3">
                     <p class="product-name-header fw-bolder fs-3 text-capitalize">
                          <?= $product['ten_sp']; ?>
                     </p>
@@ -68,7 +92,23 @@ $_SESSION['productId'] =  $product['id'];
                          <?= $product['luot_xem_sp']; ?>
                          <i class="fa-solid fa-eye"></i>
                     </p>
-                    <p class="product-price d-flex align-items-center">
+                    <div class="product-option">
+                         <div class="option-color">
+                              <label>Màu sắc
+                                   <input type="radio" name="color">
+                                   <input type="radio" name="color">
+                                   <input type="radio" name="color">
+                              </label>
+                              <br>
+                              <label>Size
+                                   <input type="radio" name="color">
+                                   <input type="radio" name="color">
+                                   <input type="radio" name="color">
+                              </label>
+
+                         </div>
+                    </div>
+                    <p class="product-price d-flex align-items-center flex-wrap">
                          <i class="fa-solid fa-coins money-icon"></i>
                          <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
                               <?= number_format($product['gia_sp']) ?>
@@ -225,7 +265,7 @@ $_SESSION['productId'] =  $product['id'];
                     </div>
                </div>
           </div>
-     </main> -->
+     </main>
 
 
 

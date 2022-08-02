@@ -520,12 +520,14 @@ foreach ($data['top_ban_chay'] as $value) {
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="col-md-2"></div>
         </div>
     </main>
 
+    
 </body>
 
 </html>
