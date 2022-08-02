@@ -66,6 +66,9 @@ route("/cart-add/{id}", function ($id) {
 route("/cart-minus/{id}", function ($id) {
      renderByUserRole('cartminus', $id);
 });
+route("/news", function () {
+     renderByUserRole('newspage');
+});
 
 route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);

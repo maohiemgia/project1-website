@@ -145,3 +145,4 @@ function cartdel($id)
      }
      view('shoppingcart.checkShoppingCart');
 }
+
