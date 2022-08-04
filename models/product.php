@@ -47,3 +47,4 @@ function top_ban_chay()
      $top = querySQL($sql, 1);
      return $top;
 }
+

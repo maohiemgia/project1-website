@@ -22,13 +22,13 @@
                                    <div class="col-md-2">
                                         <h6><b>VỀ CHÚNG TÔI</b></h6>
                                         <ul>
-                                             <li><a href="">Trang chủ</a></li>
-                                             <li><a href="">Sản phẩm</a></li>
-                                             <li><a href="">Tin tức</a></li>
-                                             <li><a href="">Liên hệ</a></li>
+                                             <li><a href="/">Trang chủ</a></li>
+                                             <li><a href="/product">Sản phẩm</a></li>
+                                             <li><a href="/news">Tin tức</a></li>
+                                             <li><a href="/contact">Liên hệ</a></li>
                                              <li><a href="">Thời trang nam</a></li>
                                              <li><a href="">Thời trang nữ</a></li>
-                                             <li><a href="">Ưu đãi</a></li>
+                                             <li><a href="/voucher">Ưu đãi</a></li>
                                         </ul>
                                    </div>
                                    <div class="col-md-3">
