@@ -9,7 +9,6 @@
     <script src="https://kit.fontawesome.com/6c87d9fedd.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../lib/css/main.css">
-    <link rel="stylesheet" href="maindangky.css">
     <link rel="stylesheet" href="../../lib/css/all.css">
 
 </head>
@@ -28,21 +27,21 @@
             </div>
         </div>
         <div class="formdangki">
-            <form action="" class="form-dangki">
+            <form action="../../models/login.php" class="form-dangki" method="POST">
                 <h3>ĐĂNG KÝ</h3>
                 <p class="dacotk-dnduoih3">Đã có tài khoản đăng nhập <a href="/login"> TẠI ĐÂY</a></p>
                 <br>
-                <input type="text" class="input-top" placeholder="Họ">
+                <input type="text" class="input-top" name="name" placeholder="Họ và tên">
                 <br>
-                <input type="text" class="input-bot" placeholder="Tên">
+                <input type="email" class="input-bot" name="email" placeholder="Email">
                 <br>
-                <input type="text" class="input-top" placeholder="Email">
+                <input type="tel" class="input-top" name="phone" placeholder="Số điện thoại">
                 <br>
-                <input type="text" class="input-bot" placeholder="Số điện thoại">
+                <input type="text" class="input-bot" name="username" placeholder="Tên đăng nhập">
                 <br>
-                <input type="text" class="input-top" placeholder="Mật khẩu">
+                <input type="password" class="input-top" name="password" placeholder="Mật khẩu">
                 <br>
-                <input type="text" class="input-bot" placeholder="Nhập lại mật khẩu">
+                <input type="password" class="input-bot" name="repassword" placeholder="Nhập lại mật khẩu">
                 <br>
                 <div class="dangnhap">
                     <a href="index.html">
