@@ -4,7 +4,6 @@ $host = 'localhost';
 $dbname = 'du_an_1';
 $user = 'root';
 $password = '';
-
 // $host = 'sql109.byethost12.com';
 // $dbname = 'b12_32077860_guccivn';
 // $user = 'b12_32077860';
@@ -20,17 +19,16 @@ $errorArr = [
 
 function connection()
 {
-    global $host, $dbname, $user, $password;
-
-    try {
-        $connect = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $user, $password);
-        // echo "ket noi thanh cong";
-        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $connect;
-    } catch (PDOException $e) {
-        echo "Query to DB bug:<br>" . $e->getMessage();
-        throw $e;
-    }
+     global $host, $dbname, $user, $password;
+     try {
+          $connect = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $user, $password);
+          // echo "ket noi thanh cong";
+          $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          return $connect;
+     } catch (PDOException $e) {
+          echo "Query to DB bug:<br>" . $e->getMessage();
+          throw $e;
+     }
 }
 
 

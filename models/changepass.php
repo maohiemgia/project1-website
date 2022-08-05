@@ -84,6 +84,7 @@ if (!empty($_POST["newpassword"]) && !empty($_POST["confirmnewpassword"])) {
           if (isset($_COOKIE['forget_password'])) {
                setcookie('forget_password', 'cookie deleted', 1);
           }
+          session_destroy();
           // if (isset($_SESSION['email_code_true'])) {
           //      setcookie('email_code_true', 'cookie deleted', 1);
           // }

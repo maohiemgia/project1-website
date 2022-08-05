@@ -103,7 +103,9 @@ route("/cart-del/{id}", function ($id) {
 route("/wishlist", function () {
      renderByUserRole('wishlistpage');
 });
-
+route("/voucher", function () {
+     renderByUserRole('voucherpage');
+});
 
 // route("/admin/product", function () {
 //      echo "Quản lý sản phẩm là";
