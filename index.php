@@ -47,7 +47,7 @@ route("/checklogin", function () {
      renderByUserRole('checklogin');
 });
 route("/logout", function () {
-     renderByUserRole('logout');
+     logout();
 });
 
 route("/register", function () {

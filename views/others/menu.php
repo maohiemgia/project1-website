@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 echo "<pre>";
 // print_r($_COOKIE);
 // print_r($_SESSION);
+$_SESSION['userLogin'];
 echo "</pre>";
 // session_destroy();  
 
@@ -123,7 +124,7 @@ echo "</pre>";
                                                   </a>
                                                   <button type="button" id="logout-btn" class="btn">Đăng xuất</button>
                                              </div>
-                                        <?php elseif (3) : ?>
+                                        <?php else : ?>
                                              <a href="/login">
                                                   <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
                                                   <p>TÀI KHOẢN</p>

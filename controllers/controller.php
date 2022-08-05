@@ -69,7 +69,8 @@ function logout()
           session_start();
      }
 
-     unset($_SESSION['userLogin']);
+     // unset($_SESSION['userLogin']);
+     session_destroy();
      echo "<script>window.location.href = '/'; </script>";
      exit();
 }
