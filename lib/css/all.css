@@ -6,7 +6,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Roboto", sans-serif;
-     font-size: 14px;
+	font-size: 14px;
 }
 
 /* width */
@@ -27,4 +27,32 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
+}
+
+.cart-section {
+	position: relative;
+}
+.cart-item-total {
+	background: red;
+	color: #fff;
+	padding: 2px 10px;
+	border-radius: 50%;
+	position: absolute;
+	top: -5px;
+	right: 20px;
+}
+
+#account-btn {
+	position: relative;
+}
+#logout-btn {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 130%;
+	transform: translate(-50%, -50%);
+	background: red;
+	color: #fff;
+	width: 100px;
+	z-index: 9;
 }

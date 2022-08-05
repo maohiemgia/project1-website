@@ -43,14 +43,40 @@ route("/product/{id}", function ($id) {
 route("/login", function () {
      renderByUserRole('loginpage');
 });
+route("/checklogin", function () {
+     renderByUserRole('checklogin');
+});
+route("/logout", function () {
+     renderByUserRole('logout');
+});
 
 route("/register", function () {
      renderByUserRole('registerpage');
+});
+route("/checkregister", function () {
+     renderByUserRole('checkregister');
 });
 
 route("/forgotpassword", function () {
      renderByUserRole('forgotpasswordpage');
 });
+route("/checkforgotpassword", function () {
+     checkforgotpass();
+});
+route("/confirmcode", function () {
+     renderByUserRole('confirmcode');
+});
+route("/checkconfirmcode", function () {
+     checkconfirmcode();
+});
+
+route("/changepassword", function () {
+     renderByUserRole('changepassword');
+});
+route("/checkchangepassword", function () {
+     checkchangepassword();
+});
+
 
 route("/shopping-cart", function () {
      renderByUserRole('shoppingcart');

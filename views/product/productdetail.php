@@ -2,7 +2,7 @@
 
 // $_SESSION['productDetail'] = $product;
 
-$_SESSION['productId'] =  $product['id'];
+// $_SESSION['productId'] =  $product['id'];
 
 
 

@@ -115,6 +115,7 @@ ul {
 	position: fixed;
 	right: 0;
 	top: 30%;
+	z-index: 4;
 }
 .filter-respon-btn:hover {
 	border-color: transparent;
