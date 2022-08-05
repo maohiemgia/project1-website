@@ -33,8 +33,25 @@ function footerview()
 
 function homepage()
 {
+     $top_ban_chay = top_ban_chay();
+
+     $top_xu_huong_nam = top_xu_huong('nam');
+     $top_xu_huong_nu = top_xu_huong('nữ');
+     $top_xu_huong_tre_em = top_xu_huong('trẻ em');
+
+     $top_object_nam = top_object('nam');
+     $top_object_nu = top_object('nu');
+     $top_object_tre_em = top_object('trẻ em');
+
+     view('home.index', [
+          'top_ban_chay' =>  $top_ban_chay, 'top_xu_huong_nam' => $top_xu_huong_nam,
+          'top_xu_huong_nu' => $top_xu_huong_nu, 'top_xu_huong_tre_em' => $top_xu_huong_tre_em,
+          'top_object_nam' =>  $top_object_nam, 'top_object_nu' => $top_object_nu,
+          'top_object_tre_em' =>  $top_object_tre_em
+     ]);
      $top = top_ban_chay();
      view('home.index', ['top_ban_chay' =>  $top]);
+     
 }
 
 function loginpage()
