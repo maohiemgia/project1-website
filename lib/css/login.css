@@ -1,0 +1,47 @@
+.section-header.page-main-header {
+	font-size: 35px;
+	font-weight: 700;
+	text-transform: capitalize;
+	text-align: center;
+	padding-top: 20px;
+}
+.form-div-row {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 350px;
+}
+.form-div-row > label {
+	display: block;
+	font-weight: 400;
+	font-size: 18px;
+	text-transform: capitalize;
+}
+.form-div-row > input {
+	border: 1px solid;
+	display: block;
+	padding: 8px;
+	margin-bottom: 10px;
+}
+.form-div-row > input:focus {
+	border-color: #ecbf67;
+	outline-color: #ecbf67;
+}
+.form-div-row > input[type="submit"] {
+	background: #ff0056;
+	color: #fff;
+	margin-top: 20px;
+	text-transform: capitalize;
+}
+.form-div-row > input[type="submit"]:hover {
+	background: #04aa6d;
+}
+
+.other-option {
+	width: 100%;
+}
+.other-option > a {
+	width: auto;
+	color: rgba(0, 0, 0, 0.5);
+	text-decoration: none;
+	padding: 0;
+}

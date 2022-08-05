@@ -4,9 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 echo "<pre>";
+print_r($_COOKIE);
 // print_r($_SESSION);
 echo "</pre>";
 // session_destroy();  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,15 +115,29 @@ echo "</pre>";
                                         </a>
                                    </div>
                                    <div class="col-4">
-                                        <a href="/login">
-                                             <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
-                                             <p>TÀI KHOẢN</p>
-                                        </a>
+                                        <?php if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin']['ten_dang_nhap'])) : ?>
+                                             <div id="account-btn">
+                                                  <a href="/userinfor">
+                                                       <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
+                                                       <p><?= $_SESSION['userLogin']['ten_dang_nhap'] ?></p>
+                                                  </a>
+                                                  <button type="button" id="logout-btn" class="btn">Đăng xuất</button>
+                                             </div>
+                                        <?php elseif (3) : ?>
+                                             <a href="/login">
+                                                  <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
+                                                  <p>TÀI KHOẢN</p>
+                                             </a>
+                                        <?php endif; ?>
                                    </div>
-                                   <div class="col-4">
+                                   <div class="col-4 cart-section">
+                                        <span class="cart-item-total">
+                                             <?= isset($_SESSION['product_cart_infor']) ? count($_SESSION['product_cart_infor']) : '0'; ?>
+                                        </span>
                                         <a href="/shopping-cart">
                                              <img src="../../lib/image/img/Bag 2.png" alt="" class="img-fluid">
-                                             <p>GIỎ HÀNG</p>
+                                             <p>GIỎ HÀNG
+                                             </p>
                                         </a>
                                    </div>
                               </div>
@@ -132,7 +148,22 @@ echo "</pre>";
           </div>
 
      </header>
+     <script>
+          let accountbtn = document.getElementById('account-btn');
+          let logoutbtn = document.getElementById('logout-btn');
 
+          if (accountbtn !== null) {
+               accountbtn.addEventListener('mouseover', function() {
+                    logoutbtn.style.display = 'block';
+               })
+               accountbtn.addEventListener('mouseout', function() {
+                    logoutbtn.style.display = 'none';
+               })
+               logoutbtn.addEventListener('click', function() {
+                    window.location.href = '/logout';
+               })
+          }
+     </script>
 </body>
 
 </html>

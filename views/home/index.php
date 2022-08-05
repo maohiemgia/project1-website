@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 // extract($data['top_ban_chay']);
 echo "<pre>";
 print_r($data);
@@ -11,7 +11,7 @@ foreach ($data['top_ban_chay'] as $value) {
      extract($value);
      echo $id_san_pham;
 }
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 

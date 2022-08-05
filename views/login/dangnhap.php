@@ -1,3 +1,11 @@
+<?php
+
+$_SESSION['menu'] = 1;
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +13,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng nhập</title>
     <link rel="stylesheet" href="../../lib/css/main.css">
-    <link rel="stylesheet" href="../../lib/css/maindangky.css">
-    <link rel="stylesheet" href="../../lib/css/all.css">
+    <!-- <link rel="stylesheet" href="../../lib/css/maindangky.css"> -->
 
 </head>
 
@@ -26,17 +33,18 @@
             </div>
         </div>
         <div class="formdangki">
-            <form action="" class="form-dangki">
+            <form action="/checklogin" class="form-dangki" method="POST">
                 <h3>ĐĂNG NHẬP</h3>
+                <p class="error text-danger fw-bold text-capitalize text-decoration-underline">
+                    <?= isset($_SESSION['login-err']) && !empty($_SESSION['login-err']) ? $_SESSION['login-err'] : '' ?>
+                </p>
                 <br>
-                <input type="text" class="input-top" id="email" placeholder="Email">
+                <input type="text" name="account" class="input-top" id="email" placeholder="Tài khoản" autofocus>
                 <br>
-                <input type="text" class="input-bot" id="password" placeholder="Mật khẩu">
+                <input type="password" name="password" class="input-bot" id="password" placeholder="Mật khẩu">
                 <br>
                 <div class="dangnhap">
-                    <a href="index.html">
-                        <button class="btn-sub">ĐĂNG NHẬP</button>
-                    </a>
+                    <button type="submit" class="btn-sub">ĐĂNG NHẬP</button>
                 </div>
                 <div class="box-bot-dangnhap">
                     <div class="quenmk">
@@ -64,7 +72,7 @@
             </form>
         </div>
     </main>
-    
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
