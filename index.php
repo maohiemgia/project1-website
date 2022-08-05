@@ -106,7 +106,15 @@ route("/wishlist", function () {
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });
-
+route("/userinfo", function () {
+     renderByUserRole('accountpage');
+});
+route("/changepass", function () {
+     renderByUserRole('changepasspage');
+});
+route("/order", function () {
+     renderByUserRole('orderpage');
+});
 // route("/admin/product", function () {
 //      echo "Quản lý sản phẩm là";
 // });

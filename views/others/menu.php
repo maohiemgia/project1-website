@@ -117,7 +117,7 @@ echo "</pre>";
                                    <div class="col-4">
                                         <?php if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin']['ten_dang_nhap'])) : ?>
                                              <div id="account-btn">
-                                                  <a href="/userinfor">
+                                                  <a href="/userinfo">
                                                        <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
                                                        <p><?= $_SESSION['userLogin']['ten_dang_nhap'] ?></p>
                                                   </a>

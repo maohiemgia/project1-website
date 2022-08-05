@@ -44,7 +44,7 @@ $_SESSION['menu'] = 1;
                 <input type="password" name="password" class="input-bot" id="password" placeholder="Mật khẩu">
                 <br>
                 <div class="dangnhap">
-                    <button type="submit" class="btn-sub">ĐĂNG NHẬP</button>
+                    <button type="submit" class="btn-sub" >ĐĂNG NHẬP</button>
                 </div>
                 <div class="box-bot-dangnhap">
                     <div class="quenmk">
