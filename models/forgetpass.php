@@ -62,8 +62,8 @@ if (isset($_POST['useremail'])) {
 
 
           // print_r($_COOKIE);
-          // $send_email = true;
-          // require_once 'lib/sendemail.php';
+          $send_email = true;
+          require_once 'lib/sendemail.php';
 
           header("location: /confirmcode");
           exit();
