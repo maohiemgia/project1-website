@@ -8,17 +8,24 @@ if (!isset($_SESSION[$session_name])) {
      $_SESSION[$session_name] = array();
 }
 
+// $_SESSION['product-selected-option'];
+
 if (isset($_SESSION['itemCartStatus'])) {
      $itemCartStatus = $_SESSION['itemCartStatus'];
 
      if ($_SESSION['itemCartStatus'] == 'themvaogio') {
-          if (isset($_SESSION['productId'])) {
-               $productId = $_SESSION['productId'];
+          if (isset($_SESSION['product-selected-option']['id_san_pham'])) {
+               $productId = $_SESSION['product-selected-option']['id_san_pham'];
 
-               $session_object = array(
-                    'product_id' => $productId,
-                    'quantity' => 1
-               );
+               $session_object = $_SESSION['product-selected-option'];
+
+               $session_object['product_id'] = $productId;
+               $session_object['quantity'] = 1;
+
+               // $session_object = array( 
+               //      'product_id' => $productId,
+               //      'quantity' => 1
+               // );
           }
      }
 
@@ -34,7 +41,10 @@ if (isset($_SESSION['itemCartStatus'])) {
      if (isset($_SESSION[$session_name]) && isset($itemCartStatus)) {
           $index = 0;
           foreach ($_SESSION[$session_name] as $shopping_cart_product) {
-               if ($shopping_cart_product['product_id'] == $productId) {
+               if (
+                    $shopping_cart_product['product_id'] == $productId &&
+                    $shopping_cart_product['gia_tien_option_sp'] == $_SESSION['product-selected-option']['gia_tien_option_sp']
+               ) {
                     if ($itemCartStatus == 'themvaogio' || $itemCartStatus == 'tang') {
                          $_SESSION[$session_name][$index]['quantity']++;
                     } else if ($itemCartStatus == 'giam' && $_SESSION[$session_name][$index]['quantity'] > 1) {

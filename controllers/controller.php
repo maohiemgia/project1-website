@@ -6,7 +6,7 @@ require_once "models/login.php";
 function renderByUserRole(callable $functionname, $parameter = 0)
 // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
 {
-     if (!isset($_SESSION['logintoken'])) {
+     if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['vai_tro'] == 4) {
           headerview();
           if ($parameter != 0) {
                $functionname($parameter);
@@ -15,7 +15,13 @@ function renderByUserRole(callable $functionname, $parameter = 0)
           }
           footerview();
      } else {
-          $functionname();
+          headerview();
+
+          if ($parameter != 0) {
+               $functionname($parameter);
+          } else {
+               $functionname();
+          }
 
           footerview();
      }
@@ -51,7 +57,6 @@ function homepage()
      ]);
      $top = top_ban_chay();
      view('home.index', ['top_ban_chay' =>  $top]);
-     
 }
 
 function loginpage()
@@ -218,14 +223,33 @@ function productpage()
      WHERE hasp.do_uu_tien_ha_sp = 1";
      $productArr = querySQL($sql, 1);
      $productSale = fetch_khuyenmai_sp();
+
+     unset($_SESSION['product-selected-option']);
      view('product.product', ['product' => $productArr, 'sale' => $productSale]);
 }
 
 function productdetailpage($id)
 {
      $product = fetch_single_product($id, 1);
+     $product_option_color = fetch_product_option($id, 1);
+     $product_option_size = fetch_product_option($id, 2);
+
+     $product_option_img = fetch_product_option_img($id, 1);
 
      $_SESSION['productId'] =  $id;
+     if (!isset($_SESSION['product-selected-option'])) {
+          $_SESSION['product-selected-option'] = $product[0];
+     }
+
+     if (!isset($_SESSION['product-selected-option']['color']) || empty($_SESSION['product-selected-option']['color'])) {
+          $_SESSION['product-selected-option']['color'] = '';
+     }
+     if (!isset($_SESSION['product-selected-option']['size']) || empty($_SESSION['product-selected-option']['size'])) {
+          $_SESSION['product-selected-option']['size'] = '';
+     }
+     if (!isset($_SESSION['product-selected-option']['khuyen_mai'])) {
+          $_SESSION['product-selected-option']['khuyen_mai'] = 0;
+     }
 
      if (!$product) {
           echo "<script>
@@ -233,7 +257,7 @@ function productdetailpage($id)
           </script>";
           die;
      }
-     view('product.productdetail', ['productArr' => $product, 'product' => $product[0]]);
+     view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
 function newspage()
@@ -305,4 +329,8 @@ function cartdel($id)
           die;
      }
      view('shoppingcart.checkShoppingCart');
+}
+
+function payment() {
+     view('pay.pay');
 }

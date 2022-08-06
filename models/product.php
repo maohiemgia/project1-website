@@ -1,6 +1,5 @@
 <?php
 require_once "database.php";
-
 function fetch_all_product()
 {
      $sql = "select * from san_pham";
@@ -24,6 +23,35 @@ function fetch_single_product($id, $withImg = 0)
           hasp.do_uu_tien_ha_sp ASC
           ";
      }
+     return querySQL($sql, 1, $id, 1);
+}
+
+function fetch_product_option_img($id, $idOptionType)
+{
+     $sql = "SELECT
+               tt.*,
+               hatt.do_uu_tien_ha_tt,
+               hatt.url_ha_tt
+          FROM
+               `thuoc_tinh` tt
+          JOIN hinh_anh_thuoc_tinh hatt ON
+               hatt.id_thuoc_tinh = tt.id
+          WHERE tt.id_san_pham = ? && tt.id_loai_thuoc_tinh = $idOptionType
+          ORDER BY
+               tt.gia_tri_mo_ta ASC";
+     return querySQL($sql, 1, $id, 1);
+}
+function fetch_product_option($id, $idOptionType)
+{
+     $sql = "SELECT
+               tt.*
+          FROM
+               `thuoc_tinh` tt
+          WHERE
+               tt.id_san_pham = ?  && tt.id_loai_thuoc_tinh = $idOptionType
+          ORDER BY
+               tt.gia_tri_mo_ta ASC
+          ";
      return querySQL($sql, 1, $id, 1);
 }
 

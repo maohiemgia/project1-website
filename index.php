@@ -106,6 +106,9 @@ route("/wishlist", function () {
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });
+route("/payment", function () {
+     renderByUserRole('payment');
+});
 
 // route("/admin/product", function () {
 //      echo "Quản lý sản phẩm là";

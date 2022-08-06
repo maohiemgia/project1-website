@@ -1,0 +1,87 @@
+@font-face {
+	font-family: logo-font;
+	src: url("../../content/fonts/ZCOOLKuaiLe-Regular.ttf");
+}
+@font-face {
+	font-family: open-sans;
+	src: url("../../content/fonts/OpenSans-VariableFont_wdth,wght.ttf");
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #ff0056;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: open-sans;
+}
+
+a.login-btn {
+	display: none;
+	border: 3px solid !important;
+	
+}
+
+.logo {
+	font-family: logo-font;
+	font-weight: 400;
+	font-size: 30px;
+	color: #ff0056 !important;
+	text-transform: uppercase;
+}
+
+.menu-link > a {
+	font-weight: 700;
+	font-size: 15px;
+	color: #ff0056;
+	text-transform: capitalize;
+}
+.menu-link > a:hover {
+	transform: scale(1.5);
+}
+
+.user-avt {
+	font-weight: 700;
+	font-size: 15px;
+	color: #ff0056;
+}
+.user-avt > i {
+	color: #000;
+	font-size: 25px;
+	padding-right: 5px;
+}
+
+.btn-menu-search {
+	background: #ff0056;
+	color: #fff;
+}
+.btn-menu-search:hover {
+	background: transparent;
+	border: 1px solid;
+}
+header {
+	margin-bottom: 80px;
+}
+header > nav.navbar {
+	border-bottom: 3px solid #ff0056;
+	z-index: 9;
+}
+

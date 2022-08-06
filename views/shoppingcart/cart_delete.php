@@ -22,4 +22,4 @@ if (isset($check) && $check == 1) {
      }
 }
 
-header('location: ./shoppingCart.php');
+// header('location: ./shoppingCart.php');

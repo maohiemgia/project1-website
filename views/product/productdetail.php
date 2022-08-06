@@ -7,39 +7,96 @@
 
 
 // session_destroy();
+if (!isset($gia_sp)) {
+     $gia_sp = 0;
+}
+if (!isset($_SESSION['product-selected-option']['optionAdd'])) {
+     $_SESSION['product-selected-option']['optionAdd'] = false;
+}
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+function calculate($price, $salePercent)
+{
+     if ($salePercent == 0) {
+          return $price;
+     }
+     $priceSale = ($price * $salePercent) / 100;
+     $price = $price - $priceSale;
+     return $price;
+}
+$gia_sp = $_SESSION['product-selected-option']['gia_sp'];
 
-//      $add_status = 0;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     if (isset($_POST['color']) && strlen($_POST['color']) > 0) {
+          $_SESSION['product-selected-option']['color'] = $_POST['color'];
 
-//      // lấy sản phẩm cần thêm
-//      $productId = $_SESSION['addToCartId'];
+          foreach ($productOptionColor as $poc) {
+               if ($poc['gia_tri_mo_ta'] == $_SESSION['product-selected-option']['color']) {
+                    if (!isset($gia_sp)) {
+                         $gia_sp += $poc['gia_tri_tien'];
+                    }
+                    $_SESSION['product-selected-option']['gia_sp'] = $gia_sp;
+                    $_SESSION['salePercentColor'] = $poc['khuyen_mai'];
+                    $_SESSION['product-selected-option']['optionAdd'] = true;
+                    break;
+               }
+          }
+     }
+     if (isset($_POST['size']) && strlen($_POST['size']) > 0) {
+          $_SESSION['product-selected-option']['size'] = $_POST['size'];
+          $size_sp = $_SESSION['product-selected-option']['gia_sp'];
 
-//      $session_name = "product_cart_infor";
+          foreach ($productOptionSize as $poc) {
+               if ($poc['gia_tri_mo_ta'] == $_SESSION['product-selected-option']['size']) {
+                    $gia_sp += $poc['gia_tri_tien'];
 
-//      $index = 0;
-//      foreach ($_SESSION[$session_name] as $shopping_cart_product) {
-//           if ($shopping_cart_product['product_id'] == $productId) {
-//                $quantity_temp = $shopping_cart_product['quantity'] + 1;
-//                $session_object = array(
-//                     'product_id' => $productId,
-//                     'quantity' => $quantity_temp
-//                );
-//                array_splice($_SESSION[$session_name], $index, 1);
-//                array_push($_SESSION[$session_name], $session_object);
+                    if ($gia_sp > $_SESSION['product-selected-option']['gia_sp']) {
+                         $_SESSION['product-selected-option']['gia_sp'] = $gia_sp;
+                    }
 
-//                $add_status = 1;
+                    $_SESSION['salePercentSize'] = $poc['khuyen_mai'];
+                    $_SESSION['product-selected-option']['optionAdd'] = true;
+                    break;
+               }
+          }
+     }
+     if (isset($_SESSION['salePercentColor']) && isset($_SESSION['salePercentSize'])) {
+          if ($_SESSION['salePercentColor'] > $_SESSION['salePercentSize']) {
+               $_SESSION['product-selected-option']['khuyen_mai'] = $_SESSION['salePercentColor'];
+          } else {
+               $_SESSION['product-selected-option']['khuyen_mai'] = $_SESSION['salePercentSize'];
+          }
+     }
 
-//                break;
-//           }
-//           $index++;
-//      }
-// }
+     // echo $_SESSION['product-selected-option']['gia_sp'];
+     // echo calculate($_SESSION['product-selected-option']['gia_sp'], $_SESSION['product-selected-option']['khuyen_mai']);
+}
+
+
+function checkSelected($template, $string)
+{
+     if (isset($template) && isset($string)) {
+          if ($template == $string) {
+               echo "input-selected";
+          } else {
+               echo "";
+          }
+     }
+}
+
+
+function addToCartCheck($status)
+{
+     if ($status) {
+          echo  "";
+     } else {
+          echo "hidden";
+     }
+}
 
 echo "<pre>";
-// print_r($product);
+// print_r($_SESSION);
+// print_r($productOptionColor);
 echo "</pre>";
-
 ?>
 
 <!DOCTYPE html>
@@ -94,34 +151,50 @@ echo "</pre>";
                     </p>
                     <div class="product-option">
                          <div class="option-color">
-                              <label>Màu sắc
-                                   <input type="radio" name="color">
-                                   <input type="radio" name="color">
-                                   <input type="radio" name="color">
-                              </label>
-                              <br>
-                              <label>Size
-                                   <input type="radio" name="color">
-                                   <input type="radio" name="color">
-                                   <input type="radio" name="color">
-                              </label>
+                              <?php if (count($productOptionColor) > 0) : ?>
+                                   <label>Màu sắc</label>
+                                   <form method="post">
+                                        <?php foreach ($productOptionColor as $po) : ?>
+                                             <input type="submit" name="color" value="<?= $po['gia_tri_mo_ta'] ?>" class="<?php checkSelected($_SESSION['product-selected-option']['color'], $po['gia_tri_mo_ta']) ?>">
+                                        <?php endforeach; ?>
+                                   </form>
+                              <?php endif; ?>
 
+                         </div>
+                         <div class="option-size">
+                              <?php if (count($productOptionSize) > 0) : ?>
+                                   <label>Size</label>
+                                   <form method="post">
+                                        <?php foreach ($productOptionSize as $po) : ?>
+                                             <input type="submit" name="size" value="<?= $po['gia_tri_mo_ta'] ?>" class="<?php checkSelected($_SESSION['product-selected-option']['size'], $po['gia_tri_mo_ta']) ?>">
+                                        <?php endforeach; ?>
+                                   </form>
+                              <?php endif; ?>
                          </div>
                     </div>
                     <p class="product-price d-flex align-items-center flex-wrap">
                          <i class="fa-solid fa-coins money-icon"></i>
-                         <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
-                              <?= number_format($product['gia_sp']) ?>
-                         </span>
-                         <span class="aftersalesale rawprice">
-                              <?= number_format($product['gia_sp']) ?>
-                         </span>
+                         <?php if (isset($_SESSION['product-selected-option']['khuyen_mai']) && $_SESSION['product-selected-option']['khuyen_mai'] > 0) : ?>
+                              <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
+                                   <?= number_format(
+                                        $_SESSION['product-selected-option']['gia_sp']
+                                   ) ?>
+                              </span>
+                         <?php endif; ?>
 
+                         <span class="aftersalesale rawprice">
+                              <?php $rawprice = calculate($_SESSION['product-selected-option']['gia_sp'], $_SESSION['product-selected-option']['khuyen_mai']) ?>
+                              <?= number_format($rawprice); ?>
+                              <?php $_SESSION['product-selected-option']['gia_tien_option_sp'] = $rawprice; ?>
+                         </span>
                          <sup>VNĐ</sup>
 
-                         <span class="salepercent">
-                              0% giảm
-                         </span>
+                         <?php if (isset($_SESSION['product-selected-option']['khuyen_mai']) && $_SESSION['product-selected-option']['khuyen_mai'] > 0) : ?>
+                              <span class="salepercent">
+                                   <?= $_SESSION['product-selected-option']['khuyen_mai'] ?>
+                                   % giảm
+                              </span>
+                         <?php endif; ?>
                     </p>
                     <p class="product-des mt-5">
                          <span class="fw-bolder fs-4 text-capitalize">
@@ -131,9 +204,11 @@ echo "</pre>";
                          <?= $product['mo_ta_sp']; ?>
                     </p>
                     <div class="product-user-function">
-                         <form action="/check-shopping-cart" method="POST">
+                         <form action="/wishlist" method="POST">
                               <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</button>
-                              <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>
+                         </form>
+                         <form action="/check-shopping-cart" method="POST">
+                              <button type="submit" id="add-to-cart" class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>" name="addtocart">Thêm vào giỏ hàng</button>
                          </form>
                     </div>
                </div>
