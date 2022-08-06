@@ -249,6 +249,15 @@ function voucherpage()
 {
      view('voucher.voucher');
 }
+function accountpage(){
+     view('account.account');
+}
+function orderpage(){
+     view('account.order');
+}
+function changepasspage(){
+     view('account.change_password');
+}
 function shoppingcart()
 {
      $productArr = fetch_all_product();
