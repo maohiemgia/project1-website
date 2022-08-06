@@ -9,7 +9,11 @@ echo "<pre>";
 $_SESSION['userLogin'];
 echo "</pre>";
 // session_destroy();  
-
+//  if (isset($_SESSION['userLogin'])){
+//      print_r($_SESSION);
+//      echo "<br>".$_SESSION['userLogin']['id'];
+//  }
+print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +114,7 @@ echo "</pre>";
                          <div class="col-md-3 col-12">
                               <div class="row" id="feature">
                                    <div class="col-4">
-                                        <a href="/wishlist">
+                                        <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist"."/".$_SESSION['userLogin']['id'] : "/login" ?>">
                                              <img src="../../lib/image/img/Heart 1.png" alt="" class="img-fluid">
                                              <p>YÊU THÍCH</p>
                                         </a>

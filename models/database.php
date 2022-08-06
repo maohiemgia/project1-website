@@ -9,14 +9,6 @@ $password = '';
 // $user = 'b12_32077860';
 // $password = 'Anhbn123';
 
-$errorArr = [
-    "empty" => "Lỗi chưa nhập",
-    "wrong" => "Lỗi nhập sai",
-    "length" => "Lỗi số lượng ký tự không phù hợp",
-    "oversize" => "Kích cỡ không phù hợp"
-];
-
-
 function connection()
 {
      global $host, $dbname, $user, $password;
@@ -33,55 +25,34 @@ function connection()
 
 
 function querySQL($sql, $fetchdata = 0, $fetchid = -1, $fetchAll = 0)
+//fetchdata 
 {
-    $connect = connection();
-    $stmt = $connect->prepare($sql);
+     $connect = connection();
+     $stmt = $connect->prepare($sql);
 
-    try {
-        if ($fetchdata == 0) {
-            return $stmt->execute();
-        }
-        if ($fetchid > -1) {
-            if ($fetchAll != 0) {
-                $stmt->execute([$fetchid]);
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            $stmt->execute([$fetchid]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        }
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $err) {
-        echo "Query to DB bug:<br>" . $err->getMessage();
-    } finally {
-        unset($stmt, $connect);
-    }
+     try {
+          if ($fetchdata == 0) {
+               return $stmt->execute();
+          }
+          if ($fetchdata == 1) {
+               if ($fetchid > -1) {
+                    if ($fetchAll == 1) {
+                         $stmt->execute([$fetchid]);
+                         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    }
+                    $stmt->execute([$fetchid]);
+                    return $stmt->fetch(PDO::FETCH_ASSOC);
+               }
+               $stmt->execute();
+               return $stmt->fetchAll(PDO::FETCH_ASSOC);
+          }
+     } catch (PDOException $err) {
+          echo "Query to DB bug:<br>" . $err->getMessage();
+     } finally {
+          unset($stmt, $connect);
+     }
 }
 
-function alertResult($mess) {
-    
-    echo "<script>
-        window.alert('$mess');
-    </script>";
-}
-
-
-
-
-
-/**
- * Mở kết nối đến CSDL sử dụng PDO
- */
-// function pdo_get_connection()
-// {
-//     $dburl = "mysql:host=localhost;dbname=xshop_ph19102_duanmau;charset=utf8";
-//     $username = 'root';
-//     $password = '';
-
-//     $conn = new PDO($dburl, $username, $password);
-//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     return $conn;
-// }
 
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)

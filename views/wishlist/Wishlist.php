@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +27,7 @@
                     <h4>SẢN PHẨM YÊU THÍCH</h4>
                 </div>
                 <div class="row" id="wishlist_product">
-                    <div class="col-md-3 col-sm-6 col-12">
+                    <!-- <div class="col-md-3 col-sm-6 col-12">
                         <div class="image">
                             <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid"></a>
                         </div>
@@ -36,35 +35,31 @@
                             <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
                         </a>
                         <p>1.990.000</p>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="image">
-                            <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid"></a>
+                    </div> -->
+                    <?php
+                    if (isset($data['Wishlist']) && $data['Wishlist'] != "") {
+                        foreach ($data['Wishlist'] as $value) {
+                            extract($value);
+                            echo '
+                                <div class="col-md-3 col-sm-6 col-12">
+                            <div class="image">
+                                <a href=""><img
+                                        src="' . $url_ha_sp . '"
+                                        alt="" class="img-fluid"></a>
+                            </div>
+                            <a href="">
+                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            </a>
+                            <p>1.990.000</p>
                         </div>
-                        <a href="">
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
-                        </a>
-                        <p>1.990.000</p>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="image">
-                            <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid"></a>
-                        </div>
-                        <a href="">
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
-                        </a>
-                        <p>1.990.000</p>
-                    </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                        <div class="image">
-                            <a href=""><img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid"></a>
-                        </div>
-                        <a href="">
-                            <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
-                        </a>
-                        <p>1.990.000</p>
-                    </div>
-                    </div>
+                                
+                                ';
+                        }
+                    }
+
+                    ?>
+
+                </div>
             </div>
         </div>
         <div class="col-md-2"></div>

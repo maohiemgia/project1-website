@@ -112,14 +112,14 @@
                         ?>
                     </div>
                     <div class="button">
-                        <a href="/product"><button type="button" class="btn btn-outline-secondary">See more...</button></a>
+                        <a href="/product?doi_tuong=top_ban_chay"><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
                     <hr class="my-4">
                 </div>
                 <div class="row" id="trending">
-                    <div class="row" id="title">
+                    <!-- <div class="row" id="title">
                         <a href="">
                             <h2>#Xu Hướng</h2>
                         </a>
@@ -130,7 +130,7 @@
                             <div class="col-md-4" id="type_2"><button type="button">Nữ</button></div>
                             <div class="col-md-4" id="type_3"><button type="button">Trẻ Em</button></div>
                         </div>
-                        <div class="row" id="trending_product">
+                        <div class="row" id="trending_product"> -->
                             <!-- <div class="trending_product_1">
                                 <div class="product_img">
                                     <img src="../../lib/image/img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="img-fluid">
@@ -146,7 +146,7 @@
                                     <p>Đã bán 97sp/12 giờ qua</p>
                                 </div>
                             </div> -->
-                            <?php
+                            <!-- <?php
                             $dem = 0;
                             foreach ($data['top_xu_huong_nam'] as $value) {
                                 extract($value);
@@ -168,11 +168,11 @@
                                     </div>
                                 </div>  ';
                             }
-                            ?>
+                            ?> -->
 
 
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
                 </div>
                 <div class="row" id="link_between_page">
                     <div class="row">
@@ -181,7 +181,7 @@
                                 <figcaption>
                                     <h2><span>#MEN'S</span></h2>
                                 </figcaption>
-                                <a href="#"></a>
+                                <a href="/product?doi_tuong=nam"></a>
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
@@ -189,7 +189,7 @@
                                 <figcaption>
                                     <h2><span>#GIRL'S</span></h2>
                                 </figcaption>
-                                <a href="#"></a>
+                                <a href="/product?doi_tuong=nu"></a>
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
@@ -197,7 +197,7 @@
                                 <figcaption>
                                     <h2><span>#KID'S</span></h2>
                                 </figcaption>
-                                <a href="#"></a>
+                                <a href="/product?doi_tuong=tre_em"></a>
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-12">
@@ -265,7 +265,7 @@
 
                     </div>
                     <div class="button">
-                        <a href=""><button type="button" class="btn btn-outline-secondary">See more...</button></a>
+                        <a href="/product?doi_tuong=nam"><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -316,8 +316,7 @@
                         ?>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary" onclick="location.href='pay.html'">See
-                            more...</button>
+                        <a href="/product?doi_tuong=nu"><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="jumbotron">
@@ -368,8 +367,7 @@
                         ?>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-outline-secondary" onclick="location.href='pay.html'">See
-                            more...</button>
+                        <a href="/product?doi_tuong=tre_em"><button type="button" class="btn btn-outline-secondary">See more...</button></a>
                     </div>
                 </div>
                 <div class="row" id="mini_banner">
