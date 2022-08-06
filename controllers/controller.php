@@ -297,23 +297,29 @@ function newspage()
 {
      view('news.news');
 }
-
+function wishlist()
+{
+     view('wishlist.wishlist');
+}
 function wishlistpage($id_user)
 {
      $wishlist = list_wishlist($id_user);
-     view('wishlist.wishlist',['wish_list' => $wishlist]);
+     view('wishlist.wishlist', ['wish_list' => $wishlist]);
 }
 function voucherpage()
 {
      view('voucher.voucher');
 }
-function accountpage(){
+function accountpage()
+{
      view('account.account');
 }
-function orderpage(){
+function orderpage()
+{
      view('account.order');
 }
-function changepasspage(){
+function changepasspage()
+{
      view('account.change_password');
 }
 function shoppingcart()
@@ -374,6 +380,7 @@ function cartdel($id)
      view('shoppingcart.checkShoppingCart');
 }
 
-function payment() {
+function payment()
+{
      view('pay.pay');
 }

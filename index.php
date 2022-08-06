@@ -110,6 +110,9 @@ route("/news", function () {
 route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);
 });
+route("/wishlist", function () {
+     renderByUserRole('wishlist');
+});
 
 route("/wishlist/{id}", function ($id) {
      renderByUserRole('wishlistpage',$id);

@@ -204,7 +204,7 @@ echo "</pre>";
                          <?= $product['mo_ta_sp']; ?>
                     </p>
                     <div class="product-user-function">
-                         <form action="/wishlist" method="POST">
+                         <form action="/wishlist/<?= $product['id'] ?>" method="POST">
                               <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</button>
                          </form>
                          <form action="/check-shopping-cart" method="POST">

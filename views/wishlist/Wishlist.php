@@ -16,7 +16,7 @@
         <div class="row" id="path">
             <div class="col-md-2"></div>
             <div class="col-md-8 col-12">
-                <p><a href="./Home.css">Trang chủ</a> > <a href="./Wishlist.html">Yêu thích</a></p>
+                <p><a href="/">Trang chủ</a> > <a href="/wishlist">Yêu thích</a></p>
             </div>
             <div class="col-md-2"></div>
         </div>

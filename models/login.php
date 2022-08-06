@@ -4,6 +4,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once "database.php";
 
+$errorArr = [
+    "empty" => "Lỗi chưa nhập",
+    "wrong" => "Lỗi nhập sai",
+    "length" => "Lỗi số lượng ký tự không phù hợp",
+    "oversize" => "Kích cỡ không phù hợp"
+];
+
 $_SESSION['menu'] = 1;
 $accountLogin = 0;
 $passwordLogin = 0;
