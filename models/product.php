@@ -126,7 +126,4 @@ function top_object($object)
      $top = pdo_query($sql);
      return $top;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 27306693dc43695d80f2e21f2638dfec5c8f8293

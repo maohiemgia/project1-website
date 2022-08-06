@@ -16,7 +16,7 @@ echo "</pre>";
 //      print_r($_SESSION);
 //      echo "<br>".$_SESSION['userLogin']['id'];
 //  }
-print_r($data);
+// print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
