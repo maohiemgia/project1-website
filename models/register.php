@@ -16,7 +16,7 @@ $_SESSION['menu'] = 1;
 if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['email'])) {
      $_SESSION['register-err'] = [];
 
-     $inp_account = $inp_password = $inp_email = '';
+     $inp_account = $inp_password = $inp_email ='';
 
      if (
           empty($_POST['account'])
@@ -31,7 +31,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['email
           $inp_account = strtolower($_POST["account"]);
           $inp_password = $_POST['password'];
           $inp_email = strtolower($_POST["email"]);
-
+          
 
           $sql = "SELECT
                *
@@ -83,12 +83,14 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['email
           $sql = "INSERT INTO `user`(
                     `ten_dang_nhap`,
                     `mat_khau`,
-                    `email`
+                    `email`,
+                    
                 )
                 VALUES(
                     '$inp_account',
                     '$passwordEncode',
-                    '$inp_email'
+                    '$inp_email',
+                    
                 )";
 
           querySQL($sql);

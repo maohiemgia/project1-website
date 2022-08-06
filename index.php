@@ -15,8 +15,18 @@ route("/404", function () {
      echo "404 error page";
 });
 
+// route("/product", function () {
+//      renderByUserRole('productpage');
+// });
+
 route("/product", function () {
-     renderByUserRole('productpage');
+     if(isset($_GET['doi_tuong'])){
+          $doi_tuong = $_GET['doi_tuong'];
+          renderByUserRole('productpage',"$doi_tuong");
+     }
+     else{
+          renderByUserRole('productpage',"all");
+     }
 });
 
 route("/product/{id}", function ($id) {
@@ -29,6 +39,7 @@ route("/product/{id}", function ($id) {
      // }
      renderByUserRole('productdetailpage', $id);
 });
+
 
 // route("/detail", function () {
 //      $id = $_GET['id'] ?? null;
@@ -100,8 +111,8 @@ route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);
 });
 
-route("/wishlist", function () {
-     renderByUserRole('wishlistpage');
+route("/wishlist/{id}", function ($id) {
+     renderByUserRole('wishlistpage',$id);
 });
 route("/voucher", function () {
      renderByUserRole('voucherpage');
@@ -110,6 +121,15 @@ route("/payment", function () {
      renderByUserRole('payment');
 });
 
+route("/userinfo", function () {
+     renderByUserRole('accountpage');
+});
+route("/changepass", function () {
+     renderByUserRole('changepasspage');
+});
+route("/order", function () {
+     renderByUserRole('orderpage');
+});
 // route("/admin/product", function () {
 //      echo "Quản lý sản phẩm là";
 // });

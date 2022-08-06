@@ -48,10 +48,11 @@
                                                        Túi xách
                                                   </a>
                                              </li>
+
                                              <li>
                                                   <div class="sub-dropdown">
                                                        <a href="#">
-                                                            Nữ
+
                                                        </a>
                                                        <span class="view-more-btn">
                                                             <i class="fa-solid fa-plus"></i>
@@ -302,7 +303,51 @@
                               </span> -->
                          <div class="dropdown-content">
                               <ul>
-                                   <li>
+                                   <?php foreach ($data['loai_hang'] as $value) : ?>
+                                        <?php extract($value); ?>
+                                        <li>
+                                             <div class="sub-dropdown">
+                                                  <a href="#">
+                                                       <?php echo $ten_lh  ?>
+                                                  </a>
+                                                  <span class="view-more-btn">
+                                                       <i class="fa-solid fa-plus"></i>
+                                                  </span>
+                                             </div>
+                                             <ul class="sub-sub-dropdown">
+                                                  <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
+                                                       <?php
+                                                       extract($val);
+                                                       if ($value['id'] == $val['id']) {
+                                                            echo '<li>
+                                                            <a href="#">
+                                                                 ' . $doi_tuong . '
+                                                            </a>
+                                                       </li>';
+                                                       }
+                                                       ?>
+                                                  <?php endforeach; ?>
+
+                                             </ul>
+                                        </li>
+
+                                   <?php endforeach; ?>
+
+
+                                   <!-- 
+                                   <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
+                                        <?php
+                                        extract($val);
+                                        ?>
+                                        <li>
+                                             <a href="#">
+                                                  ' . $doi_tuong . '
+                                             </a>
+                                        </li>
+
+                                   <?php endforeach; ?> -->
+
+                                   <!-- <li>
                                         <a href="#">
                                              Túi xách
                                         </a>
@@ -339,76 +384,7 @@
                                                   </a>
                                              </li>
                                         </ul>
-                                   </li>
-                                   <li>
-                                        <div class="sub-dropdown">
-                                             <a href="#">
-                                                  Nam
-                                             </a>
-                                             <span class="view-more-btn">
-                                                  <i class="fa-solid fa-plus"></i>
-                                             </span>
-                                        </div>
-                                        <ul class="sub-sub-dropdown">
-                                             <li>
-                                                  <a href="#">
-                                                       Quần
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       Áo
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       Giày
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       phụ kiện
-                                                  </a>
-                                             </li>
-                                        </ul>
-                                   </li>
-                                   <li>
-                                        <div class="sub-dropdown">
-                                             <a href="#">
-                                                  Trẻ em
-                                             </a>
-                                             <span class="view-more-btn">
-                                                  <i class="fa-solid fa-plus"></i>
-                                             </span>
-                                        </div>
-                                        <ul class="sub-sub-dropdown">
-                                             <li>
-                                                  <a href="#">
-                                                       Quần
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       Áo
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       Giày
-                                                  </a>
-                                             </li>
-                                             <li>
-                                                  <a href="#">
-                                                       phụ kiện
-                                                  </a>
-                                             </li>
-                                        </ul>
-                                   </li>
-                                   <li>
-                                        <a href="#">
-                                             Đá quý & đồng hồ
-                                        </a>
-                                   </li>
+                                   </li> -->
                               </ul>
                          </div>
                     </div>

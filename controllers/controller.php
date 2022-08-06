@@ -1,6 +1,8 @@
 <?php
 require_once "lib/render.php";
 require_once "models/product.php";
+require_once "models/loaihang.php";
+require_once "models/wishlist.php";
 require_once "models/login.php";
 
 function renderByUserRole(callable $functionname, $parameter = 0)
@@ -215,17 +217,48 @@ function contactpage()
      view('contact.lienhe');
 }
 
-function productpage()
+// function productpage()
+// {
+//      // $productArr = fetch_all_product();
+//      $sql = "SELECT * FROM `hinh_anh_sp` hasp
+//      RIGHT JOIN san_pham sp on sp.id = hasp.id_san_pham
+//      WHERE hasp.do_uu_tien_ha_sp = 1";
+//      $productArr = querySQL($sql, 1);
+//      $productSale = fetch_khuyenmai_sp();
+//      view('product.product', ['product' => $productArr, 'sale' => $productSale]);
+// }
+
+function productpage($doi_tuong)
 {
+
      // $productArr = fetch_all_product();
-     $sql = "SELECT * FROM `hinh_anh_sp` hasp
-     RIGHT JOIN san_pham sp on sp.id = hasp.id_san_pham
-     WHERE hasp.do_uu_tien_ha_sp = 1";
-     $productArr = querySQL($sql, 1);
+     if ($doi_tuong == "all") {
+          $productArr = all_product_object("all");
+     } else
+     if ($doi_tuong == "nam") {
+          $productArr = all_product_object("nam");
+     } else
+     if ($doi_tuong == "nu") {
+          $productArr = all_product_object("nữ");
+     } else
+     if ($doi_tuong == "tre_em") {
+          $productArr = all_product_object("trẻ em");
+     } else
+     if ($doi_tuong == "top_ban_chay") {
+          $productArr = top_ban_chay('lay_het');
+     }
+
      $productSale = fetch_khuyenmai_sp();
 
      unset($_SESSION['product-selected-option']);
      view('product.product', ['product' => $productArr, 'sale' => $productSale]);
+     $loai_hang = query_loai_hang();
+     $doi_tuong_lh = query_object_of_lh();
+
+     view('product.product', [
+          'product' => $productArr, 'sale' => $productSale, 'loai_hang' => $loai_hang,
+          'doi_tuong_lh' => $doi_tuong_lh
+     ]);
 }
 
 function productdetailpage($id)
@@ -265,13 +298,23 @@ function newspage()
      view('news.news');
 }
 
-function wishlistpage()
+function wishlistpage($id_user)
 {
-     view('wishlist.wishlist');
+     $wishlist = list_wishlist($id_user);
+     view('wishlist.wishlist',['wish_list' => $wishlist]);
 }
 function voucherpage()
 {
      view('voucher.voucher');
+}
+function accountpage(){
+     view('account.account');
+}
+function orderpage(){
+     view('account.order');
+}
+function changepasspage(){
+     view('account.change_password');
 }
 function shoppingcart()
 {
