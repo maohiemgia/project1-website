@@ -5,7 +5,6 @@
 // $_SESSION['productId'] =  $product['id'];
 
 
-
 // session_destroy();
 if (!isset($gia_sp)) {
      $gia_sp = 0;
@@ -13,6 +12,8 @@ if (!isset($gia_sp)) {
 if (!isset($_SESSION['product-selected-option']['optionAdd'])) {
      $_SESSION['product-selected-option']['optionAdd'] = false;
 }
+
+$selectedOption = $_SESSION['product-selected-option']['id_san_pham'];
 
 function calculate($price, $salePercent)
 {
@@ -26,8 +27,21 @@ function calculate($price, $salePercent)
 $gia_sp = $_SESSION['product-selected-option']['gia_sp'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $_SESSION['addToCartStat'] = 1;
+
      if (isset($_POST['color']) && strlen($_POST['color']) > 0) {
           $_SESSION['product-selected-option']['color'] = $_POST['color'];
+
+          if (isset($_SESSION['itemCartInc'])) {
+               foreach ($_SESSION['itemCartInc'] as $idItem) {
+                    if ($idItem == $_SESSION['productId']) {
+                         echo "<script>
+                    window.location.href = '/product/{$idItem}';
+                    </script>";
+                         break;
+                    }
+               }
+          }
 
           foreach ($productOptionColor as $poc) {
                if ($poc['gia_tri_mo_ta'] == $_SESSION['product-selected-option']['color']) {
@@ -44,6 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (isset($_POST['size']) && strlen($_POST['size']) > 0) {
           $_SESSION['product-selected-option']['size'] = $_POST['size'];
           $size_sp = $_SESSION['product-selected-option']['gia_sp'];
+          if (isset($_SESSION['itemCartInc'])) {
+               foreach ($_SESSION['itemCartInc'] as $idItem) {
+                    if ($idItem == $_SESSION['productId']) {
+                         echo "<script>
+                    window.location.href = '/product/{$idItem}';
+                    </script>";
+                         break;
+                    }
+               }
+          }
 
           foreach ($productOptionSize as $poc) {
                if ($poc['gia_tri_mo_ta'] == $_SESSION['product-selected-option']['size']) {
@@ -92,6 +116,7 @@ function addToCartCheck($status)
           echo "hidden";
      }
 }
+
 
 echo "<pre>";
 // print_r($_SESSION);

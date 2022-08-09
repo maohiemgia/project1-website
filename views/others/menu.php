@@ -1,13 +1,19 @@
 <?php
-require_once "models/product.php";
-
 if (session_status() === PHP_SESSION_NONE) {
      session_start();
 }
+require_once "models/product.php";
+
+
 echo "<pre>";
 // print_r($_COOKIE);
 // print_r($_SESSION);
-// print_r($_SESSION['userLogin']);
+// print_r($_SESSION['product-selected-option']);
+// print_r($_SESSION['product']);
+// print_r($_SESSION['product_cart_infor'][0]['option_detail']);
+// print_r($_SESSION['product-selected-option']['option_detail']);
+// print_r($_SESSION['itemCartInc']);
+print_r($_SESSION['product_cart_infor']);
 echo "</pre>";
 // session_destroy();  
 
@@ -117,7 +123,7 @@ echo "</pre>";
                          <div class="col-md-3 col-12">
                               <div class="row" id="feature">
                                    <div class="col-4">
-                                        <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist"."/".$_SESSION['userLogin']['id'] : "/login" ?>">
+                                        <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist" . "/" . $_SESSION['userLogin']['id'] : "/login" ?>">
                                              <img src="../../lib/image/img/Heart 1.png" alt="" class="img-fluid">
                                              <p>YÊU THÍCH</p>
                                         </a>

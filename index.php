@@ -37,6 +37,7 @@ route("/product/{id}", function ($id) {
      //      header("location:/product");
      //      die;
      // }
+   
      renderByUserRole('productdetailpage', $id);
 });
 
@@ -87,7 +88,6 @@ route("/changepassword", function () {
 route("/checkchangepassword", function () {
      checkchangepassword();
 });
-
 
 route("/shopping-cart", function () {
      renderByUserRole('shoppingcart');

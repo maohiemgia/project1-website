@@ -1,3 +1,6 @@
+<?php
+$totalPrice = 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,61 +111,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($_SESSION['product_cart_infor'] as $product) : ?>
+                                            <tr class="product">
+                                                <td class="product__image">
+                                                    <div class="product-thumbnail">
+                                                        <div class="product-thumbnail__wrapper" data-tg-static="">
 
-                                        <tr class="product">
-                                            <td class="product__image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail__wrapper" data-tg-static="">
+                                                            <img src="./img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="product-thumbnail__image img-fluid">
 
-                                                        <img src="./img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="product-thumbnail__image img-fluid">
-
+                                                        </div>
+                                                        <span class="product-thumbnail__quantity">1</span>
                                                     </div>
-                                                    <span class="product-thumbnail__quantity">1</span>
-                                                </div>
-                                            </td>
-                                            <th class="product__description">
-                                                <span class="product__description__name">
-
-                                                    Áo Polo Nam Dệt Đường Line 2 Màu Vải Pique
-                                                </span>
-
-
-                                            </th>
-                                            <td class="product__quantity visually-hidden"><em>Số lượng:</em> 1</td>
-                                            <td class="product__price">
-
-                                                349.000₫
-
-                                            </td>
-                                        </tr>
-
-                                        <tr class="product">
-                                            <td class="product__image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail__wrapper" data-tg-static="">
-
-                                                        <img src="./img/ao-polo-gucci-gg-stretch-cotton-polo-mau-xanh-green-62d52ff294d58-18072022170330.jpg" alt="" class="product-thumbnail__image img-fluid">
-
-                                                    </div>
-                                                    <span class="product-thumbnail__quantity">1</span>
-                                                </div>
-                                            </td>
-                                            <th class="product__description">
-                                                <span class="product__description__name">
-
-                                                    Set đồ tập nữ áo ngắn tay Icado AH1 và quần Legging Icado QD23
-                                                </span>
-
-
-                                            </th>
-                                            <td class="product__quantity visually-hidden"><em>Số lượng:</em> 1</td>
-                                            <td class="product__price">
-
-                                                525.000₫
-
-                                            </td>
-                                        </tr>
-
+                                                </td>
+                                                <th class="product__description">
+                                                    <span class="product__description__name">
+                                                        <?= $product['ten_sp'] ?>
+                                                    </span>
+                                                </th>
+                                                <td class="product__quantity visually-hidden"><em>Số lượng:</em> 1</td>
+                                                <td class="product__price">
+                                                    <?= number_format($product['gia_tien_option_sp'] * $product['quantity'])  ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -179,7 +150,12 @@
                             <div class="price">
                                 <div class="temporary row">
                                     <div class="col-6">Tạm tính</div>
-                                    <div class="col-6">874.000đ</div>
+                                    <div class="col-6">
+                                        <?php foreach ($_SESSION['product_cart_infor'] as $product) : ?>
+                                            <?php $totalPrice += ($product['gia_tien_option_sp'] * $product['quantity']) ?>
+                                        <?php endforeach; ?>
+                                        <?= number_format($totalPrice); ?>
+                                    </div>
                                 </div>
                                 <div class="transport_fee row">
                                     <div class="col-6">Phí vận chuyển</div>
@@ -187,7 +163,9 @@
                                 </div>
                                 <div class="total row">
                                     <div class="col-6">Tổng cộng</div>
-                                    <div class="col-6">914.000đ</div>
+                                    <div class="col-6">
+                                        <?= number_format($totalPrice + 40000); ?>
+                                    </div>
 
                                 </div>
                             </div>
@@ -198,7 +176,9 @@
                                     </a>
                                 </div>
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-dark mb-3">Đặt hàng</button>
+                                    <a href="/">
+                                        <button type="submit" class="btn btn-dark mb-3">Đặt hàng</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

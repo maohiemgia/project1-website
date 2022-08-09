@@ -303,7 +303,7 @@
                               </span> -->
                          <div class="dropdown-content">
                               <ul>
-                                   <?php foreach ($data['loai_hang'] as $value) : ?>
+                                   <!-- <?php foreach ($data['loai_hang'] as $value) : ?>
                                         <?php extract($value); ?>
                                         <li>
                                              <div class="sub-dropdown">
@@ -332,7 +332,7 @@
                                         </li>
 
                                    <?php endforeach; ?>
-
+ -->
 
                                    <!-- 
                                    <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
@@ -672,12 +672,12 @@
                                              <i class="fa-solid fa-chevron-left"></i>
                                         </button>
                                    </li>
-                                   <li class="page-item">
+                                   <li class="page-item active">
                                         <button class="page-link-btn btn" type="submit" name="indexPage" value="">
                                              1
                                         </button>
                                    </li>
-                                   <li class="page-item active">
+                                   <li class="page-item ">
                                         <button class="page-link-btn btn" type="submit" name="indexPage" value="">
                                              2
                                         </button>

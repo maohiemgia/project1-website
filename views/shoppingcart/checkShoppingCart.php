@@ -8,67 +8,91 @@ if (!isset($_SESSION[$session_name])) {
      $_SESSION[$session_name] = array();
 }
 
-// $_SESSION['product-selected-option'];
-
 if (isset($_SESSION['itemCartStatus'])) {
      $itemCartStatus = $_SESSION['itemCartStatus'];
 
-     if ($_SESSION['itemCartStatus'] == 'themvaogio') {
+     if ($itemCartStatus == 'themvaogio') {
           if (isset($_SESSION['product-selected-option']['id_san_pham'])) {
-               $productId = $_SESSION['product-selected-option']['id_san_pham'];
-
+               $productId = $_SESSION['productId'];
                $session_object = $_SESSION['product-selected-option'];
-
-               $session_object['product_id'] = $productId;
+               $productIdTemp = $productId;
+               $session_object['option_detail'] = $session_object['color'] . $session_object['size'];
                $session_object['quantity'] = 1;
 
-               // $session_object = array( 
-               //      'product_id' => $productId,
-               //      'quantity' => 1
-               // );
+               if ($_SESSION['addToCartStat'] == 1) {
+                    $_SESSION['addToCartStat'] = 0;
+                    echo "<script>
+                    window.location.href = '/check-shopping-cart';
+                    </script>";
+                    exit;
+               }
           }
      }
 
-     if (
-          $_SESSION['itemCartStatus'] == 'tang' ||
-          $_SESSION['itemCartStatus'] == 'giam' ||
-          $_SESSION['itemCartStatus'] == 'xoa'
-     ) {
-          $productId = $_SESSION['itemCartInc'];
+     if (!is_array($_SESSION['itemCartInc']) || count($_SESSION['itemCartInc']) < 1) {
+          $_SESSION['itemCartInc'] = [];
      }
 
+     $index = 0;
+     foreach ($_SESSION[$session_name] as $shopping_cart_product) {
+          $productAvailableCheck = 0;
 
-     if (isset($_SESSION[$session_name]) && isset($itemCartStatus)) {
-          $index = 0;
-          foreach ($_SESSION[$session_name] as $shopping_cart_product) {
-               if (
-                    $shopping_cart_product['product_id'] == $productId &&
-                    $shopping_cart_product['gia_tien_option_sp'] == $_SESSION['product-selected-option']['gia_tien_option_sp']
-               ) {
-                    if ($itemCartStatus == 'themvaogio' || $itemCartStatus == 'tang') {
-                         $_SESSION[$session_name][$index]['quantity']++;
-                    } else if ($itemCartStatus == 'giam' && $_SESSION[$session_name][$index]['quantity'] > 1) {
-                         $_SESSION[$session_name][$index]['quantity']--;
-                    } else {
-                         array_splice($_SESSION[$session_name], $index, 1);
+          if (count($_SESSION['itemCartInc']) > 0) {
+               foreach ($_SESSION['itemCartInc'] as $pid) {
+                    if (isset($shopping_cart_product['id_san_pham']) && $shopping_cart_product['id_san_pham'] == $pid) {
+                         // sản phẩm có tồn tại trong giỏ rồi
+                         $productAvailableCheck = 1;
+                         break;
                     }
+               }
+          }
+          if (isset($productAvailableCheck) && $productAvailableCheck == 1) {
+               if ($itemCartStatus == 'themvaogio') {
+                    if (isset($_SESSION['product-selected-option']['option_detail']) && $shopping_cart_product['option_detail'] == $_SESSION['product-selected-option']['option_detail']) {
+                         $_SESSION[$session_name][$index]['quantity']++;
+                         $add_status = 1;
+                         break;
+                    }
+               }
 
+               // echo $_SESSION['cart-index'];
+               if (isset($_SESSION['cart-index'])) {
+                    $itemIndex = $_SESSION['cart-index'];
+               }
+
+               if ($itemCartStatus == 'tang') {
+                    $_SESSION[$session_name][$itemIndex]['quantity']++;
                     $add_status = 1;
                     break;
                }
-               $index++;
+               if ($itemCartStatus == 'giam') {
+                    if ($_SESSION[$session_name][$itemIndex]['quantity'] > 1) {
+                         $_SESSION[$session_name][$itemIndex]['quantity']--;
+                    } else {
+                         unset($_SESSION[$session_name][$itemIndex]);
+                    }
+                    $add_status = 1;
+                    break;
+               }
+               if ($itemCartStatus == 'xoa') {
+                    // array_splice($_SESSION[$session_name], $itemIndex, 1); 
+                    unset($_SESSION[$session_name][$itemIndex]);
+                    $add_status = 1;
+                    break;
+               }
           }
-
-          if ($add_status != 1) {
-               array_push($_SESSION[$session_name], $session_object);
-          }
-
-          $checkDone = true;
+          $index++;
      }
+
+     if ($add_status != 1) {
+          array_push($_SESSION[$session_name], $session_object);
+     }
+
+     $checkDone = true;
 
      if (isset($checkDone) && $checkDone && $itemCartStatus == 'themvaogio') {
           $_SESSION['message'] = ['Thêm vào giỏ thành công!', 1];
-          $stringJS = "/product/$productId";
+          $stringJS = "/product/$productIdTemp";
      } else if (
           isset($checkDone) && $checkDone && $itemCartStatus == 'tang' ||
           $itemCartStatus == 'giam' ||
@@ -77,6 +101,10 @@ if (isset($_SESSION['itemCartStatus'])) {
           $stringJS = "/shopping-cart";
      } else {
           $stringJS = "/product";
+     }
+
+     if (isset($_SESSION['product-selected-option'])) {
+          unset($_SESSION['product-selected-option']);
      }
      echo "<script>
                window.location.href = '$stringJS';

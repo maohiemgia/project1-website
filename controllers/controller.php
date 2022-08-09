@@ -8,7 +8,7 @@ require_once "models/login.php";
 function renderByUserRole(callable $functionname, $parameter = 0)
 // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
 {
-     if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['vai_tro'] == 4) {
+     if (!isset($_SESSION['userLogin']) || isset($_SESSION['userLogin']['vai_tro']) && $_SESSION['userLogin']['vai_tro'] == 4) {
           headerview();
           if ($parameter != 0) {
                $functionname($parameter);
@@ -131,6 +131,7 @@ function checkregister()
           window.alert('$notifi');
           window.location.href = '/login';
           </script>";
+          session_destroy();
           exit();
      }
 }
@@ -284,12 +285,15 @@ function productdetailpage($id)
           $_SESSION['product-selected-option']['khuyen_mai'] = 0;
      }
 
+     $_SESSION['product-selected-option']['option_detail'] = $_SESSION['product-selected-option']['color'] . $_SESSION['product-selected-option']['size'];
+
      if (!$product) {
           echo "<script>
           window.location.href = '/product';
           </script>";
           die;
      }
+
      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
@@ -325,20 +329,49 @@ function changepasspage()
 function shoppingcart()
 {
      $productArr = fetch_all_product();
+     unset($_SESSION['product-selected-option']);
      view('shoppingcart.shoppingCart', ['product' => $productArr]);
 }
 
 function checkshoppingcart()
 {
+     $id = $_SESSION['productId'];
+     $check = false;
      $_SESSION['itemCartStatus'] = 'themvaogio';
+     if (!isset($_SESSION['itemCartInc'])) {
+          $_SESSION['itemCartInc'] = [];
+     }
+     foreach ($_SESSION['itemCartInc'] as $item) {
+          if ($item == $id) {
+               $check = true;
+               break;
+          }
+     }
+     if ($check == false) {
+          array_push($_SESSION['itemCartInc'], "$id");
+     }
+
 
      view('shoppingcart.checkShoppingCart');
 }
 
 function cartadd($id)
 {
-     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['cart-index'] = $id - 1;
      $_SESSION['itemCartStatus'] = 'tang';
+     $check = false;
+
+     if (is_array($_SESSION['itemCartInc'])) {
+          foreach ($_SESSION['itemCartInc'] as $item) {
+               if ($item == $_SESSION['productId']) {
+                    $check = true;
+                    break;
+               }
+          }
+          if ($check == false) {
+               array_push($_SESSION['itemCartInc'], $_SESSION['productId']);
+          }
+     }
 
      $product = fetch_single_product($id);
      if (!$product) {
@@ -352,8 +385,21 @@ function cartadd($id)
 
 function cartminus($id)
 {
-     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['cart-index'] = $id - 1;
      $_SESSION['itemCartStatus'] = 'giam';
+     $check = false;
+
+     if (is_array($_SESSION['itemCartInc'])) {
+          foreach ($_SESSION['itemCartInc'] as $item) {
+               if ($item == $_SESSION['productId']) {
+                    $check = true;
+                    break;
+               }
+          }
+          if ($check == false) {
+               array_push($_SESSION['itemCartInc'], $_SESSION['productId']);
+          }
+     }
 
      $product = fetch_single_product($id);
      if (!$product) {
@@ -367,8 +413,21 @@ function cartminus($id)
 
 function cartdel($id)
 {
-     $_SESSION['itemCartInc'] = $id;
+     $_SESSION['cart-index'] = $id - 1;
      $_SESSION['itemCartStatus'] = 'xoa';
+     $check = false;
+
+     if (is_array($_SESSION['itemCartInc'])) {
+          foreach ($_SESSION['itemCartInc'] as $item) {
+               if ($item == $_SESSION['productId']) {
+                    $check = true;
+                    break;
+               }
+          }
+          if ($check == false) {
+               array_push($_SESSION['itemCartInc'], $_SESSION['productId']);
+          }
+     }
 
      $product = fetch_single_product($id);
      if (!$product) {

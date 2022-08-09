@@ -1,12 +1,14 @@
 <?php
 if (!isset($_SESSION['itemCartInc'])) {
-     $_SESSION['itemCartInc'] = 5;
+     $_SESSION['itemCartInc'] = array();
 }
 $itemCartInc = $_SESSION['itemCartInc'];
 
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // }
-
+echo "<pre>";
+// print_r($_SESSION['product_cart_infor']);
+echo "</pre>";
 function tinhTongTien($money = 0, $quantity = 1)
 {
      $tongTien = $money * $quantity;
@@ -75,53 +77,56 @@ echo "</pre>";
                     </thead>
                     <tbody>
 
-
                          <?php if (isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) > 0) : ?>
+                              <?php $index = 0; ?>
                               <?php foreach ($_SESSION['product_cart_infor'] as $product_added) : ?>
                                    <?php foreach ($product as $p) : ?>
-                                        <?php if ($p['id'] == $product_added['product_id']) : ?>
-                                             <tr style="text-align:left">
-                                                  <td class="fs-4 fw-bold">
-                                                       <a href="/product/<?= $product_added['product_id'] ?>" class="text-decoration-none text-success">
-                                                            <p><?= $p['ten_sp'] ?></p>
-                                                       </a>
-                                                  </td>
-                                                  <td>
-                                                       <?php if (strlen($product_added['color']) > 0) : ?>
-                                                            <p>Màu sắc: <?= $product_added['color']; ?> </p>
-                                                       <?php endif; ?>
-                                                       <?php if (strlen($product_added['size']) > 0) : ?>
-                                                            <p>Size: <?= $product_added['size']; ?> </p>
-                                                       <?php endif; ?>
+                                        <?php if (isset($product_added['id_san_pham'])) : ?>
+                                             <?php if ($p['id'] == $product_added['id_san_pham']) : ?>
+                                                  <tr style="text-align:left">
+                                                       <td class="fs-4 fw-bold">
+                                                            <a href="/product/<?= $product_added['id_san_pham'] ?>" class="text-decoration-none text-success">
+                                                                 <p><?= $p['ten_sp'] ?></p>
+                                                            </a>
+                                                       </td>
+                                                       <td>
+                                                            <?php if (strlen($product_added['color']) > 0) : ?>
+                                                                 <p>Màu sắc: <?= $product_added['color']; ?> </p>
+                                                            <?php endif; ?>
+                                                            <?php if (strlen($product_added['size']) > 0) : ?>
+                                                                 <p>Size: <?= $product_added['size']; ?> </p>
+                                                            <?php endif; ?>
 
-                                                  </td>
-                                                  <td>
-                                                       <p><?= $product_added['quantity'] ?></p>
-                                                  </td>
-                                                  <td>
-                                                       <p>
-                                                            <?= number_format($product_added['gia_tien_option_sp']); ?>
-                                                       </p>
-                                                  </td>
-                                                  <td>
-                                                       <p>
-                                                            <?php $product_added['tong_tien'] = tinhTongTien($product_added['gia_tien_option_sp'], $product_added['quantity']) ?>
-                                                            <?= number_format($product_added['tong_tien']); ?>
-                                                       </p>
-                                                  </td>
-                                                  <td>
-                                                       <a href="/cart-add/<?= $p['id'] ?>" class="cart-add cart-btn btn">Tăng</a>
-                                                  </td>
-                                                  <td>
-                                                       <a href="/cart-minus/<?= $p['id'] ?>" class="cart-minus cart-btn btn">Giảm</a>
-                                                  </td>
-                                                  <td>
-                                                       <a href="/cart-del/<?= $p['id'] ?>" class="cart-del cart-btn btn">Xóa</a>
-                                                  </td>
-                                             </tr>
-                                             <?php break; ?>
+                                                       </td>
+                                                       <td>
+                                                            <p><?= $product_added['quantity'] ?></p>
+                                                       </td>
+                                                       <td>
+                                                            <p>
+                                                                 <?= number_format($product_added['gia_tien_option_sp']); ?>
+                                                            </p>
+                                                       </td>
+                                                       <td>
+                                                            <p>
+                                                                 <?php $product_added['tong_tien'] = tinhTongTien($product_added['gia_tien_option_sp'], $product_added['quantity']) ?>
+                                                                 <?= number_format($product_added['tong_tien']); ?>
+                                                            </p>
+                                                       </td>
+                                                       <td>
+                                                            <a href="/cart-add/<?= $index + 1 ?>" class="cart-add cart-btn btn">Tăng</a>
+                                                       </td>
+                                                       <td>
+                                                            <a href="/cart-minus/<?= $index + 1 ?>" class="cart-minus cart-btn btn">Giảm</a>
+                                                       </td>
+                                                       <td>
+                                                            <a href="/cart-del/<?= $index + 1 ?>" class="cart-del cart-btn btn">Xóa</a>
+                                                       </td>
+                                                  </tr>
+                                                  <?php break; ?>
+                                             <?php endif; ?>
                                         <?php endif; ?>
                                    <?php endforeach ?>
+                                   <?php $index++ ?>
                               <?php endforeach ?>
                          <?php elseif (isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) == 0) : ?>
                               <tr>
