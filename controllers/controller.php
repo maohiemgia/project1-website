@@ -5,19 +5,51 @@ require_once "models/loaihang.php";
 require_once "models/wishlist.php";
 require_once "models/login.php";
 
-function renderByUserRole(callable $functionname, $parameter = 0)
+// function renderByUserRole(callable $functionname, $parameter = 0)
+// // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
+// {
+//      if (!isset($_SESSION['logintoken'])) {
+//           headerview();
+//           if ($parameter != 0) {
+//                $functionname($parameter);
+//           } else {
+//                $functionname();
+//           }
+//           footerview();
+//      } else {
+//           $functionname();
+
+//           footerview();
+//      }
+// }
+
+function renderByUserRole(callable $functionname, $parameter = 0, $bien = 0)
 // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
 {
-     if (!isset($_SESSION['logintoken'])) {
+     if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['vai_tro'] == 4) {
           headerview();
           if ($parameter != 0) {
-               $functionname($parameter);
+               if ($bien == 0) {
+                    $functionname($parameter);
+               } else {
+                    $functionname($parameter, $bien);
+               }
           } else {
                $functionname();
           }
           footerview();
      } else {
-          $functionname();
+          headerview();
+
+          if ($parameter != 0) {
+               if ($bien == 0) {
+                    $functionname($parameter);
+               } else {
+                    $functionname($parameter, $bien);
+               }
+          } else {
+               $functionname();
+          }
 
           footerview();
      }
@@ -270,6 +302,22 @@ function productdetailpage($id)
 function newspage()
 {
      view('news.news');
+}
+
+function wishlist($id_user, $id_sp)
+{
+     echo $id_user . "<br>" . $id_sp;
+     $check_ton_tai = check_pro_in_wishlist($id_user, $id_sp);
+     print_r($check_ton_tai);
+     if (is_array($check_ton_tai) && $check_ton_tai != "") {
+
+          add_wishlist($id_user, $id_sp);
+     } else {
+          // sẽ hiển thị mảng chứa kí hiệu đã có trong wish list_ hoặc mở ra chi tiết thì tự
+          // động check xem đã có trong wishlist chưa...
+     }
+     // add_wishlist($id_user, $id_sp);
+     view('wishlist.wishlist');
 }
 
 function wishlistpage($id_user)

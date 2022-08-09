@@ -111,9 +111,20 @@ route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);
 });
 
-route("/wishlist/{id}", function ($id) {
-     renderByUserRole('wishlistpage',$id);
+route("/wishlist", function () {
+     if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
+          $id_sp = $_GET['id_sp'];
+          $id_user = $_GET['id_user'];
+          renderByUserRole('wishlist', $id_user, $id_sp);
+     } else {
+          renderByUserRole('wishlist', -1, -1);
+     }
 });
+
+route("/wishlist/{id}", function ($id) {
+     renderByUserRole('wishlistpage', $id);
+});
+
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });

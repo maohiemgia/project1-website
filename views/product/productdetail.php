@@ -36,9 +36,13 @@
 //      }
 // }
 
+extract($product);
 echo "<pre>";
-// print_r($product);
+print_r($product);
 echo "</pre>";
+
+
+
 
 ?>
 
@@ -131,7 +135,12 @@ echo "</pre>";
                          <?= $product['mo_ta_sp']; ?>
                     </p>
                     <div class="product-user-function">
-                         <form action="/check-shopping-cart" method="POST">
+                         <form action="<?php if (isset($_SESSION['userLogin']['id'])) {
+                                             echo "/wishlist?&id_user=" . $_SESSION['userLogin']['id'] . "&id_sp=" .  $product['id_san_pham'];
+                                        } else {
+                                             echo "/login";
+                                        }
+                                        ?>" method="POST">
                               <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào wishlist</button>
                               <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>
                          </form>
