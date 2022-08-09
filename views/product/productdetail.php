@@ -207,7 +207,7 @@ echo "</pre>";
                 </p>
                 <div class="product-user-function">
                     <form action="<?php if (isset($_SESSION['userLogin']['id'])) {
-                                             echo "/wishlist?id_user=" . $_SESSION['userLogin']['id'] . "?id_sp=" . $data['product']['id'];
+                                             echo "/wishlist?id_sp=" . $product['id_san_pham'] . "&id_user=" . $_SESSION['userLogin']['id'];
                                         } else {
                                              echo "/login";
                                         }
@@ -222,6 +222,52 @@ echo "</pre>";
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="row mx-0 ms-sm-3 mt-sm-5 mx-3 mx-sm-4">
+            <p class="product-des mt-5">
+                <span class="fw-bolder fs-4 text-capitalize">
+                    Bình luận (50):
+                </span>
+
+
+                <span class="aftersalesale rawprice">
+                    <?php $rawprice = calculate($_SESSION['product-selected-option']['gia_sp'], $_SESSION['product-selected-option']['khuyen_mai']) ?>
+                    <?= number_format($rawprice); ?>
+                    <?php $_SESSION['product-selected-option']['gia_tien_option_sp'] = $rawprice; ?>
+                </span>
+                <sup>VNĐ</sup>
+
+                <?php if (isset($_SESSION['product-selected-option']['khuyen_mai']) && $_SESSION['product-selected-option']['khuyen_mai'] > 0) : ?>
+                <span class="salepercent">
+                    <?= $_SESSION['product-selected-option']['khuyen_mai'] ?>
+                    % giảm
+                </span>
+                <?php endif; ?>
+            </p>
+            <p class="product-des mt-5">
+                <span class="fw-bolder fs-4 text-capitalize">
+                    Mô tả sản phẩm:
+                </span>
+                <br>
+                <?= $product['mo_ta_sp']; ?>
+            </p>
+            <div class="product-user-function">
+                <form action="<?php if (isset($_SESSION['userLogin']['id'])) {
+                                        echo "/wishlist?id_sp=" . $product['id_san_pham'] . "&id_user=" . $_SESSION['userLogin']['id'];
+                                   } else {
+                                        echo "/login";
+                                   }
+                                   ?>" method="POST">
+                    <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào
+                        wishlist</button>
+                </form>
+                <form action="/check-shopping-cart" method="POST">
+                    <button type="submit" id="add-to-cart"
+                        class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>"
+                        name="addtocart">Thêm vào giỏ hàng</button>
+                </form>
+            </div>
+        </div>
         </div>
         <div class="row mx-0 ms-sm-3 mt-sm-5 mx-3 mx-sm-4">
             <p class="product-des mt-5">

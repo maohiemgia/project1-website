@@ -24,4 +24,7 @@ function check_pro_in_wishlist($id_user, $id_sp)
 }
 function add_wishlist($id_user, $id_sp)
 {
+    $sql = "INSERT INTO `list_yeu_thich`(`id_user`, `id_san_pham`) 
+    VALUES ('" . $id_user . "','" . $id_sp . "')";
+    pdo_execute($sql);
 }

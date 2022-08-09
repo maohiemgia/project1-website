@@ -83,14 +83,12 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['email
           $sql = "INSERT INTO `user`(
                     `ten_dang_nhap`,
                     `mat_khau`,
-                    `email`,
-                    
+                    `email`
                 )
                 VALUES(
                     '$inp_account',
                     '$passwordEncode',
-                    '$inp_email',
-                    
+                    '$inp_email'
                 )";
 
           querySQL($sql);

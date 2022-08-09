@@ -20,12 +20,11 @@ route("/404", function () {
 // });
 
 route("/product", function () {
-     if(isset($_GET['doi_tuong'])){
+     if (isset($_GET['doi_tuong'])) {
           $doi_tuong = $_GET['doi_tuong'];
-          renderByUserRole('productpage',"$doi_tuong");
-     }
-     else{
-          renderByUserRole('productpage',"all");
+          renderByUserRole('productpage', "$doi_tuong");
+     } else {
+          renderByUserRole('productpage', "all");
      }
 });
 
@@ -111,8 +110,18 @@ route("/cart-del/{id}", function ($id) {
      renderByUserRole('cartdel', $id);
 });
 
+route("/wishlist", function () {
+     if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
+          $id_sp = $_GET['id_sp'];
+          $id_user = $_GET['id_user'];
+          renderByUserRole('wishlist', $id_user, $id_sp);
+     } else {
+          renderByUserRole('wishlist', -1, -1);
+     }
+});
+
 route("/wishlist/{id}", function ($id) {
-     renderByUserRole('wishlistpage',$id);
+     renderByUserRole('wishlistpage', $id);
 });
 route("/voucher", function () {
      renderByUserRole('voucherpage');

@@ -16,7 +16,7 @@
         <div class="row" id="path">
             <div class="col-md-2"></div>
             <div class="col-md-8 col-12">
-                <p><a href="./Home.css">Trang chủ</a> > <a href="./Wishlist.html">Yêu thích</a></p>
+                <p><a href="/">Trang chủ</a> > <a href="/wishlist">Yêu thích</a></p>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -37,8 +37,8 @@
                         <p>1.990.000</p>
                     </div> -->
                     <?php
-                    if (isset($data['Wishlist']) && $data['Wishlist'] != "") {
-                        foreach ($data['Wishlist'] as $value) {
+                    if (isset($data['wish_list']) && $data['wish_list'] != "") {
+                        foreach ($data['wish_list'] as $value) {
                             extract($value);
                             echo '
                                 <div class="col-md-3 col-sm-6 col-12">
@@ -47,10 +47,10 @@
                                         src="' . $url_ha_sp . '"
                                         alt="" class="img-fluid"></a>
                             </div>
-                            <a href="">
-                                <h6>Áo Polo Gucci GG Stretch Cotton Polo Màu Xanh Green</h6>
+                            <a href="/product/' . $id . '">
+                                <h6>' . $ten_sp . '</h6>
                             </a>
-                            <p>1.990.000</p>
+                            <p>' . number_format($gia_sp) . ' VND</p>
                         </div>
                                 
                                 ';
@@ -65,7 +65,6 @@
         <div class="col-md-2"></div>
         </div>
     </main>
-
 
 </body>
 
