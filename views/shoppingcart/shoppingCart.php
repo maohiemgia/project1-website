@@ -7,6 +7,16 @@ $itemCartInc = $_SESSION['itemCartInc'];
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // }
 
+function tinhTongTien($money = 0, $quantity = 1)
+{
+     $tongTien = $money * $quantity;
+     return $tongTien;
+}
+
+echo "<pre>";
+// print_r($product);
+echo "</pre>";
+
 ?>
 
 <head>
@@ -56,11 +66,15 @@ $itemCartInc = $_SESSION['itemCartInc'];
                     <thead class="table-warning">
                          <tr style="text-align:center">
                               <th>Tên sản phẩm</th>
+                              <th>Đặc điểm</th>
                               <th>Số lượng sản phẩm</th>
+                              <th>Giá tiền</th>
+                              <th>Thành tiền</th>
                               <th colspan="3">Hành động</th>
                          </tr>
                     </thead>
                     <tbody>
+
 
                          <?php if (isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) > 0) : ?>
                               <?php foreach ($_SESSION['product_cart_infor'] as $product_added) : ?>
@@ -68,10 +82,32 @@ $itemCartInc = $_SESSION['itemCartInc'];
                                         <?php if ($p['id'] == $product_added['product_id']) : ?>
                                              <tr style="text-align:left">
                                                   <td class="fs-4 fw-bold">
-                                                       <p><?= $p['ten_sp'] ?></p>
+                                                       <a href="/product/<?= $product_added['product_id'] ?>" class="text-decoration-none text-success">
+                                                            <p><?= $p['ten_sp'] ?></p>
+                                                       </a>
+                                                  </td>
+                                                  <td>
+                                                       <?php if (strlen($product_added['color']) > 0) : ?>
+                                                            <p>Màu sắc: <?= $product_added['color']; ?> </p>
+                                                       <?php endif; ?>
+                                                       <?php if (strlen($product_added['size']) > 0) : ?>
+                                                            <p>Size: <?= $product_added['size']; ?> </p>
+                                                       <?php endif; ?>
+
                                                   </td>
                                                   <td>
                                                        <p><?= $product_added['quantity'] ?></p>
+                                                  </td>
+                                                  <td>
+                                                       <p>
+                                                            <?= number_format($product_added['gia_tien_option_sp']); ?>
+                                                       </p>
+                                                  </td>
+                                                  <td>
+                                                       <p>
+                                                            <?php $product_added['tong_tien'] = tinhTongTien($product_added['gia_tien_option_sp'], $product_added['quantity']) ?>
+                                                            <?= number_format($product_added['tong_tien']); ?>
+                                                       </p>
                                                   </td>
                                                   <td>
                                                        <a href="/cart-add/<?= $p['id'] ?>" class="cart-add cart-btn btn">Tăng</a>
@@ -98,6 +134,8 @@ $itemCartInc = $_SESSION['itemCartInc'];
                     </tbody>
                </table>
           </div>
-          <!-- <a href="" class="btn payment-btn">Thanh toán</a> -->
+          <br>
+          <a href="/payment" class="btn payment-btn">Thanh toán</a>
+          <br><br><br><br>
      </div>
 </body>

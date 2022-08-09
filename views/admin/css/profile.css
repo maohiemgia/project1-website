@@ -1,0 +1,23 @@
+.row-avatar {
+	width: 100%;
+	max-width: 250px;
+}
+.row-avatar > img {
+	width: 100%;
+	max-width: 250px;
+}
+span.span-display {
+	text-transform: none;
+	color: rgba(0, 0, 0, 0.5);
+	padding-left: 10px;
+}
+.other-option > a {
+	padding: 0;
+	display: block;
+	width: 100%;
+	font-weight: 400;
+	font-size: 18px;
+	text-transform: capitalize;
+	text-decoration: none;
+     color: #000;
+}

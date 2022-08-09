@@ -1,18 +1,22 @@
 <?php
+require_once "models/product.php";
+
 if (session_status() === PHP_SESSION_NONE) {
      session_start();
 }
-
 echo "<pre>";
 // print_r($_COOKIE);
 // print_r($_SESSION);
+// print_r($_SESSION['userLogin']);
 echo "</pre>";
 // session_destroy();  
+
+
 //  if (isset($_SESSION['userLogin'])){
 //      print_r($_SESSION);
 //      echo "<br>".$_SESSION['userLogin']['id'];
 //  }
-print_r($data);
+// print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +37,12 @@ print_r($data);
      <!-- Latest compiled and minified CSS -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
      <!-- Latest compiled JavaScript -->
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+     </script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+     </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+     </script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
      <!-- fontawesome -->
      <script src="https://kit.fontawesome.com/6c87d9fedd.js" crossorigin="anonymous"></script>
@@ -113,7 +120,10 @@ print_r($data);
                          <div class="col-md-3 col-12">
                               <div class="row" id="feature">
                                    <div class="col-4">
-                                        <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist"."/".$_SESSION['userLogin']['id'] : "/login" ?>">
+                                        <span class="cart-item-total">
+                                             <?= isset($_SESSION['product_cart_infor']) ? count($_SESSION['product_cart_infor']) : '0'; ?>
+                                        </span>
+                                        <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist" . "/" . $_SESSION['userLogin']['id'] : "/login" ?>">
                                              <img src="../../lib/image/img/Heart 1.png" alt="" class="img-fluid">
                                              <p>YÊU THÍCH</p>
                                         </a>
@@ -121,13 +131,13 @@ print_r($data);
                                    <div class="col-4">
                                         <?php if (isset($_SESSION['userLogin']) && !empty($_SESSION['userLogin']['ten_dang_nhap'])) : ?>
                                              <div id="account-btn">
-                                                  <a href="/userinfor">
+                                                  <a href="/userinfo">
                                                        <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
                                                        <p><?= $_SESSION['userLogin']['ten_dang_nhap'] ?></p>
                                                   </a>
                                                   <button type="button" id="logout-btn" class="btn">Đăng xuất</button>
                                              </div>
-                                        <?php elseif (3) : ?>
+                                        <?php else : ?>
                                              <a href="/login">
                                                   <img src="../../lib/image/img/Profile 1.png" alt="" class="img-fluid">
                                                   <p>TÀI KHOẢN</p>

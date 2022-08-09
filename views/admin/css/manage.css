@@ -1,0 +1,92 @@
+.manage-link-section > a {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: #000;
+}
+
+a.btn-insert {
+	background: #00a600;
+	color: #fff;
+	width: auto;
+	padding: 5px 18px;
+	margin: 20px 0;
+	border: 1px solid #00a600;
+	border-radius: 8px;
+}
+a.btn-insert:hover {
+	color: #00a600;
+	background: transparent;
+	border: 1px solid #00a600;
+}
+.insert_foot_btn {
+	margin-right: 10px;
+	margin-top: 20px;
+	padding: 5px 20px;
+	text-decoration: none;
+	color: #000;
+	background: #fff;
+	border: 1px solid #000;
+	display: inline-block;
+	width: auto;
+	border-radius: 8px;
+}
+.insert_foot_btn:hover {
+	background: #00a600;
+	color: #fff;
+	border-color: transparent;
+}
+input.inputid,
+input.inputname {
+	padding: 8px;
+}
+input.inputid {
+	background: #e6e6e6;
+}
+
+form > label {
+	font-size: 20px;
+	text-transform: capitalize;
+}
+
+table.table-manage > thead > tr > th {
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: text-bottom;
+}
+table.table-manage > tbody > tr > td {
+	text-transform: capitalize;
+	width: auto;
+	text-align: center;
+}
+table.table-manage > tbody > tr > td > a {
+	text-decoration: none;
+	color: #fff;
+	background: #00a600;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+table.table-manage > tbody > tr > td > a:hover {
+	opacity: 0.6;
+}
+table.table-manage > tbody > tr > td.view-function > a {
+	background: #00a600 !important;
+}
+table.table-manage > tbody > tr > td:last-child > a {
+	background: #ff0056;
+}
+.table-item-id {
+	width: 150px !important;
+	max-width: 100%;
+}
+.table-function {
+	width: 20px !important;
+	max-width: 100%;
+}
+.manage-link-section > div.container {
+	overflow-x: scroll;
+}
+.back-btn {
+	margin-bottom: 30px;
+}

@@ -20,12 +20,11 @@ route("/404", function () {
 // });
 
 route("/product", function () {
-     if(isset($_GET['doi_tuong'])){
+     if (isset($_GET['doi_tuong'])) {
           $doi_tuong = $_GET['doi_tuong'];
-          renderByUserRole('productpage',"$doi_tuong");
-     }
-     else{
-          renderByUserRole('productpage',"all");
+          renderByUserRole('productpage', "$doi_tuong");
+     } else {
+          renderByUserRole('productpage', "all");
      }
 });
 
@@ -58,7 +57,7 @@ route("/checklogin", function () {
      renderByUserRole('checklogin');
 });
 route("/logout", function () {
-     renderByUserRole('logout');
+     logout();
 });
 
 route("/register", function () {
@@ -121,14 +120,27 @@ route("/wishlist", function () {
      }
 });
 
-route("/wishlist/{id}", function ($id) {
-     renderByUserRole('wishlistpage', $id);
+route("/wishlist/{id}", function ($id_user) {
+     // là id user
+     renderByUserRole('wishlistpage', $id_user);
 });
 
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });
+route("/payment", function () {
+     renderByUserRole('payment');
+});
 
+route("/userinfo", function () {
+     renderByUserRole('accountpage');
+});
+route("/changepass", function () {
+     renderByUserRole('changepasspage');
+});
+route("/order", function () {
+     renderByUserRole('orderpage');
+});
 // route("/admin/product", function () {
 //      echo "Quản lý sản phẩm là";
 // });

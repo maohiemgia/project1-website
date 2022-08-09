@@ -9,6 +9,7 @@ require_once "models/login.php";
 // // kiểm tra thuộc tính role của user rồi render ra dữ liệu phù hợp
 // {
 //      if (!isset($_SESSION['logintoken'])) {
+//      if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['vai_tro'] == 4) {
 //           headerview();
 //           if ($parameter != 0) {
 //                $functionname($parameter);
@@ -17,8 +18,16 @@ require_once "models/login.php";
 //           }
 //           footerview();
 //      } else {
+
 //           $functionname();
 
+//           headerview();
+
+//           if ($parameter != 0) {
+//                $functionname($parameter);
+//           } else {
+//                $functionname();
+//           }
 //           footerview();
 //      }
 // }
@@ -119,7 +128,8 @@ function logout()
           session_start();
      }
 
-     unset($_SESSION['userLogin']);
+     // unset($_SESSION['userLogin']);
+     session_destroy();
      echo "<script>window.location.href = '/'; </script>";
      exit();
 }
@@ -275,6 +285,8 @@ function productpage($doi_tuong)
 
      $productSale = fetch_khuyenmai_sp();
 
+     unset($_SESSION['product-selected-option']);
+
      $loai_hang = query_loai_hang();
      $doi_tuong_lh = query_object_of_lh();
 
@@ -287,8 +299,25 @@ function productpage($doi_tuong)
 function productdetailpage($id)
 {
      $product = fetch_single_product($id, 1);
+     $product_option_color = fetch_product_option($id, 1);
+     $product_option_size = fetch_product_option($id, 2);
+
+     $product_option_img = fetch_product_option_img($id, 1);
 
      $_SESSION['productId'] =  $id;
+     if (!isset($_SESSION['product-selected-option'])) {
+          $_SESSION['product-selected-option'] = $product[0];
+     }
+
+     if (!isset($_SESSION['product-selected-option']['color']) || empty($_SESSION['product-selected-option']['color'])) {
+          $_SESSION['product-selected-option']['color'] = '';
+     }
+     if (!isset($_SESSION['product-selected-option']['size']) || empty($_SESSION['product-selected-option']['size'])) {
+          $_SESSION['product-selected-option']['size'] = '';
+     }
+     if (!isset($_SESSION['product-selected-option']['khuyen_mai'])) {
+          $_SESSION['product-selected-option']['khuyen_mai'] = 0;
+     }
 
      if (!$product) {
           echo "<script>
@@ -296,38 +325,52 @@ function productdetailpage($id)
           </script>";
           die;
      }
-     view('product.productdetail', ['productArr' => $product, 'product' => $product[0]]);
+     view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
 function newspage()
 {
      view('news.news');
 }
-
 function wishlist($id_user, $id_sp)
 {
      echo $id_user . "<br>" . $id_sp;
      $check_ton_tai = check_pro_in_wishlist($id_user, $id_sp);
      print_r($check_ton_tai);
+     $thong_bao = [];
      if (is_array($check_ton_tai) && $check_ton_tai != "") {
-
-          add_wishlist($id_user, $id_sp);
-     } else {
           // sẽ hiển thị mảng chứa kí hiệu đã có trong wish list_ hoặc mở ra chi tiết thì tự
           // động check xem đã có trong wishlist chưa...
+          $thong_bao = "Đã tồn tại sản phẩm trong wishlist";
+
+     } else {
+          add_wishlist($id_user, $id_sp);
+          $thong_bao = "Đã thêm sản phẩm vào wishlist";
      }
      // add_wishlist($id_user, $id_sp);
-     view('wishlist.wishlist');
+     view('wishlist.wishlist',['thong_bao' => $thong_bao]);
 }
 
 function wishlistpage($id_user)
 {
      $wishlist = list_wishlist($id_user);
-     view('wishlist.wishlist',['wish_list' => $wishlist]);
+     view('wishlist.wishlist', ['wish_list' => $wishlist]);
 }
 function voucherpage()
 {
      view('voucher.voucher');
+}
+function accountpage()
+{
+     view('account.account');
+}
+function orderpage()
+{
+     view('account.order');
+}
+function changepasspage()
+{
+     view('account.change_password');
 }
 function shoppingcart()
 {
@@ -385,4 +428,9 @@ function cartdel($id)
           die;
      }
      view('shoppingcart.checkShoppingCart');
+}
+
+function payment()
+{
+     view('pay.pay');
 }

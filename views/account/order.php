@@ -15,7 +15,7 @@
         <div class="row" id="path">
             <div class="col-md-2"></div>
             <div class="col-md-8 col-12">
-                <p><a href="./Home.html">Trang chủ</a> > <a href="./account.html">Tài khoản</a> > <a href="./order.html">Đơn hàng của bạn</a></p>
+                <p><a href="/">Trang chủ</a> > <a href="/userinfo">Tài khoản</a> > <a href="/order">Đơn hàng của bạn</a></p>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -28,16 +28,13 @@
                         <p><b>Xin chảo ... !</b></p>
                         <ul>
                             <li>
-                                <a class="account_link" href="./account.html">Thông tin tài khoản</a>
+                                <a class="account_link" href="/userinfo">Thông tin tài khoản</a>
                             </li>
                             <li>
-                                <a class="account_link active" href="./order.html">Đơn hàng của bạn</a>
+                                <a class="account_link active" href="/order">Đơn hàng của bạn</a>
                             </li>
                             <li>
-                                <a class="account_link" href="./change_password.html">Đổi mật khẩu</a>
-                            </li>
-                            <li>
-                                <a class="account_link" href="./address.html">Sổ địa chỉ (0)</a>
+                                <a class="account_link" href="/changepass">Đổi mật khẩu</a>
                             </li>
                         </ul>
                     </div>

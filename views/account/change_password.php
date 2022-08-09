@@ -11,13 +11,12 @@
 </head>
 
 <body>
-  
+
     <main>
         <div class="row" id="path">
             <div class="col-md-2"></div>
             <div class="col-md-8 col-12">
-                <p><a href="./Home.html">Trang chủ</a> > <a href="./account.html">Tài khoản</a> > <a
-                        href="./change_password.html">Thay đổi mật khẩu</a></p>
+                <p><a href="/">Trang chủ</a> > <a href="/userinfo">Tài khoản</a> > <a href="/changepass">Thay đổi mật khẩu</a></p>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -30,16 +29,13 @@
                         <p><b>Xin chảo ... !</b></p>
                         <ul>
                             <li>
-                                <a class="account_link" href="./account.html">Thông tin tài khoản</a>
+                                <a class="account_link" href="/userinfo">Thông tin tài khoản</a>
                             </li>
                             <li>
-                                <a class="account_link " href="./order.html">Đơn hàng của bạn</a>
+                                <a class="account_link " href="/order">Đơn hàng của bạn</a>
                             </li>
                             <li>
-                                <a class="account_link active" href="./change_password.html">Đổi mật khẩu</a>
-                            </li>
-                            <li>
-                                <a class="account_link" href="./address.html">Sổ địa chỉ (0)</a>
+                                <a class="account_link active" href="/changepass">Đổi mật khẩu</a>
                             </li>
                         </ul>
                     </div>
@@ -49,16 +45,15 @@
                         <form>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Mật khẩu cũ *</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="password">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Mật khẩu mới *</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="newpass">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Xác nhận lại mật khẩu *</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="cfpass">
                             </div>
                             <button type="submit" class="btn btn-dark">Đặt lại mật khẩu</button>
                         </form>
@@ -68,9 +63,6 @@
             <div class="col-md-2"></div>
         </div>
     </main>
-
-  
-   
 </body>
 
 </html>
