@@ -304,28 +304,28 @@
                     <div class="dropdown-content">
                         <ul>
                             <?php foreach ($data['loai_hang'] as $value) : ?>
-                            <?php extract($value); ?>
-                            <li>
-                                <div class="sub-dropdown">
-                                    <a href="#">
-                                        <?php echo $ten_lh  ?>
-                                    </a>
-                                    <span class="view-more-btn">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </span>
-                                </div>
-                                <ul class="sub-sub-dropdown">
-                                    <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
-                                    <?php
-                                                       extract($val);
-                                                       if ($value['id'] == $val['id']) {
+                                        <?php extract($value); ?>
+                                        <li>
+                                             <div class="sub-dropdown">
+                                                  <a href="#">
+                                                       <?php echo $ten_lh  ?>
+                                                  </a>
+                                                  <span class="view-more-btn">
+                                                       <i class="fa-solid fa-plus"></i>
+                                                  </span>
+                                             </div>
+                                             <ul class="sub-sub-dropdown">
+                                                  <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
+                                                       <?php
+                                                        extract($val);
+                                                        if ($value['id'] == $val['id']) {
                                                             echo '<li>
                                                             <a href="#">
                                                                  ' . $doi_tuong . '
                                                             </a>
                                                        </li>';
-                                                       }
-                                                       ?>
+                                                        }
+                                                        ?>
                                     <?php endforeach; ?>
 
                                 </ul>
@@ -543,41 +543,41 @@
             <div class="row productshow-row">
                 <div class="row mx-0 mt-3 product-display-section">
                     <?php foreach ($product as $p) : ?>
-                    <div class="col-6 col-sm-3 product-display">
-                        <div class="row mx-0 product-img-section">
-                            <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
-                                <img src="<?= $p['url_ha_sp'] ?>" alt="fef">
-                                <span>
-                                    <?php foreach ($sale as $s) : ?>
-                                    <?php if ($s['id_san_pham'] == $p['id_san_pham']) : ?>
-                                    <?= $s['khuyen_mai']; ?>%
-                                    <?php break; ?>
-                                    <?php else : ?>
-                                    <?= 0 ?>%
-                                    <?php break; ?>
-                                    <?php endif; ?>
-                                    <?php endforeach; ?>
-                                    <br>
-                                    giảm
-                                </span>
-                            </a>
-                        </div>
-                        <div class="row mx-0 product-infor my-2">
-                            <a href="/product/<?= $p['id_san_pham'] ?>" class="text-decoration-none">
-                                <p class="product-name">
-                                    <?= $p['ten_sp'] ?>
+                        <div class="col-6 col-sm-3 product-display">
+                            <div class="row mx-0 product-img-section">
+                                <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
+                                    <img src="<?= $p['url_ha_sp'] ?>" alt="fef">
+                                    <span>
+                                        <?php foreach ($sale as $s) : ?>
+                                            <?php if ($s['id_san_pham'] == $p['id_san_pham']) : ?>
+                                                <?= $s['khuyen_mai']; ?>%
+                                                <?php break; ?>
+                                            <?php else : ?>
+                                                <?= 0 ?>%
+                                                <?php break; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        <br>
+                                        giảm
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="row mx-0 product-infor my-2">
+                                <a href="/product/<?= $p['id_san_pham'] ?>" class="text-decoration-none">
+                                    <p class="product-name">
+                                        <?= $p['ten_sp'] ?>
+                                    </p>
+                                </a>
+                                <p class="product-price">
+                                    <span class="product-price-display">
+                                        <?= number_format($p['gia_sp']) ?>
+                                    </span>
+                                    <span>
+                                        VNĐ
+                                    </span>
                                 </p>
-                            </a>
-                            <p class="product-price">
-                                <span class="product-price-display">
-                                    <?= number_format($p['gia_sp']) ?>
-                                </span>
-                                <span>
-                                    VNĐ
-                                </span>
-                            </p>
+                            </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
 
                     <!-- <div class="col-6 col-sm-3 product-display">
@@ -672,12 +672,12 @@
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
                             </li>
-                            <li class="page-item">
+                            <li class="page-item active">
                                 <button class="page-link-btn btn" type="submit" name="indexPage" value="">
                                     1
                                 </button>
                             </li>
-                            <li class="page-item active">
+                            <li class="page-item ">
                                 <button class="page-link-btn btn" type="submit" name="indexPage" value="">
                                     2
                                 </button>
@@ -688,8 +688,7 @@
                                 </button>
                             </li>
                             <li class="page-item">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value=""
-                                    id="aboutus-section">
+                                <button class="page-link-btn btn" type="submit" name="indexPage" value="" id="aboutus-section">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </button>
                             </li>
@@ -698,6 +697,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 

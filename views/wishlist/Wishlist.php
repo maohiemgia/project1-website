@@ -40,17 +40,21 @@
                 if (isset($data['wish_list']) && $data['wish_list'] != "") {
                     foreach ($data['wish_list'] as $value) {
                         extract($value);
+                        $id_user = $_SESSION['userLogin']['id'];
                         echo '
                                     <div class="col-md-3 col-sm-6 col-12">
                                         <div class="image">
-                                            <a href=""><img
+                                            <a href="/product/' . $id_san_pham  . '"><img
                                                 src="' . $url_ha_sp . '"
                                                 alt="" class="img-fluid"></a>
                                         </div>
-                                        <a href="/product/' . $id . '">
+                                        <a href="/product/' . $id_san_pham  . '">
                                             <h6>' . $ten_sp . '</h6>
                                         </a>
                                         <p>' . number_format($gia_sp) . ' VND</p>
+                                        <a href="/delete_one_wishlist?id_sp='.$id_san_pham.'&id_user='.$id_user.'">
+                                            <p>Xoá khỏi list</p>
+                                        </a>
                                     </div>
                                 ';
                     }
@@ -65,24 +69,15 @@
     </div>
 </main>
 <?php
+
 // if (isset($thong_bao) && $thong_bao != "") {
-//     foreach ($thong_bao as $va) {
-//         extract($va);
 //         echo '
 //         <script>
-//         window.alert("' . $va . '");
+//         window.alert("' . $thong_bao . '");
 //         </script>
 //         ';
-//     }
-// }
-if (isset($thong_bao) && $thong_bao != "") {
-        echo '
-        <script>
-        window.alert("' . $thong_bao . '");
-        </script>
-        ';
     
-}
+// }
 ?>
 </body>
 

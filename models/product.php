@@ -91,7 +91,7 @@ function top_ban_chay($lay = 'top4')
      JOIN hinh_anh_sp hasp on hasp.id_san_pham = sp.id
      WHERE hasp.do_uu_tien_ha_sp = 0
      GROUP BY hasp.id_san_pham ORDER BY SUM(ctdh.so_luong_sp) DESC";
-     if($lay == 'top4'){
+     if ($lay == 'top4') {
           $sql .= " LIMIT 0,4";
      }
      // $top = querySQL($sql, 1);
@@ -127,3 +127,9 @@ function top_object($object)
      return $top;
 }
 
+function check_pro_in_listpro($id_sp)
+{
+     $sql = "SELECT * FROM `san_pham` WHERE id =" . $id_sp;
+     $kq = pdo_query($sql);
+     return $kq;
+}
