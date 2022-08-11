@@ -1,3 +1,25 @@
+<?php
+// phân trang hiển thị
+$productArr = array();
+$indexDisplay = 0;
+
+$productArr = array_chunk($product, 16);
+
+if (isset($_POST['indexPage'])) {
+    $indexPage = $_POST["indexPage"];
+} else {
+    $indexPage = 0;
+}
+$indexDisplay = $indexPage;
+$nowIndexFrom = ($indexDisplay + 1) * 8;
+
+
+echo "<pre>";
+// print_r($productArr[0]);
+echo "</pre>";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -304,32 +326,32 @@
                     <div class="dropdown-content">
                         <ul>
                             <?php foreach ($data['loai_hang'] as $value) : ?>
-                                        <?php extract($value); ?>
-                                        <li>
-                                             <div class="sub-dropdown">
-                                                  <a href="#">
-                                                       <?php echo $ten_lh  ?>
-                                                  </a>
-                                                  <span class="view-more-btn">
-                                                       <i class="fa-solid fa-plus"></i>
-                                                  </span>
-                                             </div>
-                                             <ul class="sub-sub-dropdown">
-                                                  <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
-                                                       <?php
-                                                        extract($val);
-                                                        if ($value['id'] == $val['id']) {
-                                                            echo '<li>
+                                <?php extract($value); ?>
+                                <li>
+                                    <div class="sub-dropdown">
+                                        <a href="#">
+                                            <?php echo $ten_lh  ?>
+                                        </a>
+                                        <span class="view-more-btn">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                    </div>
+                                    <ul class="sub-sub-dropdown">
+                                        <?php foreach ($data['doi_tuong_lh'] as $val) : ?>
+                                            <?php
+                                            extract($val);
+                                            if ($value['id'] == $val['id']) {
+                                                echo '<li>
                                                             <a href="#">
                                                                  ' . $doi_tuong . '
                                                             </a>
                                                        </li>';
-                                                        }
-                                                        ?>
-                                    <?php endforeach; ?>
+                                            }
+                                            ?>
+                                        <?php endforeach; ?>
 
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
 
                             <?php endforeach; ?>
 
@@ -542,7 +564,7 @@
             </div>
             <div class="row productshow-row">
                 <div class="row mx-0 mt-3 product-display-section">
-                    <?php foreach ($product as $p) : ?>
+                    <?php foreach ($productArr[$indexDisplay] as $p) : ?>
                         <div class="col-6 col-sm-3 product-display">
                             <div class="row mx-0 product-img-section">
                                 <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
@@ -664,39 +686,31 @@
                 </div>
 
                 <!-- display page number -->
-                <div class="row mx-0 pages">
-                    <form action="" method="POST">
+                <!-- <div class="row mx-0 pages">
+                    <form method="POST">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
                                 <button class="page-link-btn btn" type="submit" name="indexPage" value="">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
                             </li>
-                            <li class="page-item active">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value="">
-                                    1
-                                </button>
-                            </li>
-                            <li class="page-item ">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value="">
-                                    2
-                                </button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value="">
-                                    3
-                                </button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value="" id="aboutus-section">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
+                            <?php foreach ($productArr as $pA) : ?>
+                                <li class="page-item">
+                                    <button class="page-link-btn btn" type="submit" name="indexPage" value="">
+                                        <?= $pA ?>
+                                    </button>
+                                </li>
+                            <?php endforeach; ?>
+                <li class="page-item">
+                    <button class="page-link-btn btn" type="submit" name="indexPage" value="" id="aboutus-section">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </li>
+                </ul>
+                </form> -->
             </div>
         </div>
+    </div>
 
 
     </div>

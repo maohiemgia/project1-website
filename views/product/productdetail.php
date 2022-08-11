@@ -236,13 +236,13 @@ echo "</pre>";
                                         echo "/login";
                                     }
                                     ?>" method="POST">
-                        <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn" value="<?php if ($data['check_pro_in_wl'] == 0) {
+                        <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn" value="<?php if (isset($data['check_pro_in_wl']) && $data['check_pro_in_wl'] == 0) {
                                                                                                                                         echo "0";
                                                                                                                                     } else {
                                                                                                                                         echo "1";
                                                                                                                                     } ?>">
                             <?php
-                            if ($data['check_pro_in_wl'] == 0) {
+                            if (isset($data['check_pro_in_wl']) && $data['check_pro_in_wl'] == 0) {
                                 echo "Thêm vào Wishlist";
                             } else {
                                 echo "Xóa khỏi Wishlist";
@@ -350,7 +350,7 @@ echo "</pre>";
                 </div>
 
                 <!-- display page number -->
-                <div class="row mx-0 pages">
+                <!-- <div class="row mx-0 pages">
                     <form action="" method="POST">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
@@ -380,7 +380,7 @@ echo "</pre>";
                             </li>
                         </ul>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>

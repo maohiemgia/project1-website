@@ -1,43 +1,17 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-     session_start();
-}
-require_once '../global.php';
-
-$_SESSION['menu'] = 3;
-
-if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['user_role'] == 0) {
-     header('location: ../index.php');
+if (!isset($_SESSION['userLogin']) || $_SESSION['userLogin']['vai_tro'] == 4) {
+     echo "<script>
+                window.location.href = '/';
+          </script>";
      exit();
 }
 
-$sql = "SELECT
-*
-FROM
-`user`
-ORDER BY
-`username` ASC";
-$categoryArr = queryDB($sql, 1);
+$sql = "SELECT * FROM `don_hang` dh ORDER BY dh.thoi_gian_dat_hang DESC";
+$orderList = querySQL($sql, 1);
+echo "<pre>";
+print_r($orderList);
+echo "</pre>";
 
-
-// phân trang hiển thị
-$productArr = array();
-$indexDisplay = 0;
-
-$productArr = array_chunk($categoryArr, 5);
-
-if (isset($_GET['indexPage'])) {
-     $indexPage = $_GET["indexPage"];
-} else {
-     $indexPage = 0;
-}
-$indexDisplay = $indexPage;
-$nowIndexFrom = ($indexDisplay + 1) * 5;
-
-if (isset($_GET['mess'])) {
-     $mess = $_GET['mess'];
-     alertResult($mess);
-}
 
 $i = 0;
 
@@ -50,48 +24,49 @@ $i = 0;
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Home-Xshop</title>
-     <link rel="stylesheet" href="../content/css/login.css">
-     <link rel="stylesheet" href="../content/css/profile.css">
-     <link rel="stylesheet" href="../content/css/manage.css">
-     <link rel="stylesheet" href="../content/css/productdetail.css">
+     <title>Quản lý đơn hàng</title>
+     <link rel="stylesheet" href="./css/login.css">
+     <link rel="stylesheet" href="./css/profile.css">
+     <link rel="stylesheet" href="./css/manage.css">
+     <link rel="stylesheet" href="./css/productdetail.css">
 </head>
 
 <body>
-     <?php
-     require_once "../site/menu.php";
-     ?>
+
 
      <div class="row mx-0 manage-link-section p-3 ps-sm-5" style="min-height: 300px;">
-          <h2 class="text-capitalize fw-bold fs-2 px-0">Quản lý user</h2>
+          <h2 class="text-capitalize fw-bold fs-2 px-0">Quản lý đơn hàng</h2>
           <!-- <a href="./customersinsert.php" class="btn-insert">thêm user mới</a> -->
 
           <div class="container">
                <div class="col result-found my-3">
                     <p class="text-capitalize mb-0">
-                         <?= $nowIndexFrom - 4 ?> <i class="fa-solid fa-arrow-right-long"></i> <?= $nowIndexFrom > count($categoryArr) ? count($categoryArr) : $nowIndexFrom ?> trong <span style="font-weight: 700; font-size:larger">
-                              <?= count($categoryArr) ?>
-                         </span>
+                         <!-- <?= $nowIndexFrom - 4 ?> <i class="fa-solid fa-arrow-right-long"></i> <?= $nowIndexFrom > count($categoryArr) ? count($categoryArr) : $nowIndexFrom ?> trong <span style="font-weight: 700; font-size:larger"> -->
+                         <!-- <?= count($categoryArr) ?> -->
+                         <!-- </span> -->
                          user tìm thấy
                     </p>
                </div>
 
-               <?php if (count($productArr) > 0) : ?>
+               <?php if (count($orderList) > 0) : ?>
                     <table class="table table-manage">
                          <thead class="thead-dark">
                               <tr>
-                                   <th>tài khoản</th>
-                                   <th>nickname</th>
-                                   <th>trạng thái</th>
-                                   <th>vai trò</th>
+                                   <th>ID đơn</th>
+                                   <th>Tên khách</th>
+                                   <th>Email</th>
+                                   <th>SĐT</th>
+                                   <th>Tiền</th>
                                    <th colspan="2">chức năng</th>
                               </tr>
                          </thead>
                          <tbody>
-                              <?php foreach ($productArr[$indexDisplay] as $cate) : ?>
+                              <?php foreach ($orderList as $order) : ?>
                                    <tr>
-                                        <td class="table-item-id"><?= $cate['username'] ?></td>
-                                        <td class="table-item-name"><?= $cate['user_nickname'] ?></td>
+                                        <td class="table-item-id"><?= $order['id'] ?></td>
+                                        <td class="table-item-id"><?= $order['ten_khach_hang'] ?></td>
+                                        <td class="table-item-name"><?= $order['email'] ?></td>
+                                        <td class="table-item-name"><?= $order['sdt'] ?></td>
                                         <td><?= $cate['user_active'] == 1 ? 'actived' : 'not actived' ?></td>
                                         <td><?= $cate['user_role'] == 1 ? 'quản trị' : 'khách hàng' ?></td>
 
@@ -193,8 +168,6 @@ $i = 0;
           </div>
 
      </div>
-     <!-- footer -->
-     <?php require_once "../site/footer.php"; ?>
 
 </body>
 
