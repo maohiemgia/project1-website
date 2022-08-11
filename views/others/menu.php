@@ -8,12 +8,13 @@ require_once "models/product.php";
 echo "<pre>";
 // print_r($_COOKIE);
 // print_r($_SESSION);
+// print_r($_SESSION['userLogin']);
 // print_r($_SESSION['product-selected-option']);
 // print_r($_SESSION['product']);
 // print_r($_SESSION['product_cart_infor'][0]['option_detail']);
-// print_r($_SESSION['product-selected-option']['option_detail']);
 // print_r($_SESSION['itemCartInc']);
 // print_r($_SESSION['product_cart_infor']);
+// print_r($_SESSION['product-selected-option']);
 echo "</pre>";
 // session_destroy();  
 

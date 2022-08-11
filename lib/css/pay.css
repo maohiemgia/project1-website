@@ -1,138 +1,152 @@
 #path a {
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 }
 
 #path {
-    background-color: #EDEAEA;
-    margin-bottom: 40px;
+	background-color: #edeaea;
+	margin-bottom: 40px;
 }
 
 #path p {
-    font-size: 15px;
-    margin-bottom: auto;
+	font-size: 15px;
+	margin-bottom: auto;
 }
 
 #path div {
-    margin: 10px 0px;
+	margin: 10px 0px;
 }
-.title_info,.title_ship,.title_cod,.title_payment_products{
-    font-weight: bold;
-    margin-bottom: 20px;
+.title_info,
+.title_ship,
+.title_cod,
+.title_payment_products {
+	font-weight: bold;
+	margin-bottom: 20px;
 }
-.ship{
-    margin-bottom: 30px;
+.ship {
+	margin-bottom: 30px;
 }
-#payment_products{
-    background-color: #fafafa;
-    box-shadow: 0px 0px 3px 3px #c5c5c5;
-    position: relative;
-    border-radius: 5px;
+#payment_products {
+	background-color: #fafafa;
+	box-shadow: 0px 0px 3px 3px #c5c5c5;
+	position: relative;
+	border-radius: 5px;
 }
-main{
-    margin-bottom: 50px;
+main {
+	margin-bottom: 50px;
 }
 .order-summary__sections {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .order-summary__section--is-scrollable {
-    overflow-y: auto;
-    max-height: calc(100vh - 480px);
+	overflow-y: auto;
+	max-height: calc(100vh - 480px);
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 1em;
-    width: 100%;
-    margin: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 1em;
+	width: 100%;
+	margin: 0;
 }
 tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
 }
 tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
 }
 .product-thumbnail {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    background: #fff;
-    position: relative;
-
+	width: 50px;
+	height: 50px;
+	border-radius: 8px;
+	background: #fff;
+	position: relative;
 }
 .product-thumbnail__wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 8px;
 }
 .product-thumbnail__quantity {
-    font-size: .78em;
-    white-space: nowrap;
-    padding: 0 0.62em;
-    border-radius: 2em;
-    background-color: #2a9dcc;
-    color: #fff;
-    position: absolute;
-    right: -0.9em;
-    top: -0.55em;
-    z-index: 3;
-    box-sizing: border-box;
-    min-width: 1.75em;
-    height: 1.75em;
-    text-align: center;
-    line-height: 1.75em;
+	font-size: 0.78em;
+	white-space: nowrap;
+	padding: 0 0.62em;
+	border-radius: 2em;
+	background-color: #2a9dcc;
+	color: #fff;
+	position: absolute;
+	right: -0.9em;
+	top: -0.55em;
+	z-index: 3;
+	box-sizing: border-box;
+	min-width: 1.75em;
+	height: 1.75em;
+	text-align: center;
+	line-height: 1.75em;
 }
-.product-table tbody th, .stock-table tbody th {
-    padding-left: 1em;
-    font-weight: 500;
-    color: #333;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-size: 14px;
+.product-table tbody th,
+.stock-table tbody th {
+	padding-left: 1em;
+	font-weight: 500;
+	color: #333;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 14px;
 }
-.discount_code{
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
+tr > .product__image {
+	padding: 7px 0;
 }
-.temporary div:not(:first-child){
-    text-align: right;
+tr > .product__description > span:first-child {
+    font-weight: 700;
+    font-size: 15px;
 }
-.temporary,.total{
-    margin-top: 5px;
-    padding-top: 15px;
-    border-top: 1px solid rgb(177, 177, 177);
-    margin-left: 10px;
-    margin-right: 10px;
+tr > .product__description > span:nth-child(n + 2) {
+	opacity: .8;
 }
-.transport_fee div:not(:first-child){
-    text-align: right;
+.discount_code {
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
 }
-.transport_fee{
-    margin: 0 10px;
+.temporary div:not(:first-child) {
+	text-align: right;
 }
-.total div:not(:first-child){
-    text-align: right;
+.temporary,
+.total {
+	margin-top: 5px;
+	padding-top: 15px;
+	border-top: 1px solid rgb(177, 177, 177);
+	margin-left: 10px;
+	margin-right: 10px;
 }
-.total{
-    margin-top: 20px;
+.transport_fee div:not(:first-child) {
+	text-align: right;
 }
-.order{
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
+.transport_fee {
+	margin: 0 10px;
 }
-.order div:not(:first-child){
-    text-align: right;
+.total div:not(:first-child) {
+	text-align: right;
 }
-.order a{
-    text-decoration: none;
-    color: #2a9dcc;
+.total {
+	margin-top: 20px;
+}
+.order {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+.order div:not(:first-child) {
+	text-align: right;
+}
+.order a {
+	text-decoration: none;
+	color: #2a9dcc;
 }

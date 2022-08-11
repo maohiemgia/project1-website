@@ -287,6 +287,12 @@ function productpage($doi_tuong)
 
      $loai_hang = query_loai_hang();
      $doi_tuong_lh = query_object_of_lh();
+     if (!isset($_SESSION['reload_page']) || isset($_SESSION['reload_page']) &&  $_SESSION['reload_page'] == 0) {
+          echo "<script>
+          window.location.href = '/product';
+          </script>";
+          $_SESSION['reload_page'] = 1;
+     }
 
      view('product.product', [
           'product' => $productArr, 'sale' => $productSale, 'loai_hang' => $loai_hang,
@@ -324,6 +330,12 @@ function productdetailpage($id)
           window.location.href = '/product';
           </script>";
           die;
+     }
+     if (isset($_SESSION['reload_page']) && $_SESSION['reload_page'] == 1) {
+          echo "<script>
+          window.location.href = '/product/$id';
+          </script>";
+          $_SESSION['reload_page'] = 0;
      }
 
      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
@@ -379,6 +391,10 @@ function shoppingcart()
 
 function checkshoppingcart()
 {
+     if (!isset($_SESSION['addToCartStat'])) {
+          $_SESSION['addToCartStat'] = 1;
+     }
+
      $id = $_SESSION['productId'];
      $check = false;
      $_SESSION['itemCartStatus'] = 'themvaogio';
@@ -401,7 +417,7 @@ function checkshoppingcart()
 
 function cartadd($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'tang';
      $check = false;
 
@@ -429,7 +445,7 @@ function cartadd($id)
 
 function cartminus($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'giam';
      $check = false;
 
@@ -457,7 +473,7 @@ function cartminus($id)
 
 function cartdel($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'xoa';
      $check = false;
 

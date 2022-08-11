@@ -47,6 +47,11 @@ function querySQL($sql, $fetchdata = 0, $fetchid = -1, $fetchAll = 0)
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        // fetch về mảng 1 chiều
+        if ($fetchdata == 2) {
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     } catch (PDOException $err) {
         echo "Query to DB bug:<br>" . $err->getMessage();
     } finally {
