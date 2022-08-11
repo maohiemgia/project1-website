@@ -114,15 +114,37 @@ route("/wishlist", function () {
      if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
           $id_sp = $_GET['id_sp'];
           $id_user = $_GET['id_user'];
-          renderByUserRole('wishlist', $id_user, $id_sp);
+          $thao_tac = $_POST['thao_tac_wishlist'];
+          if($thao_tac == "0"){
+               renderByUserRole('them_wishlist', $id_user, $id_sp);
+          }else{
+               renderByUserRole('delete_one_wishlist_ko_vao_wishlist', $id_user, $id_sp);
+          }
+          // renderByUserRole('them_wishlist', $id_user, $id_sp);
      } else {
-          renderByUserRole('wishlist', -1, -1);
+          renderByUserRole('productpage', "all");
      }
 });
 
-route("/wishlist/{id}", function ($id) {
-     renderByUserRole('wishlistpage', $id);
+route("/wishlist/{id}", function ($id_user) {
+     // là id user
+     if($id_user == $_SESSION['userLogin']['id']){
+          renderByUserRole('wishlistpage', $id_user);
+     }else{
+          renderByUserRole('homepage');
+     }
 });
+
+route("/delete_one_wishlist",function(){
+     if (isset($_GET['id_sp'])) {
+          $id_sp = $_GET['id_sp'];
+          $id_user = $_GET['id_user'];
+          // $id_user = $_SESSION['userLogin']['id'];
+          renderByUserRole('delete_one_wishlist', $id_user, $id_sp);
+     }
+
+});
+
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });

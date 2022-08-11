@@ -27,6 +27,8 @@ function calculate($price, $salePercent)
 $gia_sp = $_SESSION['product-selected-option']['gia_sp'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $_SESSION['addToCartStat'] = 1;
+
     if (isset($_POST['color']) && strlen($_POST['color']) > 0) {
         $_SESSION['product-selected-option']['color'] = $_POST['color'];
 
@@ -115,7 +117,8 @@ function addToCartCheck($status)
     }
 }
 
-
+// check xem sản phẩm đã có trong wishlist hay chưa
+// echo $data['check_pro_in_wl'];
 echo "<pre>";
 // print_r($_SESSION);
 // print_r($productOptionColor);
@@ -233,8 +236,19 @@ echo "</pre>";
                                         echo "/login";
                                     }
                                     ?>" method="POST">
-                        <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">Thêm vào
-                            wishlist</button>
+                        <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn" value="<?php if ($data['check_pro_in_wl'] == 0) {
+                                                                                                                                        echo "0";
+                                                                                                                                    } else {
+                                                                                                                                        echo "1";
+                                                                                                                                    } ?>">
+                            <?php
+                            if ($data['check_pro_in_wl'] == 0) {
+                                echo "Thêm vào Wishlist";
+                            } else {
+                                echo "Xóa khỏi Wishlist";
+                            }
+                            ?>
+                        </button>
                     </form>
                     <form action="/check-shopping-cart" method="POST">
                         <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>

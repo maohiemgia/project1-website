@@ -303,7 +303,7 @@
                               </span> -->
                     <div class="dropdown-content">
                         <ul>
-                            <!-- <?php foreach ($data['loai_hang'] as $value) : ?>
+                            <?php foreach ($data['loai_hang'] as $value) : ?>
                                         <?php extract($value); ?>
                                         <li>
                                              <div class="sub-dropdown">
