@@ -140,12 +140,12 @@ echo "</pre>";
 
     <!--Hiển thị thông báo-->
     <?php if (isset($_SESSION['message']) && $_SESSION['message'][1] == 1) : ?>
-    <!-- <div class="text-center fs-2 fw-bold text-danger"> -->
-    <script>
-    window.alert(" <?= $_SESSION['message'][0] ?> ");
-    </script>
-    <!-- </div> -->
-    <?php $_SESSION['message'][1] = 0; ?>
+        <!-- <div class="text-center fs-2 fw-bold text-danger"> -->
+        <script>
+            window.alert(" <?= $_SESSION['message'][0] ?> ");
+        </script>
+        <!-- </div> -->
+        <?php $_SESSION['message'][1] = 0; ?>
     <?php endif ?>
 
     <main>
@@ -161,9 +161,9 @@ echo "</pre>";
                 <img src="<?= $product['url_ha_sp'] ?>" alt="img">
                 <div class="row mx-0">
                     <?php foreach ($productArr as $p) : ?>
-                    <div class="col">
-                        <img src="<?= $p['url_ha_sp'] ?>" alt="img">
-                    </div>
+                        <div class="col">
+                            <img src="<?= $p['url_ha_sp'] ?>" alt="img">
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -178,36 +178,34 @@ echo "</pre>";
                 <div class="product-option">
                     <div class="option-color">
                         <?php if (count($productOptionColor) > 0) : ?>
-                        <label>Màu sắc</label>
-                        <form method="post">
-                            <?php foreach ($productOptionColor as $po) : ?>
-                            <input type="submit" name="color" value="<?= $po['gia_tri_mo_ta'] ?>"
-                                class="<?php checkSelected($_SESSION['product-selected-option']['color'], $po['gia_tri_mo_ta']) ?>">
-                            <?php endforeach; ?>
-                        </form>
+                            <label>Màu sắc</label>
+                            <form method="post">
+                                <?php foreach ($productOptionColor as $po) : ?>
+                                    <input type="submit" name="color" value="<?= $po['gia_tri_mo_ta'] ?>" class="<?php checkSelected($_SESSION['product-selected-option']['color'], $po['gia_tri_mo_ta']) ?>">
+                                <?php endforeach; ?>
+                            </form>
                         <?php endif; ?>
 
                     </div>
                     <div class="option-size">
                         <?php if (count($productOptionSize) > 0) : ?>
-                        <label>Size</label>
-                        <form method="post">
-                            <?php foreach ($productOptionSize as $po) : ?>
-                            <input type="submit" name="size" value="<?= $po['gia_tri_mo_ta'] ?>"
-                                class="<?php checkSelected($_SESSION['product-selected-option']['size'], $po['gia_tri_mo_ta']) ?>">
-                            <?php endforeach; ?>
-                        </form>
+                            <label>Size</label>
+                            <form method="post">
+                                <?php foreach ($productOptionSize as $po) : ?>
+                                    <input type="submit" name="size" value="<?= $po['gia_tri_mo_ta'] ?>" class="<?php checkSelected($_SESSION['product-selected-option']['size'], $po['gia_tri_mo_ta']) ?>">
+                                <?php endforeach; ?>
+                            </form>
                         <?php endif; ?>
                     </div>
                 </div>
                 <p class="product-price d-flex align-items-center flex-wrap">
                     <i class="fa-solid fa-coins money-icon"></i>
                     <?php if (isset($_SESSION['product-selected-option']['khuyen_mai']) && $_SESSION['product-selected-option']['khuyen_mai'] > 0) : ?>
-                    <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
-                        <?= number_format(
+                        <span class="mx-auto ps-0 mx-sm-0 beforesale saleprice">
+                            <?= number_format(
                                 $_SESSION['product-selected-option']['gia_sp']
                             ) ?>
-                    </span>
+                        </span>
                     <?php endif; ?>
 
                     <span class="aftersalesale rawprice">
@@ -218,10 +216,10 @@ echo "</pre>";
                     <sup>VNĐ</sup>
 
                     <?php if (isset($_SESSION['product-selected-option']['khuyen_mai']) && $_SESSION['product-selected-option']['khuyen_mai'] > 0) : ?>
-                    <span class="salepercent">
-                        <?= $_SESSION['product-selected-option']['khuyen_mai'] ?>
-                        % giảm
-                    </span>
+                        <span class="salepercent">
+                            <?= $_SESSION['product-selected-option']['khuyen_mai'] ?>
+                            % giảm
+                        </span>
                     <?php endif; ?>
                 </p>
                 <p class="product-des mt-5">
@@ -232,28 +230,45 @@ echo "</pre>";
                     <?= $product['mo_ta_sp']; ?>
                 </p>
                 <div class="product-user-function">
-                    <form action="<?php if (isset($_SESSION['userLogin']['id'])) {
+                    <?php
+                    if (isset($_SESSION['userLogin']['id'])) {
+                    ?>
+
+                        <form action="<?php
                                         echo "/wishlist?id_sp=" . $product['id_san_pham'] . "&id_user=" . $_SESSION['userLogin']['id'];
-                                    } else {
-                                        echo "/login";
-                                    }
-                                    ?>" method="POST">
-                        <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist"
-                            class="btn add-to-wishlist-btn"
-                            value="<?php if ($data['check_pro_in_wl'] == 0) { echo "0";} else { echo "1";}?>">
-                            <?php
-                            if ($data['check_pro_in_wl'] == 0) {
-                                echo "Thêm vào Wishlist";
-                            } else {
-                                echo "Xóa khỏi Wishlist";
-                            }
-                            ?>
-                        </button>
-                    </form>
+                                        ?>" method="POST">
+                            <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn" value="<?php if ($data['check_pro_in_wl'] == 0) {
+                                                                                                                                            echo "0";
+                                                                                                                                        } else {
+                                                                                                                                            echo "1";
+                                                                                                                                        } ?>">
+                                <?php
+                                if ($data['check_pro_in_wl'] == 0) {
+                                    echo "Thêm vào Wishlist";
+                                } else {
+                                    echo "Xóa khỏi Wishlist";
+                                }
+                                ?>
+                            </button>
+                        </form>
+
+
+                    <?php
+                    } else {
+                    ?>
+
+                        <form action="/login" method="POST">
+                            <button type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn">
+                                Đăng nhập để thêm vào Wistlist
+                            </button>
+                        </form>
+
+                    <?php
+                    }
+                    ?>
+
                     <form action="/check-shopping-cart" method="POST">
-                        <button type="submit" id="add-to-cart"
-                            class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>"
-                            name="addtocart">Thêm vào giỏ hàng</button>
+                        <button type="submit" id="add-to-cart" class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>" name="addtocart">Thêm vào giỏ hàng</button>
                     </form>
                 </div>
             </div>
@@ -276,14 +291,12 @@ echo "</pre>";
                         <?= isset($err) ? $err : '' ?>
                     </p>
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe3.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe3.png" alt="image">
                         <p class="text-center w-auto fw-bold">user50534</p>
                     </div>
                     <div class="col w-auto">
                         <form action="" method="post">
-                            <input type="text" name="comment" placeholder="nhập bình luận vào đây"
-                                class="w-100 comment-input">
+                            <input type="text" name="comment" placeholder="nhập bình luận vào đây" class="w-100 comment-input">
                             <input type="submit" value="Comment" class="submit-input">
                         </form>
                     </div>
@@ -294,8 +307,7 @@ echo "</pre>";
 
                 <div class="row py-2">
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png" alt="image">
                         <p class="text-center w-auto fw-bold">Dương Quá</p>
                     </div>
                     <div class="col w-auto">
@@ -307,8 +319,7 @@ echo "</pre>";
                 </div>
                 <div class="row py-2">
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png" alt="image">
                         <p class="text-center w-auto fw-bold">Dương Quá</p>
                     </div>
                     <div class="col w-auto">
@@ -320,8 +331,7 @@ echo "</pre>";
                 </div>
                 <div class="row py-2">
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png" alt="image">
                         <p class="text-center w-auto fw-bold">Dương Quá</p>
                     </div>
                     <div class="col w-auto">
@@ -333,8 +343,7 @@ echo "</pre>";
                 </div>
                 <div class="row py-2">
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png" alt="image">
                         <p class="text-center w-auto fw-bold">Dương Quá</p>
                     </div>
                     <div class="col w-auto">
@@ -346,8 +355,7 @@ echo "</pre>";
                 </div>
                 <div class="row py-2">
                     <div class="col-3 w-auto m-auto">
-                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png"
-                            alt="image">
+                        <img class="rounded-circle w-auto avt-comment" src="../../lib/image/product/pepe5.png" alt="image">
                         <p class="text-center w-auto fw-bold">Dương Quá</p>
                     </div>
                     <div class="col w-auto">
@@ -383,8 +391,7 @@ echo "</pre>";
                                 </button>
                             </li>
                             <li class="page-item">
-                                <button class="page-link-btn btn" type="submit" name="indexPage" value=""
-                                    id="aboutus-section">
+                                <button class="page-link-btn btn" type="submit" name="indexPage" value="" id="aboutus-section">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </button>
                             </li>
