@@ -113,13 +113,13 @@ echo "</pre>";
                                                             </p>
                                                        </td>
                                                        <td>
-                                                            <a href="/cart-add/<?= $index + 1 ?>" class="cart-add cart-btn btn">Tăng</a>
+                                                            <a href="/cart-add/<?= $index + 10 ?>" class="cart-add cart-btn btn">Tăng</a>
                                                        </td>
                                                        <td>
-                                                            <a href="/cart-minus/<?= $index + 1 ?>" class="cart-minus cart-btn btn">Giảm</a>
+                                                            <a href="/cart-minus/<?= $index + 10 ?>" class="cart-minus cart-btn btn">Giảm</a>
                                                        </td>
                                                        <td>
-                                                            <a href="/cart-del/<?= $index + 1 ?>" class="cart-del cart-btn btn">Xóa</a>
+                                                            <a href="/cart-del/<?= $index + 10 ?>" class="cart-del cart-btn btn">Xóa</a>
                                                        </td>
                                                   </tr>
                                                   <?php break; ?>
@@ -128,7 +128,7 @@ echo "</pre>";
                                    <?php endforeach ?>
                                    <?php $index++ ?>
                               <?php endforeach ?>
-                         <?php elseif (isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) == 0) : ?>
+                         <?php elseif (!isset($_SESSION['product_cart_infor']) || isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) == 0) : ?>
                               <tr>
                                    <td colspan="3" class="text-center fw-bold">
                                         <p class="fs-2 text-danger">Giỏ hàng trống!!!</p>
@@ -140,7 +140,9 @@ echo "</pre>";
                </table>
           </div>
           <br>
-          <a href="/payment" class="btn payment-btn">Thanh toán</a>
+          <?php if (isset($_SESSION['product_cart_infor']) && count($_SESSION['product_cart_infor']) > 0) : ?>
+               <a href="/payment" class="btn payment-btn">Thanh toán</a>
+          <?php endif; ?>
           <br><br><br><br>
      </div>
 </body>

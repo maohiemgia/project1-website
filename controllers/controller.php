@@ -290,47 +290,18 @@ function productpage($doi_tuong)
 
      $loai_hang = query_loai_hang();
      $doi_tuong_lh = query_object_of_lh();
+     if (!isset($_SESSION['reload_page']) || isset($_SESSION['reload_page']) &&  $_SESSION['reload_page'] == 0) {
+          echo "<script>
+          window.location.href = '/product';
+          </script>";
+          $_SESSION['reload_page'] = 1;
+     }
 
      view('product.product', [
           'product' => $productArr, 'sale' => $productSale, 'loai_hang' => $loai_hang,
           'doi_tuong_lh' => $doi_tuong_lh
      ]);
 }
-
-// function productdetailpage($id)
-// {
-//      $product = fetch_single_product($id, 1);
-//      $product_option_color = fetch_product_option($id, 1);
-//      $product_option_size = fetch_product_option($id, 2);
-
-//      $product_option_img = fetch_product_option_img($id, 1);
-
-//      $_SESSION['productId'] =  $id;
-//      if (!isset($_SESSION['product-selected-option'])) {
-//           $_SESSION['product-selected-option'] = $product[0];
-//      }
-
-//      if (!isset($_SESSION['product-selected-option']['color']) || empty($_SESSION['product-selected-option']['color'])) {
-//           $_SESSION['product-selected-option']['color'] = '';
-//      }
-//      if (!isset($_SESSION['product-selected-option']['size']) || empty($_SESSION['product-selected-option']['size'])) {
-//           $_SESSION['product-selected-option']['size'] = '';
-//      }
-//      if (!isset($_SESSION['product-selected-option']['khuyen_mai'])) {
-//           $_SESSION['product-selected-option']['khuyen_mai'] = 0;
-//      }
-
-//      $_SESSION['product-selected-option']['option_detail'] = $_SESSION['product-selected-option']['color'] . $_SESSION['product-selected-option']['size'];
-
-//      if (!$product) {
-//           echo "<script>
-//           window.location.href = '/product';
-//           </script>";
-//           die;
-//      }
-
-//      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
-// }
 
 function productdetailpage($id)
 {
@@ -386,7 +357,63 @@ function productdetailpage($id)
      }
      
      
+//      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
+
+// function productdetailpage($id)
+// {
+//      $product = fetch_single_product($id, 1);
+//      $product_option_color = fetch_product_option($id, 1);
+//      $product_option_size = fetch_product_option($id, 2);
+
+//      $product_option_img = fetch_product_option_img($id, 1);
+
+//      $_SESSION['productId'] =  $id;
+//      if (!isset($_SESSION['product-selected-option'])) {
+//           $_SESSION['product-selected-option'] = $product[0];
+//      }
+
+//      if (!isset($_SESSION['product-selected-option']['color']) || empty($_SESSION['product-selected-option']['color'])) {
+//           $_SESSION['product-selected-option']['color'] = '';
+//      }
+//      if (!isset($_SESSION['product-selected-option']['size']) || empty($_SESSION['product-selected-option']['size'])) {
+//           $_SESSION['product-selected-option']['size'] = '';
+//      }
+//      if (!isset($_SESSION['product-selected-option']['khuyen_mai'])) {
+//           $_SESSION['product-selected-option']['khuyen_mai'] = 0;
+//      }
+
+//      $_SESSION['product-selected-option']['option_detail'] = $_SESSION['product-selected-option']['color'] . $_SESSION['product-selected-option']['size'];
+
+//      if (!$product) {
+//           echo "<script>
+//           window.location.href = '/product';
+//           </script>";
+//           die;
+//      }
+//      if (isset($_SESSION['reload_page']) && $_SESSION['reload_page'] == 1) {
+//           echo "<script>
+//           window.location.href = '/product/$id';
+//           </script>";
+//           $_SESSION['reload_page'] = 0;
+//      }
+
+//      // check sản phẩm đã có trong wishlist hay chưa
+//      $id_sp = $id;
+//      if (isset($_SESSION['userLogin']['id'])) {
+//           $id_user = $_SESSION['userLogin']['id'];
+//           check_pro_in_wishlist($id_user, $id_sp);
+//           $check_ton_tai = check_pro_in_wishlist($id_user, $id_sp);
+//           $check_wl = 0;
+//           if (is_array($check_ton_tai) && !empty($check_ton_tai)) {
+//                $check_wl = 1;
+//           }
+//           view('product.productdetail', [
+//                'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
+//                'productOptionImg' => $product_option_img, 'check_pro_in_wl' => $check_wl
+//           ]);
+//      }
+// }
 
 function newspage()
 {
@@ -400,8 +427,10 @@ function them_wishlist($id_user, $id_sp)
      $check_ton_tai = check_pro_in_wishlist($id_user, $id_sp);
      // print_r($check_ton_tai);
      $thong_bao = [];
-     if (is_array($check_ton_tai) && empty($check_ton_tai)  && is_array($check_pro_ton_tai) &&
-     !empty($check_pro_ton_tai)) {
+     if (
+          is_array($check_ton_tai) && empty($check_ton_tai)  && is_array($check_pro_ton_tai) &&
+          !empty($check_pro_ton_tai)
+     ) {
           add_wishlist($id_user, $id_sp);
      }
      // wishlistpage($id_user);
@@ -456,6 +485,10 @@ function shoppingcart()
 
 function checkshoppingcart()
 {
+     if (!isset($_SESSION['addToCartStat'])) {
+          $_SESSION['addToCartStat'] = 1;
+     }
+
      $id = $_SESSION['productId'];
      $check = false;
      $_SESSION['itemCartStatus'] = 'themvaogio';
@@ -478,7 +511,7 @@ function checkshoppingcart()
 
 function cartadd($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'tang';
      $check = false;
 
@@ -506,7 +539,7 @@ function cartadd($id)
 
 function cartminus($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'giam';
      $check = false;
 
@@ -534,7 +567,7 @@ function cartminus($id)
 
 function cartdel($id)
 {
-     $_SESSION['cart-index'] = $id - 1;
+     $_SESSION['cart-index'] = $id - 10;
      $_SESSION['itemCartStatus'] = 'xoa';
      $check = false;
 
@@ -563,4 +596,9 @@ function cartdel($id)
 function payment()
 {
      view('pay.pay');
+}
+
+function orderManage()
+{
+     view('admin.ordermanage');
 }

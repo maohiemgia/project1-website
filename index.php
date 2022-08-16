@@ -163,9 +163,9 @@ route("/changepass", function () {
 route("/order", function () {
      renderByUserRole('orderpage');
 });
-// route("/admin/product", function () {
-//      echo "Quản lý sản phẩm là";
-// });
+route("/admin/order", function () {
+     renderByUserRole('orderManage');
+});
 
 // route("/admin/product/edit/{id}", function ($id) {
 //      echo "Edit sản phẩm là $id";

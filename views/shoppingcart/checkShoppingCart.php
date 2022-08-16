@@ -19,12 +19,11 @@ if (isset($_SESSION['itemCartStatus'])) {
                $session_object['option_detail'] = $session_object['color'] . $session_object['size'];
                $session_object['quantity'] = 1;
 
-               if ($_SESSION['addToCartStat'] == 1) {
+               if (isset($_SESSION['addToCartStat']) && $_SESSION['addToCartStat'] == 1) {
                     $_SESSION['addToCartStat'] = 0;
                     echo "<script>
-                    window.location.href = '/check-shopping-cart';
+                         window.location.href = '/check-shopping-cart';
                     </script>";
-                    exit;
                }
           }
      }
@@ -46,42 +45,47 @@ if (isset($_SESSION['itemCartStatus'])) {
                     }
                }
           }
+     }
+
+     foreach ($_SESSION[$session_name] as $shopping_cart_product) {
           if (isset($productAvailableCheck) && $productAvailableCheck == 1) {
-               if ($itemCartStatus == 'themvaogio') {
-                    if (isset($_SESSION['product-selected-option']['option_detail']) && $shopping_cart_product['option_detail'] == $_SESSION['product-selected-option']['option_detail']) {
+               if (
+                    isset($_SESSION['product-selected-option']['option_detail']) &&
+                    $shopping_cart_product['option_detail'] == $_SESSION['product-selected-option']['option_detail'] &&
+                    $shopping_cart_product['gia_tien_option_sp'] == $_SESSION['product-selected-option']['gia_tien_option_sp'] &&
+                    $shopping_cart_product['id'] ==  $_SESSION['product-selected-option']['id']
+               ) {
+                    if ($itemCartStatus == 'themvaogio') {
                          $_SESSION[$session_name][$index]['quantity']++;
                          $add_status = 1;
                          break;
                     }
                }
-
-               // echo $_SESSION['cart-index'];
-               if (isset($_SESSION['cart-index'])) {
-                    $itemIndex = $_SESSION['cart-index'];
-               }
-
-               if ($itemCartStatus == 'tang') {
-                    $_SESSION[$session_name][$itemIndex]['quantity']++;
-                    $add_status = 1;
-                    break;
-               }
-               if ($itemCartStatus == 'giam') {
-                    if ($_SESSION[$session_name][$itemIndex]['quantity'] > 1) {
-                         $_SESSION[$session_name][$itemIndex]['quantity']--;
-                    } else {
-                         unset($_SESSION[$session_name][$itemIndex]);
-                    }
-                    $add_status = 1;
-                    break;
-               }
-               if ($itemCartStatus == 'xoa') {
-                    // array_splice($_SESSION[$session_name], $itemIndex, 1); 
-                    unset($_SESSION[$session_name][$itemIndex]);
-                    $add_status = 1;
-                    break;
-               }
+               $index++;
           }
-          $index++;
+     }
+
+     if (isset($_SESSION['cart-index'])) {
+          $itemIndex = $_SESSION['cart-index'];
+
+          if ($itemCartStatus == 'tang') {
+               $_SESSION[$session_name][$itemIndex]['quantity']++;
+               $add_status = 1;
+          }
+          if ($itemCartStatus == 'giam') {
+               if ($_SESSION[$session_name][$itemIndex]['quantity'] > 1) {
+                    $_SESSION[$session_name][$itemIndex]['quantity']--;
+               } else {
+                    unset($_SESSION[$session_name][$itemIndex]);
+                    $_SESSION[$session_name] = array_values($_SESSION[$session_name]);
+               }
+               $add_status = 1;
+          }
+          if ($itemCartStatus == 'xoa') {
+               unset($_SESSION[$session_name][$itemIndex]);
+               $_SESSION[$session_name] = array_values($_SESSION[$session_name]);
+               $add_status = 1;
+          }
      }
 
      if ($add_status != 1) {
@@ -103,12 +107,10 @@ if (isset($_SESSION['itemCartStatus'])) {
           $stringJS = "/product";
      }
 
-     if (isset($_SESSION['product-selected-option'])) {
-          unset($_SESSION['product-selected-option']);
-     }
+     $_SESSION['itemCartStatus'] = '';
+
      echo "<script>
                window.location.href = '$stringJS';
           </script>";
 
-     // unset($_SESSION[$session_name]);
 }
