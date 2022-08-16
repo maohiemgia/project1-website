@@ -114,11 +114,13 @@ route("/wishlist", function () {
      if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
           $id_sp = $_GET['id_sp'];
           $id_user = $_GET['id_user'];
-          $thao_tac = $_POST['thao_tac_wishlist'];
-          if($thao_tac == "0"){
-               renderByUserRole('them_wishlist', $id_user, $id_sp);
-          }else{
-               renderByUserRole('delete_one_wishlist_ko_vao_wishlist', $id_user, $id_sp);
+          if(isset($_POST['thao_tac_wishlist'])){
+               $thao_tac = $_POST['thao_tac_wishlist'];
+               if($thao_tac == "0"){
+                    renderByUserRole('them_wishlist', $id_user, $id_sp);
+               }else{
+                    renderByUserRole('delete_one_wishlist_ko_vao_wishlist', $id_user, $id_sp);
+               }
           }
           // renderByUserRole('them_wishlist', $id_user, $id_sp);
      } else {
