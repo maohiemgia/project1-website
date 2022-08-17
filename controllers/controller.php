@@ -64,8 +64,18 @@ function renderByUserRole(callable $functionname, $parameter = 0, $bien = 0)
      }
 }
 
+// function headerview()
+// {
+//      view('others.menu');
+// }
+
 function headerview()
 {
+     if (isset($_SESSION['userLogin']['id'])) {
+          $id_user = $_SESSION['userLogin']['id'];
+          $_SESSION['userLogin']['count_wishlist'] = dem_so_yeu_thich($id_user);
+          // echo $_SESSION['userLogin']['count_wishlist'];
+     }
      view('others.menu');
 }
 
@@ -336,7 +346,7 @@ function productdetailpage($id)
      }
 
      // check sản phẩm đã có trong wishlist hay chưa
-     if(isset($_SESSION['userLogin']['id'])){
+     if (isset($_SESSION['userLogin']['id'])) {
           $id_sp = $id;
           $id_user = $_SESSION['userLogin']['id'];
           check_pro_in_wishlist($id_user, $id_sp);
@@ -349,15 +359,15 @@ function productdetailpage($id)
                'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
                'productOptionImg' => $product_option_img, 'check_pro_in_wl' => $check_wl
           ]);
-     }else{
+     } else {
           view('product.productdetail', [
                'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
                'productOptionImg' => $product_option_img
           ]);
      }
-     
-     
-//      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
+
+
+     //      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
 // function productdetailpage($id)
@@ -420,6 +430,14 @@ function newspage()
      view('news.news');
 }
 
+// lấy danh sách wishlist của người dùng
+function wishlistpage($id_user)
+{
+     // if($id_user!= )
+     $wishlist = list_wishlist($id_user);
+     view('wishlist.wishlist', ['wish_list' => $wishlist]);
+}
+
 function them_wishlist($id_user, $id_sp)
 {
      // echo $id_user . "<br>" . $id_sp;
@@ -437,27 +455,39 @@ function them_wishlist($id_user, $id_sp)
      // $wishlist = list_wishlist($id_user);
      // view('wishlist.wishlist', ['wish_list' => $wishlist,'thong_bao' => $thong_bao]);
      productdetailpage($id_sp);
+     echo "<script>
+               window.location.href = '/product/" . $id_sp . "';
+          </script>";
 }
 
-function wishlistpage($id_user)
-{
-     // if($id_user!= )
-     $wishlist = list_wishlist($id_user);
-     view('wishlist.wishlist', ['wish_list' => $wishlist]);
-}
-
-function delete_one_wishlist($id_user, $id_sp)
-{
-     xoa_one_wishlist($id_user, $id_sp);
-     wishlistpage($id_user);
-     $wishlist = list_wishlist($id_user);
-     view('wishlist.wishlist', ['wish_list' => $wishlist]);
-}
-
+// xóa khi ở giao diện chi tiết sản phẩm
 function delete_one_wishlist_ko_vao_wishlist($id_user, $id_sp)
 {
      xoa_one_wishlist($id_user, $id_sp);
      productdetailpage($id_sp);
+     echo "<script>
+               window.location.href = '/product/" . $id_sp . "';
+          </script>";
+}
+
+// xóa khi ở giao diện wishlist
+function delete_one_wishlist($id_user, $id_sp)
+{
+     xoa_one_wishlist($id_user, $id_sp);
+     wishlistpage($id_user);
+     echo "<script>
+               window.location.href = '/wishlist/" . $id_user . "';
+          </script>";
+}
+
+
+
+
+function tracuudonhang()
+{
+
+
+     view('tracuudonhang.tracuudonhang');
 }
 
 function voucherpage()

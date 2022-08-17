@@ -111,9 +111,9 @@ route("/cart-del/{id}", function ($id) {
 });
 
 route("/wishlist", function () {
-     if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
+     if (isset($_GET['id_sp']) && isset($_SESSION['userLogin']['id'])) {
           $id_sp = $_GET['id_sp'];
-          $id_user = $_GET['id_user'];
+          $id_user = $_SESSION['userLogin']['id'];
           if(isset($_POST['thao_tac_wishlist'])){
                $thao_tac = $_POST['thao_tac_wishlist'];
                if($thao_tac == "0"){
@@ -145,6 +145,10 @@ route("/delete_one_wishlist",function(){
           renderByUserRole('delete_one_wishlist', $id_user, $id_sp);
      }
 
+});
+
+route("/tracuudonhang", function () {
+     renderByUserRole('tracuudonhang');
 });
 
 route("/voucher", function () {

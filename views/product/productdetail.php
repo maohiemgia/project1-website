@@ -235,7 +235,7 @@ echo "</pre>";
                     ?>
 
                         <form action="<?php
-                                        echo "/wishlist?id_sp=" . $product['id_san_pham'] . "&id_user=" . $_SESSION['userLogin']['id'];
+                                        echo "/wishlist?id_sp=" . $product['id_san_pham'];
                                         ?>" method="POST">
                             <button name="thao_tac_wishlist" type="submit" id="add-to-wishlist" class="btn add-to-wishlist-btn" value="<?php if ($data['check_pro_in_wl'] == 0) {
                                                                                                                                             echo "0";
@@ -269,7 +269,7 @@ echo "</pre>";
 
                     <form action="/check-shopping-cart" method="POST">
                         <button type="submit" id="add-to-cart" class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>" name="addtocart">Thêm vào giỏ hàng</button>
-                                    } else {
+                                    <!-- } else {
                                         echo "/login";
                                     }
                                     ?>" method="POST">
@@ -285,7 +285,7 @@ echo "</pre>";
                                 echo "Xóa khỏi Wishlist";
                             }
                             ?>
-                        </button>
+                        </button> -->
                     </form>
                 </div>
             </div>
