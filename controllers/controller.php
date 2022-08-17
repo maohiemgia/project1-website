@@ -1,3 +1,4 @@
+
 <?php
 require_once "lib/render.php";
 require_once "models/product.php";
@@ -335,7 +336,29 @@ function productdetailpage($id)
           die;
      }
 
-     view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
+     // check sản phẩm đã có trong wishlist hay chưa
+     if(isset($_SESSION['userLogin']['id'])){
+          $id_sp = $id;
+          $id_user = $_SESSION['userLogin']['id'];
+          check_pro_in_wishlist($id_user, $id_sp);
+          $check_ton_tai = check_pro_in_wishlist($id_user, $id_sp);
+          $check_wl = 0;
+          if (is_array($check_ton_tai) && !empty($check_ton_tai)) {
+               $check_wl = 1;
+          }
+          view('product.productdetail', [
+               'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
+               'productOptionImg' => $product_option_img, 'check_pro_in_wl' => $check_wl
+          ]);
+     }else{
+          view('product.productdetail', [
+               'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
+               'productOptionImg' => $product_option_img
+          ]);
+     }
+     
+     
+//      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
 // function productdetailpage($id)
@@ -463,9 +486,9 @@ function shoppingcart()
 
 function checkshoppingcart()
 {
-     if (!isset($_SESSION['addToCartStat'])) {
-          $_SESSION['addToCartStat'] = 1;
-     }
+     // if (!isset($_SESSION['addToCartStat'])) {
+     //      $_SESSION['addToCartStat'] = 1;
+     // }
 
      $id = $_SESSION['productId'];
      $check = false;
