@@ -152,6 +152,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '$userId'
                     )";
             }
+            querySQL($sql);
+            // echo "<pre>";
+            // var_dump($product_cart);
+            // echo "</pre>";
+            // die;
             foreach ($product_cart as $p) {
                 $pId = $p['id_san_pham'];
                 $pQuantity = $p['quantity'];
@@ -177,9 +182,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '$pSalePrice',
                     '$pTotalPrice'
                 )";
+                querySQL($sqlDetail);
             }
-            querySQL($sql);
-            querySQL($sqlDetail);
             echo "<script>alert('Tạo đơn hàng thành công!!!');</script>";
 
             // gửi email thông tin đơn hàng tới mail cho khách
