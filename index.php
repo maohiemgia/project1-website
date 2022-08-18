@@ -1,3 +1,4 @@
+
 <?php
 
 require_once "lib/route.php";
@@ -131,6 +132,7 @@ route("/wishlist", function () {
      if (isset($_GET['id_sp']) && isset($_SESSION['userLogin']['id'])) {
           $id_sp = $_GET['id_sp'];
           $id_user = $_SESSION['userLogin']['id'];
+
           if (isset($_POST['thao_tac_wishlist'])) {
                $thao_tac = $_POST['thao_tac_wishlist'];
                if ($thao_tac == "0") {
@@ -172,11 +174,19 @@ route("/tracuudonhang", function () {
      } else {
           renderByUserRole('tracuudonhang');
      }
+
 });
 
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });
+route("/checkvoucher", function () {
+     renderByUserRole('checkvoucherpage');
+});
+route("/removevoucher", function () {
+     renderByUserRole('removevoucherpage');
+});
+
 route("/payment", function () {
      renderByUserRole('payment');
 });
@@ -190,12 +200,24 @@ route("/changepass", function () {
 route("/order", function () {
      renderByUserRole('orderpage');
 });
+route("/admin", function () {
+     renderByUserRole('adminmanagerpage');
+});
 route("/admin/order", function () {
      renderByUserRole('orderManage');
 });
+route("/admin/order/{id}", function ($id) {
+     renderByUserRole('editOrder', $id);
+});
+route("/deleteorder/{id}", function ($id) {
+     renderByUserRole('delOrder', $id);
+});
 
-// route("/admin/product/edit/{id}", function ($id) {
-//      echo "Edit sản phẩm là $id";
-// });
+route("/admin/statistic", function () {
+     renderByUserRole('statisticpage');
+});
+
+
+
 
 run();

@@ -1,3 +1,4 @@
+
 <?php
 require_once "lib/render.php";
 require_once "models/product.php";
@@ -511,9 +512,21 @@ function voucherpage()
 {
      view('voucher.voucher');
 }
+function checkvoucherpage()
+{
+     view('voucher.checkvoucher');
+}
+function removevoucherpage()
+{
+     view('voucher.removevoucher');
+}
 function accountpage()
 {
      view('account.account');
+}
+function adminmanagerpage()
+{
+     view('admin.adminmanager');
 }
 function orderpage()
 {
@@ -532,9 +545,9 @@ function shoppingcart()
 
 function checkshoppingcart()
 {
-     if (!isset($_SESSION['addToCartStat'])) {
-          $_SESSION['addToCartStat'] = 1;
-     }
+     // if (!isset($_SESSION['addToCartStat'])) {
+     //      $_SESSION['addToCartStat'] = 1;
+     // }
 
      $id = $_SESSION['productId'];
      $check = false;
@@ -648,4 +661,23 @@ function payment()
 function orderManage()
 {
      view('admin.ordermanage');
+}
+function editOrder($id)
+{
+     $sql = "SELECT * FROM `don_hang` dh WHERE dh.id = $id";
+     $order = querySQL($sql, 1);
+
+     $sql = "SELECT * FROM `chi_tiet_don_hang` ctdh JOIN san_pham sp on sp.id = ctdh.id_san_pham WHERE ctdh.id_don_hang = $id ORDER BY ctdh.id_don_hang DESC";
+     $orderDetail = querySQL($sql, 1);
+
+     view('admin.orderedit', ['order' => $order, 'orderDetail' => $orderDetail]);
+}
+function delOrder($id)
+{
+     view('admin.orderdel', ['idDel' => $id]);
+}
+
+function statisticpage()
+{
+     view('admin.statistic');
 }

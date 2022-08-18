@@ -9,12 +9,44 @@ if (!isset($content_email_body)) {
     $content_email_body = '';
 }
 
+// random code create
+function generateRandomString($length = 20)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+// check order query
+$maTraCuu = generateRandomString();
+$sql = "SELECT `ma_tra_cuu` FROM `don_hang`";
+$db_maTraCuu = querySQL($sql, 1);
+$GLOBALS['db_maTraCuu'] = $db_maTraCuu;
+
+function checkMaTraCuu($ma = 0)
+{
+    global $db_maTraCuu;
+    foreach ($db_maTraCuu as $giaTriMa) {
+        if ($giaTriMa['ma_tra_cuu'] == $ma) {
+            $maMoi = generateRandomString();
+            return checkMaTraCuu($maMoi);
+        }
+    }
+    return $ma;
+}
+$status_traCuu = checkMaTraCuu($maTraCuu);
+
 if (isset($_SESSION['product_cart_infor'])) {
     $product_cart = $_SESSION['product_cart_infor'];
     echo "<pre>";
     // print_r($product_cart);
     echo "</pre>";
 }
+
 //creat id đơn hàng
 $sql = "SELECT
             `id`
@@ -25,15 +57,45 @@ $sql = "SELECT
         DESC
         LIMIT 1";
 $idNewest = querySQL($sql, 2);
-$idNewest = $idNewest['id'];
+if (isset($idNewest['id'])) {
+    $idNewest = $idNewest['id'];
+} else {
+    $idNewest = 0;
+}
 $idWillUse = $idNewest + 1;
 
 $shipfee = 40000;
+
+if (!isset($_SESSION['voucherUse'])) {
+    $_SESSION['voucherUse'] = [];
+}
+if (!isset($originalPrice)) {
+    $originalPrice = 0;
+}
+
 foreach ($product_cart as $product) {
     $totalPrice += ($product['gia_tien_option_sp'] * $product['quantity']);
     $totalPriceBeforeUseCoupon += ($product['gia_sp'] * $product['quantity']);
+    $originalPrice += ($product['gia_tien_option_sp'] * $product['quantity']);
 }
-$vatFee = (1 / ($totalPrice + $shipfee)) * 100;
+// tính phí ship
+$totalPrice += $shipfee;
+// tính voucher giảm 
+if (isset($_SESSION['voucherUse']) && count($_SESSION['voucherUse']) > 1) {
+    if ($totalPrice >= $_SESSION['voucherUse']['gia_tong_don_hang']) {
+        $priceTemp = ($_SESSION['voucherUse']['gia_tri_phan_tram'] * $totalPrice) / 100;
+
+        if ($priceTemp > $_SESSION['voucherUse']['gia_tri_tien_mat']) {
+            $priceVoucher = $_SESSION['voucherUse']['gia_tri_tien_mat'];
+            $totalPrice -= $priceVoucher;
+        } else {
+            $priceVoucher = $priceTemp;
+            $totalPrice -= $priceTemp;
+        }
+    }
+} else {
+    $priceVoucher = 0;
+}
 
 $errorArr = [
     "empty" => "Lỗi chưa nhập",
@@ -86,6 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (strlen($client_note) > 500) {
             $errInput['note'] = $errorArr['length'] . ' ở ghi chú tối đa 500 ký tự!';
         }
+        if (empty($client_note)) {
+            $client_note = ' không có';
+        }
+
 
         // validate email
         $inp_email = strtolower($client_email);
@@ -95,6 +161,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         if (count($errInput) == 0) {
+            $client_name = ucwords($client_name);
+            $chenMaTraCuu = $status_traCuu;
+            if (isset($_SESSION['voucherUse']['id'])) {
+                $idPhieuDung =  $_SESSION['voucherUse']['id'];
+            } else {
+                $idPhieuDung =  0;
+            }
+
+
             if (!isset($userId)) {
                 $sql = "INSERT INTO `don_hang`(
                     `id`,
@@ -107,7 +182,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     `gia_thanh_hang`,
                     `gia_thanh_tien`,
                     `phu_phi`,
-                    `ghi_chu_dh`
+                    `ghi_chu_dh`,
+                    `ma_tra_cuu`,
+                    `id_phieu_giam_gia`
                     )
                     VALUES(
                     '$idWillUse',
@@ -117,10 +194,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '$client_address',
                     'Thanh toán khi nhận hàng',
                     'Đang đóng gói',
-                    '$totalPriceBeforeUseCoupon',
+                    '$originalPrice',
                     '$totalPrice',
                     '$shipfee',
-                    '$client_note'
+                    '$client_note',
+                    '$chenMaTraCuu',
+                    '$idPhieuDung'
                     )";
             } else {
                 $sql = "INSERT INTO `don_hang`(
@@ -135,7 +214,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     `gia_thanh_tien`,
                     `phu_phi`,
                     `ghi_chu_dh`,
-                    `id_user`
+                    `id_user`,
+                    `ma_tra_cuu`,
+                    `id_phieu_giam_gia`
                     )
                     VALUES(
                     '$idWillUse',
@@ -145,26 +226,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '$client_address',
                     'Thanh toán khi nhận hàng',
                     'Đang đóng gói',
-                    '$totalPriceBeforeUseCoupon',
+                    '$originalPrice',
                     '$totalPrice',
                     '$shipfee',
                     '$client_note',
-                    '$userId'
+                    '$userId',
+                    '$chenMaTraCuu',
+                    '$idPhieuDung'
                     )";
             }
+            querySQL($sql);
+
             foreach ($product_cart as $p) {
                 $pId = $p['id_san_pham'];
                 $pQuantity = $p['quantity'];
                 $pPrice = $p['gia_sp'];
                 $pSalePrice = $p['gia_tien_option_sp'];
                 $pTotalPrice = $pSalePrice * $pQuantity;
-
                 $pName = $p['ten_sp'];
+
+                if (empty($p['size'])) {
+                    $p['size'] = 'bất kỳ';
+                }
+                if (empty($p['color'])) {
+                    $p['color'] = 'bất kỳ';
+                }
+                $pOptionDetail = " Size: " . $p['size'] . ', ' . " Màu: " . $p['color'];
 
                 $sqlDetail = "INSERT INTO `chi_tiet_don_hang`(
                     `id_don_hang`,
                     `id_san_pham`,
                     `so_luong_sp`,
+                    `thong_tin_them`,
                     `gia_sp`,
                     `gia_ban`,
                     `tong_gia`
@@ -173,51 +266,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '$idWillUse',
                     '$pId',
                     '$pQuantity',
+                    '$pOptionDetail',
                     '$pPrice',
                     '$pSalePrice',
                     '$pTotalPrice'
                 )";
+                querySQL($sqlDetail);
             }
-            querySQL($sql);
-            querySQL($sqlDetail);
+
             echo "<script>alert('Tạo đơn hàng thành công!!!');</script>";
+
+            if (isset($_SESSION['voucherUse']['so_luong_phieu']) && $_SESSION['voucherUse']['so_luong_phieu'] > 0 && $_SESSION['voucherUse']['id'] != 0) {
+                $soPhieu = $_SESSION['voucherUse'][''] - 1;
+                $luongSuDung = $_SESSION['voucherUse']['luong_su_dung'] + 1;
+                $idPhieu = $_SESSION['voucherUse']['id'];
+                $sqlPhieu = "UPDATE
+                        `phieu_giam_gia`
+                    SET
+                        `so_luong_phieu` = '$soPhieu',
+                        `luong_su_dung` = '$luongSuDung'
+                    WHERE
+                        `id` = '$idPhieu'";
+                querySQL($sqlPhieu);
+            }
 
             // gửi email thông tin đơn hàng tới mail cho khách
             $maDonHang = $idWillUse;
+            $client_name_display = "<b style=\"font-family: 'Open Sans', sans-serif;font-size: 25px;\">" . $client_name . "</b>";
+
             $email_subject = 'Thông tin đơn hàng';
             $email_head = "<br>Dưới đây là thông tin đơn hàng của bạn: 
-<br>------------------------------------------------------------------------------------
-------------------------------<br>Mã đơn hàng: $maDonHang<br>Người đặt hàng: " . strtoupper($client_name) . "<br>
-Số điện thoại nhận hàng: $client_phone<br>";
-            $email_foot =  "<br><br>Tổng tiền: " . number_format($totalPrice) .
-                " VNĐ<br>Tình trạng đơn hàng: chưa thanh toán. <br>
-Tình trạng giao hàng: đang giao hàng. <br>
-Điểm đến: $client_address<br>
-Dự kiến giao hàng trong vòng 2 tới 7 ngày. <br>Ghi chú:" . $client_note . "<br>
----------------------------------------------------------------------------------------
----------------------------<br>Cảm ơn bạn đã tin tưởng và đặt hàng, chúng tôi sẽ giao hàng nhanh nhất chất lượng nhất có thể.<br>Chúc bạn một ngày tốt lành!
-<br>Liên hệ hỗ trợ: <br><pre>               <b>Nhân viên hỗ trợ 24/24: 0342 737 862</b></pre><br>
-<pre>               <b>Hỗ trợ qua email: tuannvph19078@fpt.edu.vn</b></pre>";
+                <br>------------------------------------------------------------------------------------
+                ------------------------------<br>Mã đơn hàng: <b style='font-size: 25px;'>$status_traCuu</b><br>Người đặt hàng: " . "  " . $client_name_display . "<br>
+                Số điện thoại nhận hàng: $client_phone<br>";
+            $email_foot =  "<br>Thành tiền(chưa tính ship): " . number_format($originalPrice) . "<br>Phí ship: + " . number_format($shipfee) . "<br>Voucher:  - " . number_format($priceVoucher) . "<br><b style='font-size: 25px;'>Tổng tiền thanh toán: " . number_format($totalPrice) .
+                " VNĐ</b><br><br>Tình trạng đơn hàng: chưa thanh toán. <br>
+                Tình trạng giao hàng: đang giao hàng. <br>
+                Điểm đến: $client_address<br>
+                Dự kiến giao hàng trong vòng 2 tới 7 ngày từ khi đặt hàng. <br>Ghi chú: " . $client_note . "<br>
+                ---------------------------------------------------------------------------------------
+                ---------------------------<br>Cảm ơn bạn đã tin tưởng và đặt hàng, chúng tôi sẽ giao hàng nhanh nhất chất lượng nhất có thể.<br>Chúc bạn một ngày tốt lành!
+                <br>Liên hệ hỗ trợ: <br><pre>               <b>Nhân viên hỗ trợ 24/24: 0342 737 862</b></pre><br>
+                <pre>               <b>Hỗ trợ qua email: tuannvph19078@fpt.edu.vn</b></pre>";
 
             foreach ($product_cart as $p) {
                 $pId = $p['id_san_pham'];
                 $pQuantity = $p['quantity'];
                 $pPrice = $p['gia_sp'];
+                if (empty($p['size'])) {
+                    $p['size'] = 'bất kỳ';
+                }
+                if (empty($p['color'])) {
+                    $p['color'] = 'bất kỳ';
+                }
+                $pOptionDetail = " Size: " . $p['size'] . ', ' . " Màu: " . $p['color'];
                 $pSalePrice = $p['gia_tien_option_sp'];
                 $pTotalPrice = $pSalePrice * $pQuantity;
                 $pName = $p['ten_sp'];
 
-                $content_email_body = "$content_email_body <br>
-   <br> Tên sản phẩm: $pName
-   <br> Số lượng: $pQuantity
-   <br> Thành tiền:  " . number_format($pSalePrice) . ' * ' . $pQuantity . ' = ' . number_format($pSalePrice * $pQuantity);
+                $content_email_body = "$content_email_body
+                    <br> Tên sản phẩm: $pName
+                    <br> Số lượng: $pQuantity
+                    <br> Tùy chọn: $pOptionDetail
+                    <br> Thành tiền:  " . number_format($pSalePrice) . ' * ' . $pQuantity . ' = ' . number_format($pSalePrice * $pQuantity) . "<br>";
             }
 
             $email_body = "<br><b> $email_head $content_email_body $email_foot </b><br>";
             $send_email = true;
+
             require_once 'lib/sendemail.php';
 
             unset($_SESSION['product_cart_infor']);
+            unset($_SESSION['voucherUse']);
 
             if (isset($_SESSION['userLogin'])) {
                 echo "<script>window.location.href = '/order';</script>";
@@ -242,6 +362,11 @@ Dự kiến giao hàng trong vòng 2 tới 7 ngày. <br>Ghi chú:" . $client_not
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../../lib/css/pay.css">
 </head>
 
@@ -383,31 +508,51 @@ Dự kiến giao hàng trong vòng 2 tới 7 ngày. <br>Ghi chú:" . $client_not
                                         </tbody>
                                     </table>
                                 </div>
-                                <form method="POST" class="row g-3">
-                                    <div class="discount_code d-flex justify-content-between">
-                                        <div class="col-auto me-3">
-                                            <input type="text" class="form-control" id="inputPassword2" placeholder="Nhập mã giảm giá">
+
+                                <div class="discount_code d-flex flex-column justify-content-start align-items-start">
+                                    <?php if (isset($_SESSION['voucherUse']['code_giam_gia'])) : ?>
+                                        <div>
+                                            <p>Mã giảm giá sử dụng:
+                                                <b>
+                                                    <?= $_SESSION['voucherUse']['code_giam_gia'] ?>
+                                                </b>
+                                            </p>
+                                            <p>Giảm: <?= $_SESSION['voucherUse']['gia_tri_phan_tram'] . "% " . " (Tối đa: " . number_format($_SESSION['voucherUse']['gia_tri_tien_mat']) . " VNĐ)" ?> </p>
                                         </div>
-                                        <div class="col-auto">
-                                            <button type="submit" class="btn btn-dark mb-3">Áp dụng</button>
+                                        <div>
+                                            <a href="/checkvoucher" class="btn btn-dark mb-3">Dùng mã giảm giá khác</a>
+                                            <a href="/removevoucher" class="btn btn-danger mb-3">Bỏ dùng mã giảm giá</a>
                                         </div>
-                                    </div>
-                                </form>
+                                    <?php else : ?>
+                                        <div>
+                                            <a href="/checkvoucher" class="btn btn-dark mb-3">Dùng mã giảm giá</a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
                                 <div class="price">
                                     <div class="temporary row">
-                                        <div class="col-6">Tạm tính</div>
+                                        <div class="col-6">Tạm tính (chưa tính ship)</div>
                                         <div class="col-6">
-                                            <?= number_format($totalPrice); ?>
+                                            <?= number_format($originalPrice); ?>
                                         </div>
                                     </div>
                                     <div class="transport_fee row">
                                         <div class="col-6">Phí vận chuyển</div>
-                                        <div class="col-6"><?= number_format($shipfee); ?></div>
+                                        <div class="col-6">+ <?= number_format($shipfee); ?></div>
                                     </div>
+
+                                    <?php if (isset($_SESSION['voucherUse']['code_giam_gia'])) : ?>
+                                        <div class="transport_fee row">
+                                            <div class="col-6">Mã giảm giá</div>
+                                            <div class="col-6">- <?= isset($priceVoucher) ? number_format($priceVoucher) : 0; ?></div>
+                                        </div>
+                                    <?php endif; ?>
+
                                     <div class="total row">
-                                        <div class="col-6">Tổng cộng</div>
+                                        <div class="col-6">Tổng thanh toán</div>
                                         <div class="col-6 fs-3">
-                                            <?= number_format($totalPrice + 40000); ?> VNĐ
+                                            <?= number_format($totalPrice); ?> VNĐ
                                         </div>
 
                                     </div>
@@ -420,7 +565,7 @@ Dự kiến giao hàng trong vòng 2 tới 7 ngày. <br>Ghi chú:" . $client_not
                                     </div>
                                     <div class="col-6">
                                         <!-- <a href="/"> -->
-                                        <button type="submit" class="btn btn-dark mb-3">Đặt hàng</button>
+                                        <button type="submit" class="btn btn-success mb-3">Đặt hàng</button>
                                         <!-- </a> -->
                                     </div>
                                 </div>

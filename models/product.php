@@ -147,3 +147,5 @@ function timkiemsanpham_tu_khoa($tu_khoa_tksp)
      $kq = pdo_query($sql);
      return $kq;
 }
+
+

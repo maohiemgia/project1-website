@@ -38,6 +38,9 @@
                             <li>
                                 <a class="account_link" href="./changepass">Đổi mật khẩu</a>
                             </li>
+                            <li>
+                                <a class="account_link" href="/admin">Quản trị website</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-8" id="order_detail">

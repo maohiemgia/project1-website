@@ -19,12 +19,12 @@ if (isset($_SESSION['itemCartStatus'])) {
                $session_object['option_detail'] = $session_object['color'] . $session_object['size'];
                $session_object['quantity'] = 1;
 
-               if (isset($_SESSION['addToCartStat']) && $_SESSION['addToCartStat'] == 1) {
-                    $_SESSION['addToCartStat'] = 0;
-                    echo "<script>
-                         window.location.href = '/check-shopping-cart';
-                    </script>";
-               }
+               // if (isset($_SESSION['addToCartStat']) && $_SESSION['addToCartStat'] == 1) {
+               //      $_SESSION['addToCartStat'] = 0;
+               //      echo "<script>
+               //           window.location.href = '/check-shopping-cart';
+               //      </script>";
+               // }
           }
      }
 
@@ -112,5 +112,4 @@ if (isset($_SESSION['itemCartStatus'])) {
      echo "<script>
                window.location.href = '$stringJS';
           </script>";
-
 }

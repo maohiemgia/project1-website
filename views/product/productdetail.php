@@ -270,6 +270,7 @@ echo "</pre>";
                     <form action="/check-shopping-cart" method="POST">
                         <button type="submit" id="add-to-cart" class="btn add-to-cart-btn <?= addToCartCheck($_SESSION['product-selected-option']['optionAdd']) ?>" name="addtocart">Thêm vào giỏ hàng</button>
                                     <!-- } else {
+
                                         echo "/login";
                                     }
                                     ?>" method="POST">
@@ -286,6 +287,9 @@ echo "</pre>";
                             }
                             ?>
                         </button> -->
+                    </form>
+                    <form action="/check-shopping-cart" method="POST">
+                        <button type="submit" id="add-to-cart" class="btn add-to-cart-btn" name="addtocart">Thêm vào giỏ hàng</button>
                     </form>
                 </div>
             </div>
@@ -422,5 +426,7 @@ echo "</pre>";
 
 
 </body>
+
+
 
 </html>
