@@ -3,6 +3,7 @@ require_once "lib/render.php";
 require_once "models/product.php";
 require_once "models/loaihang.php";
 require_once "models/wishlist.php";
+require_once "models/donhang.php";
 require_once "models/login.php";
 
 // function renderByUserRole(callable $functionname, $parameter = 0)
@@ -292,8 +293,9 @@ function productpage($doi_tuong)
      } else
      if ($doi_tuong == "top_ban_chay") {
           $productArr = top_ban_chay('lay_het');
+     } else {
+          $productArr = timkiemsanpham_tu_khoa($doi_tuong);
      }
-
      $productSale = fetch_khuyenmai_sp();
 
      unset($_SESSION['product-selected-option']);
@@ -425,6 +427,7 @@ function productdetailpage($id)
 //      }
 // }
 
+
 function newspage()
 {
      view('news.news');
@@ -485,9 +488,21 @@ function delete_one_wishlist($id_user, $id_sp)
 
 function tracuudonhang()
 {
-
-
      view('tracuudonhang.tracuudonhang');
+}
+
+function kq_tracuudonhang($ma_tra_cuu_tk)
+{
+     $kqtracuu = querydonhang($ma_tra_cuu_tk);
+     // echo "<pre>";
+     // print_r($kqtracuu);
+     // echo "</pre>";
+
+     if (is_array($kqtracuu) && !empty($kqtracuu)) {
+          view('tracuudonhang.thongtindonhang', ['thongtindonhang' => $kqtracuu]);
+     } else {
+          tracuudonhang();
+     }
 }
 
 function voucherpage()

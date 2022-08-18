@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="/tracuudonhang" method="POST">
         <div>
             Nhập mã đơn hàng:
-            <input type="text" name="ma_don_hang">
-            <button>GO</button>
+            <input type="text" name="tra_cuu_don_hang">
+            <button>TRA CỨU</button>
         </div>
     </form>
 </body>

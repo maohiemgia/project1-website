@@ -85,8 +85,10 @@ echo "</pre>";
                                 <p>CỬA HÀNG</p>
                             </div>
                             <div class="col-md-6 col-12" id="search">
-                                <input type="search" placeholder="Tìm sản phẩm">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <form action="/product" method="POST">
+                                <input type="search" name="timkiemsanpham" placeholder="Tìm sản phẩm">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="jumbotron">
