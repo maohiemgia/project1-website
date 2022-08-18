@@ -18,6 +18,7 @@ echo "<pre>";
 echo "</pre>";
 // session_destroy();  
 
+
 //  if (isset($_SESSION['userLogin'])){
 //      print_r($_SESSION);
 //      echo "<br>".$_SESSION['userLogin']['id'];
@@ -84,8 +85,10 @@ echo "</pre>";
                                 <p>CỬA HÀNG</p>
                             </div>
                             <div class="col-md-6 col-12" id="search">
-                                <input type="search" placeholder="Tìm sản phẩm">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <form action="/product" method="POST">
+                                <input type="search" name="timkiemsanpham" placeholder="Tìm sản phẩm">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="jumbotron">
@@ -116,6 +119,9 @@ echo "</pre>";
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/voucher">ƯU ĐÃI</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/tracuudonhang">TRA CỨU ĐƠN HÀNG</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,8 +132,7 @@ echo "</pre>";
                         <div class="row" id="feature">
                             <div class="col-4 cart-section">
                                 <span class="cart-item-total-wishlist">
-                                    0
-                                    <!-- <?= isset($_SESSION['product_cart_infor']) ? count($_SESSION['product_cart_infor']) : '0'; ?> -->
+                                <?= isset($_SESSION['userLogin']['count_wishlist']) ? $_SESSION['userLogin']['count_wishlist'] : '0'; ?>
                                 </span>
                                 <a href="<?= (isset($_SESSION['userLogin']['id']) && ($_SESSION['userLogin']['id'] != '')) ? "/wishlist" . "/" . $_SESSION['userLogin']['id'] : "/login" ?>">
                                     <img src="../../lib/image/img/Heart 1.png" alt="" class="img-fluid">

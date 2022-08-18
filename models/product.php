@@ -133,3 +133,19 @@ function check_pro_in_listpro($id_sp)
      $kq = pdo_query($sql);
      return $kq;
 }
+
+// tìm kiếm các sản phẩm có tên gần giống từ khóa
+function timkiemsanpham_tu_khoa($tu_khoa_tksp)
+{
+     $sql = "SELECT sp.id, hasp.id_san_pham, sp.ten_sp, sp.gia_sp, sp.ngay_nhap_sp, hasp.url_ha_sp, hasp.alt_ha_sp 
+     FROM `san_pham` sp
+     JOIN hinh_anh_sp hasp on hasp.id_san_pham = sp.id
+     WHERE sp.ten_sp LIKE '%" . $tu_khoa_tksp . "%'
+     AND
+     hasp.do_uu_tien_ha_sp = 0
+     ORDER BY sp.ngay_nhap_sp DESC";
+     $kq = pdo_query($sql);
+     return $kq;
+}
+
+

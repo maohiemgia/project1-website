@@ -25,9 +25,25 @@ route("/product", function () {
           $doi_tuong = $_GET['doi_tuong'];
           renderByUserRole('productpage', "$doi_tuong");
      } else {
-          renderByUserRole('productpage', "all");
+          if (isset($_POST['timkiemsanpham']) && !empty(trim($_POST['timkiemsanpham']))) {
+
+               $tu_khoa_tksp = trim($_POST['timkiemsanpham']);
+               // echo $tu_khoa_tksp;
+               renderByUserRole('productpage', $tu_khoa_tksp);
+          } else {
+               renderByUserRole('productpage', "all");
+          }
      }
 });
+
+// route("/product", function () {
+//      if (isset($_GET['doi_tuong'])) {
+//           $doi_tuong = $_GET['doi_tuong'];
+//           renderByUserRole('productpage', "$doi_tuong");
+//      } else {
+//           renderByUserRole('productpage', "all");
+//      }
+// });
 
 route("/product/{id}", function ($id) {
 
@@ -40,6 +56,7 @@ route("/product/{id}", function ($id) {
 
      renderByUserRole('productdetailpage', $id);
 });
+
 
 
 // route("/detail", function () {
@@ -112,9 +129,10 @@ route("/cart-del/{id}", function ($id) {
 });
 
 route("/wishlist", function () {
-     if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
+     if (isset($_GET['id_sp']) && isset($_SESSION['userLogin']['id'])) {
           $id_sp = $_GET['id_sp'];
-          $id_user = $_GET['id_user'];
+          $id_user = $_SESSION['userLogin']['id'];
+
           if (isset($_POST['thao_tac_wishlist'])) {
                $thao_tac = $_POST['thao_tac_wishlist'];
                if ($thao_tac == "0") {
@@ -145,6 +163,18 @@ route("/delete_one_wishlist", function () {
           // $id_user = $_SESSION['userLogin']['id'];
           renderByUserRole('delete_one_wishlist', $id_user, $id_sp);
      }
+});
+
+
+
+route("/tracuudonhang", function () {
+     if (isset($_POST['tra_cuu_don_hang'])&&!empty(trim($_POST['tra_cuu_don_hang']))) {
+          $tu_khoa_tk = trim($_POST['tra_cuu_don_hang']);
+          renderByUserRole('kq_tracuudonhang',$tu_khoa_tk);
+     } else {
+          renderByUserRole('tracuudonhang');
+     }
+
 });
 
 route("/voucher", function () {

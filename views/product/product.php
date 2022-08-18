@@ -564,43 +564,47 @@ echo "</pre>";
             </div>
             <div class="row productshow-row">
                 <div class="row mx-0 mt-3 product-display-section">
-                    <?php foreach ($productArr[$indexDisplay] as $p) : ?>
-                        <div class="col-6 col-sm-3 product-display">
-                            <div class="row mx-0 product-img-section">
-                                <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
-                                    <img src="<?= $p['url_ha_sp'] ?>" alt="fef">
-                                    <span>
-                                        <?php foreach ($sale as $s) : ?>
-                                            <?php if ($s['id_san_pham'] == $p['id_san_pham']) : ?>
-                                                <?= $s['khuyen_mai']; ?>%
-                                                <?php break; ?>
-                                            <?php else : ?>
-                                                <?= 0 ?>%
-                                                <?php break; ?>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                        <br>
-                                        giảm
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="row mx-0 product-infor my-2">
-                                <a href="/product/<?= $p['id_san_pham'] ?>" class="text-decoration-none">
-                                    <p class="product-name">
-                                        <?= $p['ten_sp'] ?>
+                    <?php if (!empty($data['product'])) : ?>
+                        <?php foreach ($productArr[$indexDisplay] as $p) : ?>
+                            <div class="col-6 col-sm-3 product-display">
+                                <div class="row mx-0 product-img-section">
+                                    <a href="/product/<?= $p['id_san_pham'] ?>" class="px-0">
+                                        <img src="<?= $p['url_ha_sp'] ?>" alt="fef">
+                                        <span>
+                                            <?php foreach ($sale as $s) : ?>
+                                                <?php if ($s['id_san_pham'] == $p['id_san_pham']) : ?>
+                                                    <?= $s['khuyen_mai']; ?>%
+                                                    <?php break; ?>
+                                                <?php else : ?>
+                                                    <?= 0 ?>%
+                                                    <?php break; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                            <br>
+                                            giảm
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="row mx-0 product-infor my-2">
+                                    <a href="/product/<?= $p['id_san_pham'] ?>" class="text-decoration-none">
+                                        <p class="product-name">
+                                            <?= $p['ten_sp'] ?>
+                                        </p>
+                                    </a>
+                                    <p class="product-price">
+                                        <span class="product-price-display">
+                                            <?= number_format($p['gia_sp']) ?>
+                                        </span>
+                                        <span>
+                                            VNĐ
+                                        </span>
                                     </p>
-                                </a>
-                                <p class="product-price">
-                                    <span class="product-price-display">
-                                        <?= number_format($p['gia_sp']) ?>
-                                    </span>
-                                    <span>
-                                        VNĐ
-                                    </span>
-                                </p>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <p>Không có sản phẩm</p>
+                    <?php endif; ?>
 
                     <!-- <div class="col-6 col-sm-3 product-display">
                               <div class="row mx-0 product-img-section">
