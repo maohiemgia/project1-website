@@ -68,3 +68,7 @@
 	width: 100px;
 	z-index: 9;
 }
+
+main {
+	min-height: 100vh;
+}

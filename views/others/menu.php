@@ -18,7 +18,6 @@ echo "<pre>";
 echo "</pre>";
 // session_destroy();  
 
-
 //  if (isset($_SESSION['userLogin'])){
 //      print_r($_SESSION);
 //      echo "<br>".$_SESSION['userLogin']['id'];

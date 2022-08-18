@@ -37,7 +37,7 @@ route("/product/{id}", function ($id) {
      //      header("location:/product");
      //      die;
      // }
-   
+
      renderByUserRole('productdetailpage', $id);
 });
 
@@ -115,11 +115,11 @@ route("/wishlist", function () {
      if (isset($_GET['id_sp']) && isset($_GET['id_user'])) {
           $id_sp = $_GET['id_sp'];
           $id_user = $_GET['id_user'];
-          if(isset($_POST['thao_tac_wishlist'])){
+          if (isset($_POST['thao_tac_wishlist'])) {
                $thao_tac = $_POST['thao_tac_wishlist'];
-               if($thao_tac == "0"){
+               if ($thao_tac == "0") {
                     renderByUserRole('them_wishlist', $id_user, $id_sp);
-               }else{
+               } else {
                     renderByUserRole('delete_one_wishlist_ko_vao_wishlist', $id_user, $id_sp);
                }
           }
@@ -131,26 +131,32 @@ route("/wishlist", function () {
 
 route("/wishlist/{id}", function ($id_user) {
      // là id user
-     if($id_user == $_SESSION['userLogin']['id']){
+     if ($id_user == $_SESSION['userLogin']['id']) {
           renderByUserRole('wishlistpage', $id_user);
-     }else{
+     } else {
           renderByUserRole('homepage');
      }
 });
 
-route("/delete_one_wishlist",function(){
+route("/delete_one_wishlist", function () {
      if (isset($_GET['id_sp'])) {
           $id_sp = $_GET['id_sp'];
           $id_user = $_GET['id_user'];
           // $id_user = $_SESSION['userLogin']['id'];
           renderByUserRole('delete_one_wishlist', $id_user, $id_sp);
      }
-
 });
 
 route("/voucher", function () {
      renderByUserRole('voucherpage');
 });
+route("/checkvoucher", function () {
+     renderByUserRole('checkvoucherpage');
+});
+route("/removevoucher", function () {
+     renderByUserRole('removevoucherpage');
+});
+
 route("/payment", function () {
      renderByUserRole('payment');
 });
@@ -164,12 +170,24 @@ route("/changepass", function () {
 route("/order", function () {
      renderByUserRole('orderpage');
 });
+route("/admin", function () {
+     renderByUserRole('adminmanagerpage');
+});
 route("/admin/order", function () {
      renderByUserRole('orderManage');
 });
+route("/admin/order/{id}", function ($id) {
+     renderByUserRole('editOrder', $id);
+});
+route("/deleteorder/{id}", function ($id) {
+     renderByUserRole('delOrder', $id);
+});
 
-// route("/admin/product/edit/{id}", function ($id) {
-//      echo "Edit sản phẩm là $id";
-// });
+route("/admin/statistic", function () {
+     renderByUserRole('statisticpage');
+});
+
+
+
 
 run();

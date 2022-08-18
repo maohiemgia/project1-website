@@ -337,7 +337,7 @@ function productdetailpage($id)
      }
 
      // check sản phẩm đã có trong wishlist hay chưa
-     if(isset($_SESSION['userLogin']['id'])){
+     if (isset($_SESSION['userLogin']['id'])) {
           $id_sp = $id;
           $id_user = $_SESSION['userLogin']['id'];
           check_pro_in_wishlist($id_user, $id_sp);
@@ -350,15 +350,15 @@ function productdetailpage($id)
                'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
                'productOptionImg' => $product_option_img, 'check_pro_in_wl' => $check_wl
           ]);
-     }else{
+     } else {
           view('product.productdetail', [
                'productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size,
                'productOptionImg' => $product_option_img
           ]);
      }
-     
-     
-//      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
+
+
+     //      view('product.productdetail', ['productArr' => $product, 'product' => $product[0], 'productOptionColor' => $product_option_color, 'productOptionSize' => $product_option_size, 'productOptionImg' => $product_option_img]);
 }
 
 // function productdetailpage($id)
@@ -465,9 +465,21 @@ function voucherpage()
 {
      view('voucher.voucher');
 }
+function checkvoucherpage()
+{
+     view('voucher.checkvoucher');
+}
+function removevoucherpage()
+{
+     view('voucher.removevoucher');
+}
 function accountpage()
 {
      view('account.account');
+}
+function adminmanagerpage()
+{
+     view('admin.adminmanager');
 }
 function orderpage()
 {
@@ -602,4 +614,23 @@ function payment()
 function orderManage()
 {
      view('admin.ordermanage');
+}
+function editOrder($id)
+{
+     $sql = "SELECT * FROM `don_hang` dh WHERE dh.id = $id";
+     $order = querySQL($sql, 1);
+
+     $sql = "SELECT * FROM `chi_tiet_don_hang` ctdh JOIN san_pham sp on sp.id = ctdh.id_san_pham WHERE ctdh.id_don_hang = $id ORDER BY ctdh.id_don_hang DESC";
+     $orderDetail = querySQL($sql, 1);
+
+     view('admin.orderedit', ['order' => $order, 'orderDetail' => $orderDetail]);
+}
+function delOrder($id)
+{
+     view('admin.orderdel', ['idDel' => $id]);
+}
+
+function statisticpage()
+{
+     view('admin.statistic');
 }
