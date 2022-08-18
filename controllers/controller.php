@@ -501,7 +501,9 @@ function kq_tracuudonhang($ma_tra_cuu_tk)
      if (is_array($kqtracuu) && !empty($kqtracuu)) {
           view('tracuudonhang.thongtindonhang', ['thongtindonhang' => $kqtracuu]);
      } else {
-          tracuudonhang();
+          $thongbao = "Mã tra cứu sai hoặc không tồn tại, mời nhập lại";
+          view('tracuudonhang.tracuudonhang',['thongbao_tra_cuu' => $thongbao]);
+          // tracuudonhang();
      }
 }
 

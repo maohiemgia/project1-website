@@ -13,6 +13,11 @@
             <input type="text" name="tra_cuu_don_hang">
             <button>TRA CỨU</button>
         </div>
+        <?php 
+        if(isset($data['thongbao_tra_cuu'])){
+            echo $data['thongbao_tra_cuu'];
+        }
+        ?>
     </form>
 </body>
 </html>
